@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MissionResource" load_steps=3 format=3 uid="uid://e2by872wk4b8"]
+
+[ext_resource type="Script" uid="uid://cv20hikxk2gl3" path="res://resources/mission_resource.gd" id="1_g5ko2"]
+[ext_resource type="Script" uid="uid://bv8c8fmlcf4ji" path="res://resources/event_collection_resource.gd" id="2_3gp3i"]
+
+[resource]
+script = ExtResource("1_g5ko2")
+events = Array[ExtResource("2_3gp3i")]([])
+metadata/_custom_type_script = "uid://cv20hikxk2gl3"

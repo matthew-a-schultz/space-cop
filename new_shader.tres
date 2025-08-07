@@ -1,0 +1,14 @@
+[gd_resource type="VisualShader" load_steps=2 format=3 uid="uid://ddkmnlupi7ja"]
+
+[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_lsw1g"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+"
+nodes/fragment/0/position = Vector2(-400, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorFunc_lsw1g")
+nodes/fragment/2/position = Vector2(520, 440)

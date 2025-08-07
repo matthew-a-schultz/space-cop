@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const FORCE = 4
+const FORCE: float = 4
 const YAW_AMOUNT: float = 1.0
 
 var thrust_forward: float = 0

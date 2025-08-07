@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://sihooviu40x8"]
+[gd_scene load_steps=16 format=3 uid="uid://sihooviu40x8"]
 
 [ext_resource type="Script" uid="uid://b41rtibr47uys" path="res://player_controller.gd" id="1_a202f"]
+[ext_resource type="Script" uid="uid://w8unfiafgstd" path="res://character_body_3d_2.gd" id="2_noarx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_noarx"]
 
@@ -142,3 +143,6 @@ shape = SubResource("BoxShape3D_a202f")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a202f")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+script = ExtResource("2_noarx")
