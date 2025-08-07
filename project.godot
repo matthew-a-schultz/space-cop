@@ -11,9 +11,22 @@ config_version=5
 [application]
 
 config/name="Space Cop"
-run/main_scene="res://node_3d.tscn"
+run/main_scene="uid://bo6xxhqmvysj2"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/inferred_declaration=2
+
+[editor]
+
+run/main_run_args="-e"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/mission_editor/plugin.cfg")
 
 [input]
 

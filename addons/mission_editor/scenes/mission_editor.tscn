@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkbxvsgqvrs2y"]
+
+[ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://addons/mission_editor/scenes/mission_editor.gd" id="1_nigyh"]
+
+[node name="MissionEditor" type="Node3D"]
+script = ExtResource("1_nigyh")
