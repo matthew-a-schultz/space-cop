@@ -4,7 +4,7 @@ var node_editor: Control
 
 func _enter_tree() -> void:
 	node_editor = preload("scenes/node_editor.tscn").instantiate()
-	var bottom_panel_button: Button = add_control_to_bottom_panel(node_editor, "Mission Editor")
+	var bottom_panel_button: Button = add_control_to_bottom_panel(node_editor, "World Event Editor")
 	bottom_panel_button.pressed.connect(_mission_editor_pressed)
 	scene_changed.connect(_scene_changed)
 
@@ -12,9 +12,8 @@ func _exit_tree() -> void:
 	remove_control_from_bottom_panel(node_editor)
 
 func _mission_editor_pressed() -> void:
-	EditorInterface.open_scene_from_path("res://addons/mission_editor/scenes/mission_editor.tscn")
+	EditorInterface.open_scene_from_path("res://addons/world_event_editor/scenes/world_event_editor.tscn")
 
 func _scene_changed(scene_root: Node) -> void:
-	if scene_root is MissionEditor:
-		print_debug("Mission Editor")
+	if scene_root is WorldEditor:
 		make_bottom_panel_item_visible(node_editor)

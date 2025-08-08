@@ -26,7 +26,7 @@ run/main_run_args="-e"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/mission_editor/plugin.cfg")
+enabled=PackedStringArray("res://addons/world_event_editor/plugin.cfg")
 
 [input]
 
