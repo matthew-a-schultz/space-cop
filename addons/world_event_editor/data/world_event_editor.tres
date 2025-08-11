@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://bqmhis161x65x"
 
 [sub_resource type="Resource" id="Resource_f0u1r"]
 script = ExtResource("2_51wu5")
-name = "Tester"
+name = "Testerers"
 scene = ExtResource("3_lqlhu")
 
 [resource]

@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://addons/world_event_editor/scenes/world_event_editor.gd" id="1_f2lsq"]
 [ext_resource type="Resource" uid="uid://buuwndfewy5ui" path="res://addons/world_event_editor/data/world_event_editor.tres" id="2_cuqxa"]
 
-[node name="WorldEventEditor" type="Node3D"]
+[node name="WorldEventEditor" type="Node3D" node_paths=PackedStringArray("ui_objects")]
 script = ExtResource("1_f2lsq")
 world_objects = ExtResource("2_cuqxa")
+ui_objects = NodePath("Objects")
+
+[node name="City" type="Node3D" parent="."]
+
+[node name="Objects" type="Node3D" parent="."]

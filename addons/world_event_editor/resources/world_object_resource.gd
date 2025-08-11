@@ -2,7 +2,10 @@
 extends Resource
 class_name WorldObjectResource
 
-@export var name: String
+@export var name: String:
+	set(value):
+		name = value
+		emit_changed()
 @export var scene: PackedScene:
 	set(value):
 		if value != null:

@@ -20,10 +20,6 @@ config/icon="res://icon.svg"
 gdscript/warnings/untyped_declaration=2
 gdscript/warnings/inferred_declaration=2
 
-[editor]
-
-run/main_run_args="-e"
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/world_event_editor/plugin.cfg")
