@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1i8s8fn5gmxq"]
+
+[ext_resource type="PackedScene" uid="uid://d0b2fupjrxpk1" path="res://assets/kenny/car_kit/police.glb" id="1_cw7eu"]
+[ext_resource type="Script" uid="uid://xmjstjpay7jd" path="res://addons/world_event_editor/classes/world_object.gd" id="2_8t4tw"]
+
+[node name="police" instance=ExtResource("1_cw7eu")]
+script = ExtResource("2_8t4tw")

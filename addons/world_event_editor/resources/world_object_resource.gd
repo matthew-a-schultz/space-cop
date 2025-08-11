@@ -10,3 +10,4 @@ class_name WorldObjectResource
 			if instance_scene is not WorldObject:
 				value = null
 		scene = value
+		emit_changed()
