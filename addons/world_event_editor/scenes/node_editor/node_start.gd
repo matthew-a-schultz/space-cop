@@ -1,9 +1,20 @@
 @tool
-extends GraphNode
+extends GraphNodeExtended
 class_name NodeStart
 
-enum Slots {START}
+var _start: bool = false
 
 func _ready() -> void:
-	set_slot_enabled_right(Slots.START, true)
-	set_slot_type_right(Slots.START, TYPE_BOOL)
+	add_slot(Slot.START, Side.RIGHT)
+
+func start() -> void:
+	pass
+
+func set_slot_status(slot: Slot, status: World.SlotStatus) -> void:
+	slot_status[slot] = status
+
+func get_slot_status(slot: Slot) -> World.SlotStatus:
+	return slot_status[slot]
+
+func connect_node(node: GraphNodeExtended, slot_index: int) -> void:
+	pass

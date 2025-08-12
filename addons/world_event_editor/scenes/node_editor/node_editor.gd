@@ -7,13 +7,13 @@ extends Control
 @export var ui_object: PopupMenu
 @export var ui_object_list: ItemList
 @export var ui_node: PopupMenu
+@export var ui_start: PopupMenu
 
 enum NodeType {START, MOVE_TO}
 var node_scene_paths: Dictionary[NodeType, String] = {
 	NodeType.START: "uid://i8pf5bhlo634",
 	NodeType.MOVE_TO: "uid://b5vj4xsjwgj5p",
 }
-
 var world_event_editor: WorldEventEditor
 var world_objects_resource: WorldObjectsResource
 
@@ -24,6 +24,7 @@ func _ready() -> void:
 	assert(ui_object != null, "Object is null")
 	assert(ui_object_list != null, "Object list is null")
 	assert(ui_node != null, "Node is null")
+	assert(ui_start != null, "Start is null")
 	
 	world_objects_resource = ResourceLoader.load("res://addons/world_event_editor/data/world_event_editor.tres") as WorldObjectsResource
 	_world_object_changed()
@@ -39,9 +40,12 @@ func _ready() -> void:
 		ui_node.index_pressed.connect(_node_selected)
 		
 	ui_graph_edit.connection_request.connect(_node_connection_request)
+	ui_start.about_to_popup.connect(_start_pressed)
+
+func _start_pressed() -> void:
+	print_debug(ui_graph_edit.connections)
 
 func _node_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
-	print_debug("from node:%s port:%s, to node:%s port:%s" % [from_node, from_port, to_node, to_port])
 	ui_graph_edit.connect_node(from_node, from_port, to_node, to_port)
 	
 func _object_selected(index: int) -> void:
