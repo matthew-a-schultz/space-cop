@@ -1,6 +1,6 @@
 @tool
 extends GraphNodeExtended
-class_name NodeObjectMoveTo
+class_name GraphNodeObjectMoveTo
 
 enum Slot {OBJECT, ACTIVE, POSITION, FINISHED}
 @export var ui_objects_option_button: OptionButton

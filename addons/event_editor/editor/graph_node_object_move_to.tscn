@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5vj4xsjwgj5p"]
 
-[ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/event_editor/editor/node_object_move_to.gd" id="1_ifkdt"]
+[ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/event_editor/editor/graph_node_object_move_to.gd" id="1_p6261"]
 
-[node name="NodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("ui_objects_option_button", "ui_position_x", "ui_position_y", "ui_position_z")]
+[node name="GraphNodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("ui_objects_option_button", "ui_position_x", "ui_position_y", "ui_position_z")]
 offset_left = 48.0
 offset_top = 18.0
 offset_right = 296.0
@@ -44,7 +44,7 @@ slot/3/right_type = 1
 slot/3/right_color = Color(1, 0.411765, 0.705882, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
-script = ExtResource("1_ifkdt")
+script = ExtResource("1_p6261")
 ui_objects_option_button = NodePath("OptionButton")
 ui_position_x = NodePath("GridContainer/XLineEdit")
 ui_position_y = NodePath("GridContainer/YLineEdit")

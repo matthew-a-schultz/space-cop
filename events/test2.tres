@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=2 format=3 uid="uid://dqtip7qthcx2f"]
+
+[ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/event_editor/resources/event_resource.gd" id="1_mp4o1"]
+
+[resource]
+script = ExtResource("1_mp4o1")
+objects_resource_index = Array[int]([0, 0, 0, 1])

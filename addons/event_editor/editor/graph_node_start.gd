@@ -1,6 +1,6 @@
 @tool
 extends GraphNodeExtended
-class_name NodeStart
+class_name GraphNodeStart
 
 enum Slot {START}
 var slot_data: Dictionary[Slot, Variant]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://i8pf5bhlo634"]
 
-[ext_resource type="Script" uid="uid://eq8ond0jv2fh" path="res://addons/event_editor/editor/node_start.gd" id="1_8dhw2"]
+[ext_resource type="Script" uid="uid://eq8ond0jv2fh" path="res://addons/event_editor/editor/graph_node_start.gd" id="1_6fjee"]
 
-[node name="NodeStart" type="GraphNode"]
+[node name="GraphNodeStart" type="GraphNode"]
 title = "Event Start"
 slot/0/left_enabled = false
 slot/0/left_type = 0
@@ -13,7 +13,7 @@ slot/0/right_type = 1
 slot/0/right_color = Color(1, 0.411765, 0.705882, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
-script = ExtResource("1_8dhw2")
+script = ExtResource("1_6fjee")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2

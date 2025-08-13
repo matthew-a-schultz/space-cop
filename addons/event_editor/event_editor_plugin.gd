@@ -16,6 +16,7 @@ func _enter_tree() -> void:
 	ResourceSaver.save(world_editor_packed_scene, save_path)
 	EditorInterface.open_scene_from_path(save_path)
 	scene_editor = EditorInterface.get_edited_scene_root()
+	#scene_editor.owner = get_tree().edited_scene_root
 
 func _exit_tree() -> void:
 	remove_control_from_bottom_panel(event_editor_scene)
@@ -36,4 +37,4 @@ func add_world_object(object: WorldObject) -> void:
 	scene_editor.ui_objects.add_child(object)
 	object.owner = scene_editor
 	object.name = name
-	scene_editor.owner = get_tree().edited_scene_root
+	
