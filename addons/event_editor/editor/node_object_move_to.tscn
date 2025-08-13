@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5vj4xsjwgj5p"]
 
-[ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/event_editor/scenes/editor/node_object_move_to.gd" id="1_ifkdt"]
+[ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/event_editor/editor/node_object_move_to.gd" id="1_ifkdt"]
 
 [node name="NodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("ui_objects_option_button", "ui_position_x", "ui_position_y", "ui_position_z")]
 offset_left = 48.0

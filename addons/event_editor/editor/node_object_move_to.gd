@@ -44,9 +44,9 @@ func load_node(new_slot_data: Dictionary) -> void:
 
 func _object_show_options() -> void:
 	ui_objects_option_button.clear()
-	for object: WorldObject in _node_editor.objects:
+	for object: WorldObject in _editor.objects:
 		ui_objects_option_button.add_item(object.name)
 		
 func _object_selected(index: int) -> void:
 	_world_object_index = index
-	_world_object = _node_editor.objects[index]
+	_world_object = _editor.objects[index]

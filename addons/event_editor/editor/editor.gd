@@ -1,6 +1,6 @@
 @tool
 extends Control
-class_name NodeEditor
+class_name Editor
 
 @export var ui_graph_edit: GraphEdit
 @export var ui_load: PopupMenu
@@ -15,7 +15,7 @@ var node_scene_paths: Dictionary[NodeType, String] = {
 	NodeType.START: "uid://i8pf5bhlo634",
 	NodeType.MOVE_TO: "uid://b5vj4xsjwgj5p",
 }
-var world_event_editor: EventEditor
+var event_editor: EventEditor
 var _world_objects_resource: WorldObjectsResource
 var _selected_node: Node
 var objects: Array[WorldObject]
@@ -68,7 +68,7 @@ func _object_selected(index: int) -> void:
 	var world_object_resource: WorldObjectResource = _world_objects_resource.world_objects[index]
 	var world_object: WorldObject = world_object_resource.scene.instantiate()
 	world_object.name = world_object_resource.name
-	world_event_editor.add_world_object(world_object)
+	event_editor.add_world_object(world_object)
 	ui_object_list.add_item(world_object.name)
 	objects.append(world_object)
 	objects_resource.append(index)
@@ -85,7 +85,7 @@ func _world_object_changed() -> void:
 func _menu_add_node_selected(index: NodeType) -> void:
 	var node_packed_scene: PackedScene = ResourceLoader.load(node_scene_paths[index])
 	var graph_node: GraphNodeExtended = node_packed_scene.instantiate()
-	graph_node.set_node_editor(self)
+	graph_node.set_editor(self)
 	ui_graph_edit.add_child(graph_node)
 
 func _node_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:

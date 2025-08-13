@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://i8pf5bhlo634"]
 
-[ext_resource type="Script" uid="uid://eq8ond0jv2fh" path="res://addons/event_editor/scenes/editor/node_start.gd" id="1_8dhw2"]
+[ext_resource type="Script" uid="uid://eq8ond0jv2fh" path="res://addons/event_editor/editor/node_start.gd" id="1_8dhw2"]
 
 [node name="NodeStart" type="GraphNode"]
 title = "Event Start"

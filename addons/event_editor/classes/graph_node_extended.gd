@@ -16,7 +16,7 @@ var _slot_type_lookup: Dictionary[SlotType, Variant.Type] = {
 	SlotType.POSITION: TYPE_NIL,
 	SlotType.FINISHED: TYPE_BOOL,
 }
-var _node_editor: NodeEditor
+var _editor: Editor
 
 func update_slots(new_slots: Array[Array]) -> void:
 	slots = new_slots
@@ -53,8 +53,8 @@ func connect_node(from_slot_index: int, to_slot_index: int, to_node: GraphNodeEx
 	_slot_output_lookup[from_slot_index].append(slot_output)
 	return Error.OK
 
-func set_node_editor(value: NodeEditor) -> void:
-	_node_editor = value
+func set_editor(value: Editor) -> void:
+	_editor = value
 
 func update_slot_value(value: Variant, from_slot_index: int) -> void:
 	for slot_output: Array in _slot_output_lookup[from_slot_index]:

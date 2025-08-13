@@ -1,6 +1,6 @@
 @tool
 extends Node3D
-class_name WorldEditor
+class_name SceneEditor
 
 @export var world_objects: WorldObjectsResource
 
