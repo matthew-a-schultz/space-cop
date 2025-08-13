@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WorldObjectsResource" load_steps=7 format=3 uid="uid://buuwndfewy5ui"]
 
-[ext_resource type="Script" uid="uid://bvfv3ulmjcqom" path="res://addons/world_event_editor/resources/world_objects_resource.gd" id="1_ycqdw"]
-[ext_resource type="Script" uid="uid://bqmhis161x65x" path="res://addons/world_event_editor/resources/world_object_resource.gd" id="2_51wu5"]
+[ext_resource type="Script" uid="uid://bvfv3ulmjcqom" path="res://addons/event_editor/resources/world_objects_resource.gd" id="1_ycqdw"]
+[ext_resource type="Script" uid="uid://bqmhis161x65x" path="res://addons/event_editor/resources/world_object_resource.gd" id="2_51wu5"]
 [ext_resource type="PackedScene" uid="uid://b1i8s8fn5gmxq" path="res://police.tscn" id="3_lqlhu"]
 
 [sub_resource type="Resource" id="Resource_fwt33"]

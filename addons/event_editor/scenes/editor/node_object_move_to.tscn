@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5vj4xsjwgj5p"]
 
-[ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/world_event_editor/scenes/node_editor/node_object_move_to.gd" id="1_ifkdt"]
+[ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/event_editor/scenes/editor/node_object_move_to.gd" id="1_ifkdt"]
 
-[node name="NodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("ui_objects_menu_button")]
+[node name="NodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("ui_objects_option_button", "ui_position_x", "ui_position_y", "ui_position_z")]
 offset_left = 48.0
 offset_top = 18.0
 offset_right = 296.0
@@ -45,10 +45,14 @@ slot/3/right_color = Color(1, 0.411765, 0.705882, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
 script = ExtResource("1_ifkdt")
-ui_objects_menu_button = NodePath("MenuButton")
+ui_objects_option_button = NodePath("OptionButton")
+ui_position_x = NodePath("GridContainer/XLineEdit")
+ui_position_y = NodePath("GridContainer/YLineEdit")
+ui_position_z = NodePath("GridContainer/ZLineEdit")
 
-[node name="MenuButton" type="MenuButton" parent="."]
+[node name="OptionButton" type="OptionButton" parent="."]
 layout_mode = 2
+allow_reselect = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -71,13 +75,13 @@ text = "y"
 layout_mode = 2
 text = "z"
 
-[node name="LineEdit" type="LineEdit" parent="GridContainer"]
+[node name="XLineEdit" type="LineEdit" parent="GridContainer"]
 layout_mode = 2
 
-[node name="LineEdit2" type="LineEdit" parent="GridContainer"]
+[node name="YLineEdit" type="LineEdit" parent="GridContainer"]
 layout_mode = 2
 
-[node name="LineEdit3" type="LineEdit" parent="GridContainer"]
+[node name="ZLineEdit" type="LineEdit" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="."]

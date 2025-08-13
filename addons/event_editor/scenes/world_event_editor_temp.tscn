@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://doravx6a7mknm"]
+[gd_scene load_steps=4 format=3 uid="uid://ci3thl5iryb2t"]
 
-[ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://addons/world_event_editor/scenes/world_event_editor.gd" id="1_tit1a"]
-[ext_resource type="Resource" uid="uid://buuwndfewy5ui" path="res://addons/world_event_editor/data/world_event_editor.tres" id="2_et81i"]
+[ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://addons/event_editor/scenes/world_event_editor.gd" id="1_tit1a"]
+[ext_resource type="Resource" uid="uid://buuwndfewy5ui" path="res://addons/event_editor/data/world_event_editor.tres" id="2_et81i"]
 [ext_resource type="PackedScene" uid="uid://b1i8s8fn5gmxq" path="res://police.tscn" id="3_qker1"]
 
 [node name="WorldEventEditor" type="Node3D" node_paths=PackedStringArray("ui_objects")]

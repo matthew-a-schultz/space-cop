@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b052cpwux6cfd"]
+[gd_scene load_steps=3 format=3 uid="uid://b052cpwux6cfd"]
 
-[ext_resource type="Script" uid="uid://b1fulnidsp8rq" path="res://addons/world_event_editor/scenes/node_editor/node_editor.gd" id="1_lat00"]
+[ext_resource type="Script" uid="uid://b1fulnidsp8rq" path="res://addons/event_editor/scenes/editor/editor.gd" id="1_3xtcg"]
+[ext_resource type="PackedScene" uid="uid://cjbwsg3rkr3g4" path="res://addons/event_editor/scenes/editor/graph_edit.tscn" id="2_1koqs"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("ui_graph_edit", "ui_load", "ui_add", "ui_object", "ui_object_list", "ui_node", "ui_start")]
 layout_mode = 3
@@ -9,9 +10,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lat00")
-ui_graph_edit = NodePath("VBoxContainer/HBoxContainer/NodeEditor")
-ui_load = NodePath("VBoxContainer/MenuBar/Load")
+script = ExtResource("1_3xtcg")
+ui_graph_edit = NodePath("VBoxContainer/HBoxContainer/GraphEdit")
+ui_load = NodePath("VBoxContainer/MenuBar/Event")
 ui_add = NodePath("VBoxContainer/MenuBar/Add")
 ui_object = NodePath("VBoxContainer/MenuBar/Add/Object")
 ui_object_list = NodePath("VBoxContainer/HBoxContainer/ScrollContainer/ObjectItemList")
@@ -29,7 +30,12 @@ grow_vertical = 2
 [node name="MenuBar" type="MenuBar" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Load" type="PopupMenu" parent="VBoxContainer/MenuBar"]
+[node name="Event" type="PopupMenu" parent="VBoxContainer/MenuBar"]
+item_count = 2
+item_0/text = "Save"
+item_0/id = 0
+item_1/text = "Load"
+item_1/id = 1
 
 [node name="Add" type="PopupMenu" parent="VBoxContainer/MenuBar"]
 item_count = 2
@@ -69,7 +75,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NodeEditor" type="GraphEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="GraphEdit" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_1koqs")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3

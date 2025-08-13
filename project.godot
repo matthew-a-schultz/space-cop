@@ -22,7 +22,7 @@ gdscript/warnings/inferred_declaration=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/world_event_editor/plugin.cfg")
+enabled=PackedStringArray("res://addons/event_editor/plugin.cfg")
 
 [input]
 

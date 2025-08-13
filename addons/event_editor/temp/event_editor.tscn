@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b456b8mhvc0p7"]
+
+[ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://addons/event_editor/scenes/world_event_editor.gd" id="1_jvhc3"]
+[ext_resource type="Resource" uid="uid://buuwndfewy5ui" path="res://addons/event_editor/data/world_event_editor.tres" id="2_7wqcv"]
+
+[node name="EventEditor" type="Node3D" node_paths=PackedStringArray("ui_objects")]
+script = ExtResource("1_jvhc3")
+world_objects = ExtResource("2_7wqcv")
+ui_objects = NodePath("Objects")
+
+[node name="City" type="Node3D" parent="."]
+
+[node name="Objects" type="Node3D" parent="."]
