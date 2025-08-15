@@ -11,18 +11,19 @@ enum File {SAVE, LOAD}
 @export var _ui_node: PopupMenu
 @export var _ui_start: PopupMenu
 @export var _ui_file_save_dialog: FileDialog
+@export var _ui_file_load_dialog: FileDialog
 
-enum NodeType {START, MOVE_TO}
-var node_scene_paths: Dictionary[NodeType, String] = {
-	NodeType.START: "uid://i8pf5bhlo634",
-	NodeType.MOVE_TO: "uid://b5vj4xsjwgj5p",
+static var event_resource: EventResource = EventResource.new()
+
+var node_scene_paths: Dictionary[EventEditorConfig.GraphNodeType, String] = {
+	EventEditorConfig.GraphNodeType.START: "uid://i8pf5bhlo634",
+	EventEditorConfig.GraphNodeType.OBJECT_MOVE_TO: "uid://b5vj4xsjwgj5p",
 }
 var event_editor: EventEditor
-var _world_objects_resource: WorldObjectsResource
 var objects: Array[WorldObject]
+var _world_objects_resource: WorldObjectsResource
 var _object_selected_list_index: int
 var _file_save_path: String
-var _event_resource: EventResource = EventResource.new()
 
 func _ready() -> void:
 	assert(_ui_graph_edit != null, "Graph edit is null")
@@ -33,6 +34,7 @@ func _ready() -> void:
 	assert(_ui_node != null, "Node is null")
 	assert(_ui_start != null, "Start is null")
 	assert(_ui_file_save_dialog != null, "File Save Dialog is null")
+	assert(_ui_file_load_dialog != null, "File Load Dialog is null")
 	
 	_world_objects_resource = ResourceLoader.load("res://addons/event_editor/data/world_event_editor.tres") as WorldObjectsResource
 	_world_object_changed()
@@ -46,11 +48,12 @@ func _ready() -> void:
 	
 	_ui_node.clear()
 	_ui_node.index_pressed.connect(_menu_add_node)
-	for key: NodeType in NodeType.values():
-		_ui_node.add_item(NodeType.keys()[key], key)
+	for key: EventEditorConfig.GraphNodeType in EventEditorConfig.GraphNodeType.values():
+		_ui_node.add_item(EventEditorConfig.GraphNodeType.keys()[key], key)
 
 	_ui_start.about_to_popup.connect(_start_pressed)
 	_ui_file_save_dialog.file_selected.connect(_menu_file_save_path_selected)
+	_ui_file_load_dialog.file_selected.connect(_menu_file_load_path_selected)
 
 func _start_pressed() -> void:
 	var start_node: GraphNodeStart = _ui_graph_edit.get_node("GraphNodeStart")
@@ -72,23 +75,53 @@ func _menu_add_object(index: int) -> void:
 	event_editor.add_world_object(world_object)
 	_ui_object_list.add_item(world_object.name)
 	objects.append(world_object)
-	_event_resource.objects_resource_index.append(index)
+	event_resource.objects_resource_index.append(index)
 
-func _menu_add_node(index: NodeType) -> void:
-	var node_packed_scene: PackedScene = ResourceLoader.load(node_scene_paths[index])
+func _menu_add_node(type: EventEditorConfig.GraphNodeType, graph_node_resource: GraphNodeResource = null) -> void:
+	var node_packed_scene: PackedScene = ResourceLoader.load(node_scene_paths[type])
 	var graph_node: GraphNodeExtended = node_packed_scene.instantiate()
 	graph_node.set_editor(self)
+	event_resource.graph_nodes.append(graph_node.graph_node_resource)
 	_ui_graph_edit.add_child(graph_node)
+	if graph_node_resource != null:
+		graph_node.name = graph_node_resource.name
+		graph_node.position_offset = graph_node_resource.position_offset
+		graph_node.load_save_data(graph_node_resource.save_data)
+	else:
+		event_resource.graph_nodes.append(graph_node.graph_node_resource)
+		graph_node.graph_node_resource.name = graph_node.name
 
 func _menu_file_pressed(file: File) -> void:
 	match file:
 		File.SAVE:
 			_ui_file_save_dialog.popup()
 		File.LOAD:
-			pass
+			_ui_file_load_dialog.popup()
 
 func _menu_file_save_path_selected(file_path: String) -> void:
-		ResourceSaver.save(_event_resource, file_path)
+		ResourceSaver.save(event_resource, file_path)
+
+func _menu_file_load_path_selected(file_path: String) -> void:
+		var load_event_resource: EventResource = ResourceLoader.load(file_path)
+		for object_index: int in load_event_resource.objects_resource_index:
+			_menu_add_object(object_index)
+		
+		for graph_node_resource: GraphNodeResource in load_event_resource.graph_nodes:
+			_menu_add_node(graph_node_resource.type, graph_node_resource)
+		
+		#for child: Node in _ui_graph_edit.get_children():
+			#print_debug(child.name)
+		
+		for connection: Dictionary in load_event_resource.connections:
+			#{
+				#from_node: StringName,
+				#from_port: int,
+				#to_node: StringName,
+				#to_port: int,
+				#keep_alive: bool
+			#}
+			print_debug("Connecting: %s to: %s" % [connection.from_node.validate_node_name(), connection.to_node.validate_node_name()])
+			_ui_graph_edit.connect_node(connection.from_node.validate_node_name(), connection.from_port, connection.to_node.validate_node_name(), connection.to_port, connection.keep_alive)
 
 func _object_list_item_selected(index: int) -> void:
 	_object_selected_list_index = index

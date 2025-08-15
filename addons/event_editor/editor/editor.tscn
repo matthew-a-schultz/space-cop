@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b1fulnidsp8rq" path="res://addons/event_editor/editor/editor.gd" id="1_3xtcg"]
 [ext_resource type="PackedScene" uid="uid://cjbwsg3rkr3g4" path="res://addons/event_editor/editor/graph_edit.tscn" id="2_1koqs"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("_ui_graph_edit", "_ui_file", "_ui_add", "_ui_object", "_ui_object_list", "_ui_node", "_ui_start", "_ui_file_save_dialog")]
+[node name="Control" type="Control" node_paths=PackedStringArray("_ui_graph_edit", "_ui_file", "_ui_add", "_ui_object", "_ui_object_list", "_ui_node", "_ui_start", "_ui_file_save_dialog", "_ui_file_load_dialog")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,8 @@ _ui_object = NodePath("VBoxContainer/MenuBar/Add/Object")
 _ui_object_list = NodePath("VBoxContainer/HBoxContainer/ScrollContainer/ObjectItemList")
 _ui_node = NodePath("VBoxContainer/MenuBar/Add/Node")
 _ui_start = NodePath("VBoxContainer/MenuBar/Start")
-_ui_file_save_dialog = NodePath("FileDialog")
+_ui_file_save_dialog = NodePath("SaveFileDialog")
+_ui_file_load_dialog = NodePath("LoadFileDialog")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -56,9 +57,9 @@ item_2/id = 2
 
 [node name="Node" type="PopupMenu" parent="VBoxContainer/MenuBar/Add"]
 item_count = 2
-item_0/text = "START"
+item_0/text = "OBJECT_MOVE_TO"
 item_0/id = 0
-item_1/text = "MOVE_TO"
+item_1/text = "START"
 item_1/id = 1
 
 [node name="Start" type="PopupMenu" parent="VBoxContainer/MenuBar"]
@@ -79,7 +80,15 @@ size_flags_vertical = 3
 [node name="GraphEdit" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_1koqs")]
 layout_mode = 2
 
-[node name="FileDialog" type="FileDialog" parent="."]
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+root_subfolder = "res://events"
+filters = PackedStringArray("*.tres")
+use_native_dialog = true
+
+[node name="LoadFileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
 root_subfolder = "res://events"
 filters = PackedStringArray("*.tres")
 use_native_dialog = true
