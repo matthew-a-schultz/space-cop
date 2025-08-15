@@ -1,7 +1,8 @@
 @tool
 extends Node
-class_name World
+class_name EventEditorConfig
 
+enum GraphNodeType {OBJECT_MOVE_TO, START}
 enum SlotStatus {NONE, ACTIVE}
 static var node_type_color: Dictionary = {
 	TYPE_NIL: Color.ALICE_BLUE,
