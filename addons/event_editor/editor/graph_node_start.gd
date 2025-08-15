@@ -7,6 +7,7 @@ var slot_data: Dictionary[Slot, Variant]
 var _start: bool = false
 
 func _ready() -> void:
+	graph_node_resource.type = EventEditorConfig.GraphNodeType.START
 	var slot_structure: Dictionary[Slot, Variant] = {
 		Slot.START: _start
 	}
@@ -17,10 +18,3 @@ func _ready() -> void:
 func start() -> void:
 	_start = true
 	update_slot_value(_start, Slot.START)
-
-func save_node() -> Dictionary[Slot, Variant]:
-	return slot_data
-	
-func load_node(new_slot_structure: Dictionary) -> void:
-	slot_data = new_slot_structure
-	return

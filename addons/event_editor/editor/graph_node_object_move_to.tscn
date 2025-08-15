@@ -3,10 +3,6 @@
 [ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/event_editor/editor/graph_node_object_move_to.gd" id="1_p6261"]
 
 [node name="GraphNodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("ui_objects_option_button", "ui_position_x", "ui_position_y", "ui_position_z")]
-offset_left = 48.0
-offset_top = 18.0
-offset_right = 296.0
-offset_bottom = 191.0
 title = "Move To"
 slot/0/left_enabled = false
 slot/0/left_type = 0
