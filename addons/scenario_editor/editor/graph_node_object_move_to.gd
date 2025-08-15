@@ -17,7 +17,7 @@ func _ready() -> void:
 	assert(_ui_position_y != null, "Position X LineEdit null")
 	assert(_ui_position_z != null, "Position X LineEdit null")
 	
-	graph_node_resource.type = EventEditorConfig.GraphNodeType.OBJECT_MOVE_TO
+	graph_node_resource.type = ScenarioEditorConfig.GraphNodeType.OBJECT_MOVE_TO
 	graph_node_resource.save_data = {
 		Slot.OBJECT: -1,
 		Slot.POSITION: Vector3.ZERO,

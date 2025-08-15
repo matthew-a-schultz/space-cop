@@ -8,7 +8,7 @@ var graph_node_resource: GraphNodeResource = GraphNodeResource.new()
 var slots: Array[Array]
 var slot_types: Array[SlotType]
 var slot_sides: Array[Side]
-var slot_status: Dictionary [SlotType, EventEditorConfig.SlotStatus]
+var slot_status: Dictionary [SlotType, ScenarioEditorConfig.SlotStatus]
 var _slot_output_lookup: Array[Array]
 var _slot_type_lookup: Dictionary[SlotType, Variant.Type] = {
 	SlotType.START: TYPE_BOOL,
@@ -48,13 +48,13 @@ func set_slot_left(slot_index: int, type: Variant.Type) -> void:
 	if type != TYPE_NIL:
 		set_slot_enabled_left(slot_index, true)
 		set_slot_type_left(slot_index, type)
-		set_slot_color_left(slot_index, EventEditorConfig.node_type_color[type])
+		set_slot_color_left(slot_index, ScenarioEditorConfig.node_type_color[type])
 	
 func set_slot_right(slot_index: int, type: Variant.Type) -> void:
 	if type != TYPE_NIL:
 		set_slot_enabled_right(slot_index, true)
 		set_slot_type_right(slot_index, type)
-		set_slot_color_right(slot_index, EventEditorConfig.node_type_color[type])
+		set_slot_color_right(slot_index, ScenarioEditorConfig.node_type_color[type])
 
 func connect_node(from_slot_index: int, to_slot_index: int, to_node: GraphNodeExtended) -> Error:
 	var slot_output: Array = [to_slot_index, to_node]

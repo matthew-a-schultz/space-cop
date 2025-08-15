@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EventResource" load_steps=5 format=3 uid="uid://b7gv1hr5rrcsd"]
 
-[ext_resource type="Script" uid="uid://piuqndsp0fdv" path="res://addons/event_editor/resources/graph_node_resource.gd" id="1_m47in"]
-[ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/event_editor/resources/event_resource.gd" id="2_uxgw7"]
+[ext_resource type="Script" uid="uid://piuqndsp0fdv" path="res://addons/scenario_editor/resources/graph_node_resource.gd" id="1_m47in"]
+[ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/scenario_editor/resources/event_resource.gd" id="2_uxgw7"]
 
 [sub_resource type="Resource" id="Resource_g6rs8"]
 script = ExtResource("1_m47in")

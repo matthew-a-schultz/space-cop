@@ -7,7 +7,7 @@ var slot_data: Dictionary[Slot, Variant]
 var _start: bool = false
 
 func _ready() -> void:
-	graph_node_resource.type = EventEditorConfig.GraphNodeType.START
+	graph_node_resource.type = ScenarioEditorConfig.GraphNodeType.START
 	var slot_structure: Dictionary[Slot, Variant] = {
 		Slot.START: _start
 	}

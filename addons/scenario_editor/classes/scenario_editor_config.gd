@@ -1,6 +1,6 @@
 @tool
 extends Node
-class_name EventEditorConfig
+class_name ScenarioEditorConfig
 
 enum GraphNodeType {OBJECT_MOVE_TO, START}
 enum SlotStatus {NONE, ACTIVE}

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b052cpwux6cfd"]
 
-[ext_resource type="Script" uid="uid://b1fulnidsp8rq" path="res://addons/event_editor/editor/editor.gd" id="1_3xtcg"]
-[ext_resource type="PackedScene" uid="uid://cjbwsg3rkr3g4" path="res://addons/event_editor/editor/graph_edit.tscn" id="2_1koqs"]
+[ext_resource type="Script" uid="uid://b1fulnidsp8rq" path="res://addons/scenario_editor/editor/editor.gd" id="1_3xtcg"]
+[ext_resource type="PackedScene" uid="uid://cjbwsg3rkr3g4" path="res://addons/scenario_editor/editor/graph_edit.tscn" id="2_1koqs"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("_ui_graph_edit", "_ui_file", "_ui_add", "_ui_object", "_ui_object_list", "_ui_node", "_ui_start", "_ui_file_save_dialog", "_ui_file_load_dialog")]
 layout_mode = 3

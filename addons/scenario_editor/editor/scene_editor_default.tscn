@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkbxvsgqvrs2y"]
 
-[ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://addons/event_editor/editor/scene_editor.gd" id="1_f2lsq"]
-[ext_resource type="Resource" uid="uid://buuwndfewy5ui" path="res://addons/event_editor/data/world_event_editor.tres" id="2_cuqxa"]
+[ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://addons/scenario_editor/editor/scene_editor.gd" id="1_f2lsq"]
+[ext_resource type="Resource" uid="uid://buuwndfewy5ui" path="res://addons/scenario_editor/data/world_event_editor.tres" id="2_cuqxa"]
 
 [node name="EventEditor" type="Node3D" node_paths=PackedStringArray("ui_objects")]
 script = ExtResource("1_f2lsq")

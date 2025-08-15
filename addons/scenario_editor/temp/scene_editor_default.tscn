@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0aejrd87dm70"]
+
+[ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://addons/scenario_editor/editor/scene_editor.gd" id="1_unk4m"]
+[ext_resource type="Resource" uid="uid://buuwndfewy5ui" path="res://addons/scenario_editor/data/world_event_editor.tres" id="2_okbfq"]
+
+[node name="EventEditor" type="Node3D" node_paths=PackedStringArray("ui_objects")]
+script = ExtResource("1_unk4m")
+world_objects = ExtResource("2_okbfq")
+ui_objects = NodePath("Objects")
+
+[node name="City" type="Node3D" parent="."]
+
+[node name="Objects" type="Node3D" parent="."]

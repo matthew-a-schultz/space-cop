@@ -15,11 +15,11 @@ enum File {SAVE, LOAD}
 
 static var event_resource: EventResource = EventResource.new()
 
-var node_scene_paths: Dictionary[EventEditorConfig.GraphNodeType, String] = {
-	EventEditorConfig.GraphNodeType.START: "uid://i8pf5bhlo634",
-	EventEditorConfig.GraphNodeType.OBJECT_MOVE_TO: "uid://b5vj4xsjwgj5p",
+var node_scene_paths: Dictionary[ScenarioEditorConfig.GraphNodeType, String] = {
+	ScenarioEditorConfig.GraphNodeType.START: "uid://i8pf5bhlo634",
+	ScenarioEditorConfig.GraphNodeType.OBJECT_MOVE_TO: "uid://b5vj4xsjwgj5p",
 }
-var event_editor: EventEditor
+var scenario_editor: ScenarioEditor
 var objects: Array[WorldObject]
 var _world_objects_resource: WorldObjectsResource
 var _object_selected_list_index: int
@@ -36,7 +36,7 @@ func _ready() -> void:
 	assert(_ui_file_save_dialog != null, "File Save Dialog is null")
 	assert(_ui_file_load_dialog != null, "File Load Dialog is null")
 	
-	_world_objects_resource = ResourceLoader.load("res://addons/event_editor/data/world_event_editor.tres") as WorldObjectsResource
+	_world_objects_resource = ResourceLoader.load("res://addons/scenario_editor/data/world_event_editor.tres") as WorldObjectsResource
 	_world_object_changed()
 	_world_objects_resource.changed.connect(_world_object_changed)
 	_ui_file.index_pressed.connect(_menu_file_pressed)
@@ -48,8 +48,8 @@ func _ready() -> void:
 	
 	_ui_node.clear()
 	_ui_node.index_pressed.connect(_menu_add_node)
-	for key: EventEditorConfig.GraphNodeType in EventEditorConfig.GraphNodeType.values():
-		_ui_node.add_item(EventEditorConfig.GraphNodeType.keys()[key], key)
+	for key: ScenarioEditorConfig.GraphNodeType in ScenarioEditorConfig.GraphNodeType.values():
+		_ui_node.add_item(ScenarioEditorConfig.GraphNodeType.keys()[key], key)
 
 	_ui_start.about_to_popup.connect(_start_pressed)
 	_ui_file_save_dialog.file_selected.connect(_menu_file_save_path_selected)
@@ -72,12 +72,12 @@ func _menu_add_object(index: int) -> void:
 	var world_object_resource: WorldObjectResource = _world_objects_resource.world_objects[index]
 	var world_object: WorldObject = world_object_resource.scene.instantiate()
 	world_object.name = world_object_resource.name
-	event_editor.add_world_object(world_object)
+	scenario_editor.add_world_object(world_object)
 	_ui_object_list.add_item(world_object.name)
 	objects.append(world_object)
 	event_resource.objects_resource_index.append(index)
 
-func _menu_add_node(type: EventEditorConfig.GraphNodeType, graph_node_resource: GraphNodeResource = null) -> void:
+func _menu_add_node(type: ScenarioEditorConfig.GraphNodeType, graph_node_resource: GraphNodeResource = null) -> void:
 	var node_packed_scene: PackedScene = ResourceLoader.load(node_scene_paths[type])
 	var graph_node: GraphNodeExtended = node_packed_scene.instantiate()
 	graph_node.set_editor(self)
@@ -123,7 +123,7 @@ func _menu_file_load_path_selected(file_path: String) -> void:
 			_ui_object_list.clear()
 			objects.clear()
 			
-			for child: Node in EventEditor.scene_editor.ui_objects.get_children():
+			for child: Node in ScenarioEditor.scene_editor.ui_objects.get_children():
 				child.free()
 			
 			for object_index: int in load_event_resource.objects_resource_index:
