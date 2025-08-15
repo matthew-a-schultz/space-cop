@@ -120,6 +120,11 @@ func _menu_file_load_path_selected(file_path: String) -> void:
 						continue
 			
 			_ui_graph_edit.clear_connections()
+			_ui_object_list.clear()
+			objects.clear()
+			
+			for child: Node in EventEditor.scene_editor.ui_objects.get_children():
+				child.free()
 			
 			for object_index: int in load_event_resource.objects_resource_index:
 				_menu_add_object(object_index)
