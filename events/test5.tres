@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=5 format=3 uid="uid://b7gv1hr5rrcsd"]
+
+[ext_resource type="Script" uid="uid://piuqndsp0fdv" path="res://addons/event_editor/resources/graph_node_resource.gd" id="1_m47in"]
+[ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/event_editor/resources/event_resource.gd" id="2_uxgw7"]
+
+[sub_resource type="Resource" id="Resource_g6rs8"]
+script = ExtResource("1_m47in")
+position_offset = Vector2(0, 0)
+type = 1
+name = ""
+save_data = {}
+
+[sub_resource type="Resource" id="Resource_7ha1v"]
+script = ExtResource("1_m47in")
+position_offset = Vector2(0, 0)
+type = 0
+name = ""
+save_data = {
+0: 1,
+2: Vector3(10, 0, 10)
+}
+
+[resource]
+script = ExtResource("2_uxgw7")
+objects_resource_index = Array[int]([0, 1])
+connections = Array[Dictionary]([])
+graph_nodes = Array[ExtResource("1_m47in")]([SubResource("Resource_g6rs8"), SubResource("Resource_7ha1v")])

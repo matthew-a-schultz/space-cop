@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=8 format=3 uid="uid://bhsdd3netfx5"]
+
+[ext_resource type="Script" uid="uid://piuqndsp0fdv" path="res://addons/event_editor/resources/graph_node_resource.gd" id="1_oeeam"]
+[ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/event_editor/resources/event_resource.gd" id="2_syxc3"]
+
+[sub_resource type="Resource" id="Resource_esfwe"]
+script = ExtResource("1_oeeam")
+position_offset = Vector2(200, 180)
+type = 1
+name = ""
+save_data = {}
+
+[sub_resource type="Resource" id="Resource_37e6c"]
+script = ExtResource("1_oeeam")
+position_offset = Vector2(380, 140)
+type = 1
+name = ""
+save_data = {}
+
+[sub_resource type="Resource" id="Resource_fnqv0"]
+script = ExtResource("1_oeeam")
+position_offset = Vector2(20, 200)
+type = 1
+name = ""
+save_data = {}
+
+[sub_resource type="Resource" id="Resource_l8kib"]
+script = ExtResource("1_oeeam")
+position_offset = Vector2(80, 60)
+type = 1
+name = "GraphNodeStart"
+save_data = {}
+
+[sub_resource type="Resource" id="Resource_txihd"]
+script = ExtResource("1_oeeam")
+position_offset = Vector2(360, 20)
+type = 0
+name = "GraphNodeObjectMoveTo"
+save_data = {
+0: 0,
+2: Vector3(10, 0, 10)
+}
+
+[resource]
+script = ExtResource("2_syxc3")
+objects_resource_index = Array[int]([1])
+connections = Array[Dictionary]([{
+"from_node": &"GraphNodeStart",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodeObjectMoveTo",
+"to_port": 0
+}])
+graph_nodes = Array[ExtResource("1_oeeam")]([SubResource("Resource_esfwe"), SubResource("Resource_37e6c"), SubResource("Resource_fnqv0"), SubResource("Resource_l8kib"), SubResource("Resource_txihd")])
