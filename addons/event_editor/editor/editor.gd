@@ -103,25 +103,32 @@ func _menu_file_save_path_selected(file_path: String) -> void:
 
 func _menu_file_load_path_selected(file_path: String) -> void:
 		var load_event_resource: EventResource = ResourceLoader.load(file_path)
-		for object_index: int in load_event_resource.objects_resource_index:
-			_menu_add_object(object_index)
 		
-		for graph_node_resource: GraphNodeResource in load_event_resource.graph_nodes:
-			_menu_add_node(graph_node_resource.type, graph_node_resource)
-		
-		#for child: Node in _ui_graph_edit.get_children():
-			#print_debug(child.name)
-		
-		for connection: Dictionary in load_event_resource.connections:
-			#{
-				#from_node: StringName,
-				#from_port: int,
-				#to_node: StringName,
-				#to_port: int,
-				#keep_alive: bool
-			#}
-			print_debug("Connecting: %s to: %s" % [connection.from_node.validate_node_name(), connection.to_node.validate_node_name()])
-			_ui_graph_edit.connect_node(connection.from_node.validate_node_name(), connection.from_port, connection.to_node.validate_node_name(), connection.to_port, connection.keep_alive)
+		var freeing_children: Array[Node]
+		if load_event_resource != null:
+			for child: Node in _ui_graph_edit.get_children():
+				if child.name != "_connection_layer":
+					freeing_children.append(child)
+					child.free()
+			
+			var children_freed = false
+			while not children_freed:
+				children_freed = true
+				for child: Node in freeing_children:
+					if is_instance_valid(child):
+						children_freed = false
+						continue
+			
+			_ui_graph_edit.clear_connections()
+			
+			for object_index: int in load_event_resource.objects_resource_index:
+				_menu_add_object(object_index)
+			
+			for graph_node_resource: GraphNodeResource in load_event_resource.graph_nodes:
+				_menu_add_node(graph_node_resource.type, graph_node_resource)
+
+			for connection: Dictionary in load_event_resource.connections:
+				_ui_graph_edit.connection_request.emit(connection.from_node.validate_node_name(), connection.from_port, connection.to_node.validate_node_name(), connection.to_port)
 
 func _object_list_item_selected(index: int) -> void:
 	_object_selected_list_index = index
