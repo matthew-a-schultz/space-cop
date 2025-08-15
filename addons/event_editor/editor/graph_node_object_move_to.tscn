@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/event_editor/editor/graph_node_object_move_to.gd" id="1_p6261"]
 
-[node name="GraphNodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("ui_objects_option_button", "ui_position_x", "ui_position_y", "ui_position_z")]
+[node name="GraphNodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("_ui_objects_option_button", "_ui_position_x", "_ui_position_y", "_ui_position_z")]
 title = "Move To"
 slot/0/left_enabled = false
 slot/0/left_type = 0
@@ -41,10 +41,10 @@ slot/3/right_color = Color(1, 0.411765, 0.705882, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
 script = ExtResource("1_p6261")
-ui_objects_option_button = NodePath("OptionButton")
-ui_position_x = NodePath("GridContainer/XLineEdit")
-ui_position_y = NodePath("GridContainer/YLineEdit")
-ui_position_z = NodePath("GridContainer/ZLineEdit")
+_ui_objects_option_button = NodePath("OptionButton")
+_ui_position_x = NodePath("GridContainer/XLineEdit")
+_ui_position_y = NodePath("GridContainer/YLineEdit")
+_ui_position_z = NodePath("GridContainer/ZLineEdit")
 
 [node name="OptionButton" type="OptionButton" parent="."]
 layout_mode = 2
