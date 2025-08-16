@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd5j53bfbva5i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_txhch"]
+size = Vector3(1000, 0, 1000)
+
+[node name="City" type="Node3D"]
+
+[node name="GroundLevelStaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundLevelStaticBody3D"]
+shape = SubResource("BoxShape3D_txhch")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://gr14y03epblp"]
+
+[ext_resource type="PackedScene" uid="uid://cortltaugsjk1" path="res://assets/kenny/city-kit-roads/road-straight.glb" id="1_x6oe3"]
+[ext_resource type="PackedScene" uid="uid://by5g2n5lb8gg6" path="res://assets/kenny/city-kit-roads/road-bend.glb" id="2_njpc3"]
+[ext_resource type="PackedScene" uid="uid://dmcs0ahda12dr" path="res://assets/kenny/city-kit-roads/road-intersection-path.glb" id="3_8c0b3"]
+[ext_resource type="PackedScene" uid="uid://blpqnxiqmx0dt" path="res://assets/kenny/city-kit-roads/road-crossroad-path.glb" id="4_nwim2"]
+
+[node name="GridmapRoads" type="Node3D"]
+
+[node name="road-straight2" parent="." instance=ExtResource("1_x6oe3")]
+
+[node name="road-bend2" parent="." instance=ExtResource("2_njpc3")]
+
+[node name="road-intersection-path2" parent="." instance=ExtResource("3_8c0b3")]
+
+[node name="road-crossroad-path2" parent="." instance=ExtResource("4_nwim2")]
