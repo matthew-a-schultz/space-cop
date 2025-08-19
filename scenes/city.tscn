@@ -1,11 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd5j53bfbva5i"]
+[gd_scene load_steps=6 format=3 uid="uid://bd5j53bfbva5i"]
+
+[ext_resource type="Script" uid="uid://px8023ex8k1q" path="res://scenes/city.gd" id="1_58ubr"]
+[ext_resource type="MeshLibrary" uid="uid://c75vtmqj65um1" path="res://roads.tres" id="2_rqxma"]
+[ext_resource type="PackedScene" uid="uid://8u8xscbysatb" path="res://assets/kenny/car_kit/ambulance.glb" id="3_movw8"]
+[ext_resource type="PackedScene" uid="uid://gno0sns34buy" path="res://assets/kenny/car_kit/firetruck.glb" id="4_oacpt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_txhch"]
 size = Vector3(1000, 0, 1000)
 
-[node name="City" type="Node3D"]
+[node name="City" type="Node3D" node_paths=PackedStringArray("_road_grid_map")]
+script = ExtResource("1_58ubr")
+_road_grid_map = NodePath("RoadGridMap")
 
 [node name="GroundLevelStaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundLevelStaticBody3D"]
 shape = SubResource("BoxShape3D_txhch")
+
+[node name="RoadGridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh_library = ExtResource("2_rqxma")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(0, 0, 0, 0, 65535, 1441792)
+}
+
+[node name="ambulance" parent="." instance=ExtResource("3_movw8")]
+transform = Transform3D(0.166667, 0, 0, 0, 0.166667, 0, 0, 0, 0.166667, -0.3, 0, 0)
+
+[node name="firetruck" parent="." instance=ExtResource("4_oacpt")]
+transform = Transform3D(0.166667, 0, 0, 0, 0.166667, 0, 0, 0, 0.166667, -0.3, 0, -0.9)
