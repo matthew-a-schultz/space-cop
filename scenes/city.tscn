@@ -2,15 +2,23 @@
 
 [ext_resource type="Script" uid="uid://px8023ex8k1q" path="res://scenes/city.gd" id="1_58ubr"]
 [ext_resource type="MeshLibrary" uid="uid://c75vtmqj65um1" path="res://roads.tres" id="2_rqxma"]
-[ext_resource type="PackedScene" uid="uid://8u8xscbysatb" path="res://assets/kenny/car_kit/ambulance.glb" id="3_movw8"]
 [ext_resource type="PackedScene" uid="uid://gno0sns34buy" path="res://assets/kenny/car_kit/firetruck.glb" id="4_oacpt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_txhch"]
 size = Vector3(1000, 0, 1000)
 
-[node name="City" type="Node3D" node_paths=PackedStringArray("_road_grid_map")]
+[sub_resource type="Curve3D" id="Curve3D_rqxma"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 1.5, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0.5, 0, 0, 0, 0, 0, 0, 2.5, 0, 1, 0, 0, 0, 0, 0, 0, 3.5, 0, 1, 0, 0, 0, 0, 0, 0, 4.5, 0, 1, 0, 0, 0, 0, 0, 0, 5.5, 0, 1, 0, 0, 0, 0, 0, 0, 6.5, 0, 1, 0, 0, 0, 0, 0, 0, 7.5, 0, 1, 0, 0, 0, 0, 0, 0, 8.5, 0, 1, 0, 0, 0, 0, 0, 0, 9.5, 0, 1, 0, 0, 0, 0, 0, 0, 10, 0, 1.5, 0, 0, 0, 0, 0, 0, 10, 0, 1.5, 0, 0, 0, 0, 0, 0, 10, 0, 2.5, 0, 0, 0, 0, 0, 0, 10, 0, 3.5, 0, 0, 0, 0, 0, 0, 10, 0, 4.5, 0, 0, 0, 0, 0, 0, 10, 0, 5.5, 0, 0, 0, 0, 0, 0, 10, 0, 6.5, 0, 0, 0, 0, 0, 0, 10, 0, 7.5, 0, 0, 0, 0, 0, 0, 9.5, 0, 9),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 20
+
+[node name="City" type="Node3D" node_paths=PackedStringArray("_road_grid_map", "_path_3d", "_path_follow_3d")]
 script = ExtResource("1_58ubr")
 _road_grid_map = NodePath("RoadGridMap")
+_path_3d = NodePath("Path3D")
+_path_follow_3d = NodePath("Path3D/PathFollow3D")
 
 [node name="GroundLevelStaticBody3D" type="StaticBody3D" parent="."]
 
@@ -22,11 +30,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh_library = ExtResource("2_rqxma")
 cell_size = Vector3(1, 1, 1)
 data = {
-"cells": PackedInt32Array(0, 0, 0, 0, 65535, 1441792)
+"cells": PackedInt32Array(1, 0, 655360, 0, 1, 1048576, 0, 0, 1048577, 2, 0, 1, 0, 2, 655361, 10, 9, 1441793, 1, 2, 1, 2, 1, 655361, 10, 1, 1, 1, 9, 655361, 1, 3, 1048576, 1, 4, 1048576, 1, 5, 1048576, 1, 6, 1048576, 1, 7, 1048576, 1, 8, 1048576, 2, 9, 655360, 3, 9, 655360, 4, 9, 655360, 5, 9, 655360, 6, 9, 655360, 7, 9, 655360, 8, 9, 655360, 9, 9, 655360, 10, 8, 1048576, 10, 7, 1048576, 10, 6, 1048576, 10, 5, 1048576, 10, 4, 1048576, 10, 3, 1048576, 10, 2, 1048576, 3, 1, 0, 5, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 6, 1, 0, 4, 1, 0)
 }
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="ambulance" parent="." instance=ExtResource("3_movw8")]
-transform = Transform3D(0.166667, 0, 0, 0, 0.166667, 0, 0, 0, 0.166667, -0.3, 0, 0)
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+curve = SubResource("Curve3D_rqxma")
 
-[node name="firetruck" parent="." instance=ExtResource("4_oacpt")]
-transform = Transform3D(0.166667, 0, 0, 0, 0.166667, 0, 0, 0, 0.166667, -0.3, 0, -0.9)
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
+
+[node name="firetruck" parent="Path3D/PathFollow3D" instance=ExtResource("4_oacpt")]
+transform = Transform3D(0.166667, 0, 0, 0, 0.166667, 0, 0, 0, 0.166667, -0.3, 0, -0.7)
