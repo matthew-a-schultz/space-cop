@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4loam7vc48rm"]
+
+[ext_resource type="Script" uid="uid://cms2rcbtvyp8t" path="res://intersection.gd" id="1_14i3x"]
+[ext_resource type="MeshLibrary" uid="uid://c75vtmqj65um1" path="res://roads.tres" id="1_p2d6a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_14i3x"]
+size = Vector3(0.5, 0.5, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ga7jf"]
+size = Vector3(0.75, 1, 0.75)
+
+[node name="Intersection" type="Node3D" node_paths=PackedStringArray("_north_area_3d", "_east_area_3d", "_south_area_3d", "_west_area_3d", "_intersection", "_timer")]
+script = ExtResource("1_14i3x")
+_north_area_3d = NodePath("NorthArea3D")
+_east_area_3d = NodePath("EastArea3D")
+_south_area_3d = NodePath("SouthArea3D")
+_west_area_3d = NodePath("WestArea3D")
+_intersection = NodePath("IntersectionArea3D")
+_timer = NodePath("Timer")
+
+[node name="RoadGridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh_library = ExtResource("1_p2d6a")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(0, 0, 1441795)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="NorthArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NorthArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, -0.375)
+shape = SubResource("BoxShape3D_14i3x")
+
+[node name="EastArea3D" type="Area3D" parent="."]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0.5, 0, 0.5)
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EastArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, -0.375)
+shape = SubResource("BoxShape3D_14i3x")
+
+[node name="SouthArea3D" type="Area3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0, 0.5)
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, -0.375)
+shape = SubResource("BoxShape3D_14i3x")
+
+[node name="WestArea3D" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, 0.5)
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WestArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, -0.375)
+shape = SubResource("BoxShape3D_14i3x")
+
+[node name="IntersectionArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+collision_layer = 128
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IntersectionArea3D"]
+shape = SubResource("BoxShape3D_ga7jf")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
