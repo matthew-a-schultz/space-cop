@@ -108,7 +108,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20, 30, 18)
-fov = 10.0
+fov = 45.0
 size = 38.262
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

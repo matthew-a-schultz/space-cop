@@ -2,8 +2,8 @@
 extends Node3D
 
 const WIDTH: int = 200
-const VEHICLES_TOTAL: int = 1000
-const RANDOM_POINT_MIN_DISTANCE: int = 15
+const VEHICLES_TOTAL: int = 750
+const RANDOM_POINT_MIN_DISTANCE: int = 30
 
 enum RoadType {STRAIGHT, BEND, THREE_WAY, FOUR_WAY}
 @export var _road_grid_map: GridMap
@@ -107,7 +107,7 @@ func _ready() -> void:
 				road_side = Config.RoadSide.BOTTOM
 			elif direction_to.y < 0:
 				road_side = Config.RoadSide.BOTTOM
-			vehicle_pool[index].start(road_side, path_3d_pool[index].curve.get_baked_length())
+			vehicle_pool[index].spawn(road_side, path_3d_pool[index].curve.get_baked_length())
 		else:
 			vehicle_pool[index].visible = false
 		
