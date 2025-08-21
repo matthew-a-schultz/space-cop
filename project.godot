@@ -59,9 +59,10 @@ pitch_backward={
 
 [layer_names]
 
-3d_physics/layer_6="vehicle"
+3d_physics/layer_6="vehicle_bumper_rear"
 3d_physics/layer_7="traffic_light"
 3d_physics/layer_8="intersection"
+3d_physics/layer_9="vehicle_bumper_front"
 
 [physics]
 
