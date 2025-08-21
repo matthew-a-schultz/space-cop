@@ -61,7 +61,7 @@ var vehicles_path: Array[String] = [
 	"res://assets/kenny/car_kit/truck.glb",
 	"res://assets/kenny/car_kit/van.glb",
 ]
-var intersection_scene: PackedScene = preload("res://intersection.tscn")
+var intersection_scene: PackedScene = preload("res://scenes/intersection.tscn")
 
 func _ready() -> void:
 	assert(_road_grid_map != null, "Road grid map is null")

@@ -26,17 +26,17 @@ func start(road_side: Config.RoadSide, distance: float) -> void:
 	tween.finished.connect(start.bind(road_side, distance))
 
 func _area_entered(area: Area3D) -> void:
-	if not crossing_intersection and area.collision_layer == Config.Collisions.INTERSECTION:
-		crossing_intersection = true
-	
-	if not crossing_intersection and area.collision_layer == Config.Collisions.TRAFFIC_LIGHT:
-		if tween != null:
-			tween.pause()
+	match area.collision_layer:
+		Config.Collisions.INTERSECTION:
+			crossing_intersection = true
+		Config.Collisions.TRAFFIC_LIGHT:
+			if not crossing_intersection and tween != null:
+				tween.pause()
 
 func _area_exited(area: Area3D) -> void:
-	if crossing_intersection and area.collision_layer == Config.Collisions.INTERSECTION:
-		crossing_intersection = false
-		
-	if not crossing_intersection and area.collision_layer == Config.Collisions.TRAFFIC_LIGHT:
-		if tween != null:
-			tween.play()
+	match area.collision_layer:
+		Config.Collisions.INTERSECTION:
+			crossing_intersection = false
+		Config.Collisions.TRAFFIC_LIGHT:
+			if tween != null:
+				tween.play()

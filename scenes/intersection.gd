@@ -22,7 +22,6 @@ func _ready() -> void:
 	_timer.start()
 	
 func _change_lights() -> void:
-	print("change lights")
 	match _current_direction:
 		Config.Direction.NORTH:
 			_east_area_3d.monitorable = true
