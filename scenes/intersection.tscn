@@ -1,20 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4loam7vc48rm"]
+[gd_scene load_steps=10 format=3 uid="uid://b4loam7vc48rm"]
 
 [ext_resource type="Script" uid="uid://cms2rcbtvyp8t" path="res://scenes/intersection.gd" id="1_14i3x"]
 [ext_resource type="MeshLibrary" uid="uid://c75vtmqj65um1" path="res://roads.tres" id="1_p2d6a"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_hi5ft"]
+radius = 0.063
+height = 0.125
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psgor"]
+shading_mode = 0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_14i3x"]
-size = Vector3(0.5, 0.5, 0.25)
+size = Vector3(0.25, 0.5, 0.125)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rar7d"]
+shading_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h76wx"]
+shading_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2qrl"]
+shading_mode = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ga7jf"]
-size = Vector3(0.75, 1, 0.75)
 
-[node name="Intersection" type="Node3D" node_paths=PackedStringArray("_north_area_3d", "_east_area_3d", "_south_area_3d", "_west_area_3d", "_intersection", "_timer")]
+[node name="Intersection" type="Node3D" node_paths=PackedStringArray("_north_area_3d", "_east_area_3d", "_south_area_3d", "_west_area_3d", "_north_light_mesh", "_east_light_mesh", "_south_light_mesh", "_west_light_mesh", "_intersection", "_timer")]
 script = ExtResource("1_14i3x")
 _north_area_3d = NodePath("NorthArea3D")
 _east_area_3d = NodePath("EastArea3D")
 _south_area_3d = NodePath("SouthArea3D")
 _west_area_3d = NodePath("WestArea3D")
+_north_light_mesh = NodePath("SouthArea3D/NorthMeshInstance3D")
+_east_light_mesh = NodePath("WestArea3D/EastMeshInstance3D")
+_south_light_mesh = NodePath("NorthArea3D/SouthMeshInstance3D")
+_west_light_mesh = NodePath("EastArea3D/WestMeshInstance3D")
 _intersection = NodePath("IntersectionArea3D")
 _timer = NodePath("Timer")
 
@@ -33,8 +52,14 @@ collision_layer = 64
 collision_mask = 0
 monitoring = false
 
+[node name="SouthMeshInstance3D" type="MeshInstance3D" parent="NorthArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.5)
+mesh = SubResource("SphereMesh_hi5ft")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_psgor")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NorthArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, -0.5)
 shape = SubResource("BoxShape3D_14i3x")
 
 [node name="EastArea3D" type="Area3D" parent="."]
@@ -43,8 +68,14 @@ collision_layer = 64
 collision_mask = 0
 monitoring = false
 
+[node name="WestMeshInstance3D" type="MeshInstance3D" parent="EastArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.5)
+mesh = SubResource("SphereMesh_hi5ft")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_rar7d")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EastArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, -0.5)
 shape = SubResource("BoxShape3D_14i3x")
 
 [node name="SouthArea3D" type="Area3D" parent="."]
@@ -53,8 +84,14 @@ collision_layer = 64
 collision_mask = 0
 monitoring = false
 
+[node name="NorthMeshInstance3D" type="MeshInstance3D" parent="SouthArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.5)
+mesh = SubResource("SphereMesh_hi5ft")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_h76wx")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SouthArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, -0.5)
 shape = SubResource("BoxShape3D_14i3x")
 
 [node name="WestArea3D" type="Area3D" parent="."]
@@ -63,15 +100,20 @@ collision_layer = 64
 collision_mask = 0
 monitoring = false
 
+[node name="EastMeshInstance3D" type="MeshInstance3D" parent="WestArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.5)
+mesh = SubResource("SphereMesh_hi5ft")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_b2qrl")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WestArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, -0.5)
 shape = SubResource("BoxShape3D_14i3x")
 
 [node name="IntersectionArea3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 collision_layer = 128
-collision_mask = 0
-monitoring = false
+collision_mask = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IntersectionArea3D"]
 shape = SubResource("BoxShape3D_ga7jf")
