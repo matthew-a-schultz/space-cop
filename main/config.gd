@@ -4,4 +4,4 @@ class_name Config
 const LIGHT_TIME_TO_CHANGE: int = 5
 enum Direction {NORTH, EAST, SOUTH, WEST}
 enum RoadSide {TOP, BOTTOM}
-enum Collisions {TRAFFIC_LIGHT = 64, INTERSECTION = 128}
+enum Collisions {NONE = 0, VEHICLE_BUMPER_REAR = 32, TRAFFIC_LIGHT = 64, INTERSECTION = 128}
