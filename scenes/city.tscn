@@ -1,24 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd5j53bfbva5i"]
+[gd_scene load_steps=14 format=3 uid="uid://bd5j53bfbva5i"]
 
 [ext_resource type="Script" uid="uid://px8023ex8k1q" path="res://scenes/city.gd" id="1_58ubr"]
 [ext_resource type="MeshLibrary" uid="uid://c75vtmqj65um1" path="res://roads.tres" id="2_rqxma"]
-[ext_resource type="PackedScene" uid="uid://gno0sns34buy" path="res://assets/kenny/car_kit/firetruck.glb" id="4_oacpt"]
+[ext_resource type="PackedScene" uid="uid://c5h43xqqneb31" path="res://assets/kenny/city-kit-commercial_2.1/building-a.glb" id="5_q8eg3"]
+[ext_resource type="PackedScene" uid="uid://b3nbaxqpivdds" path="res://assets/kenny/city-kit-commercial_2.1/building-skyscraper-a.glb" id="6_obbxu"]
+[ext_resource type="PackedScene" uid="uid://bub2ia11j1iwo" path="res://assets/kenny/city-kit-commercial_2.1/building-skyscraper-b.glb" id="7_hlin5"]
+[ext_resource type="PackedScene" uid="uid://djfnoqsq6v3p6" path="res://assets/kenny/city-kit-commercial_2.1/building-skyscraper-c.glb" id="8_hyhbb"]
+[ext_resource type="PackedScene" uid="uid://druxkgg5x8e0" path="res://assets/kenny/city-kit-commercial_2.1/building-skyscraper-d.glb" id="9_f7b0s"]
+[ext_resource type="PackedScene" uid="uid://cwkxvy7strcxu" path="res://assets/kenny/city-kit-commercial_2.1/building-skyscraper-e.glb" id="10_dqb0a"]
+[ext_resource type="PackedScene" uid="uid://by7vb83g4a7oy" path="res://assets/kenny/city-kit-commercial_2.1/building-e.glb" id="11_agolw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_txhch"]
 size = Vector3(1000, 0, 1000)
 
-[sub_resource type="Curve3D" id="Curve3D_rqxma"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 1.5, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0.5, 0, 0, 0, 0, 0, 0, 2.5, 0, 1, 0, 0, 0, 0, 0, 0, 3.5, 0, 1, 0, 0, 0, 0, 0, 0, 4.5, 0, 1, 0, 0, 0, 0, 0, 0, 5.5, 0, 1, 0, 0, 0, 0, 0, 0, 6.5, 0, 1, 0, 0, 0, 0, 0, 0, 7.5, 0, 1, 0, 0, 0, 0, 0, 0, 8.5, 0, 1, 0, 0, 0, 0, 0, 0, 9.5, 0, 1, 0, 0, 0, 0, 0, 0, 10, 0, 1.5, 0, 0, 0, 0, 0, 0, 10, 0, 1.5, 0, 0, 0, 0, 0, 0, 10, 0, 2.5, 0, 0, 0, 0, 0, 0, 10, 0, 3.5, 0, 0, 0, 0, 0, 0, 10, 0, 4.5, 0, 0, 0, 0, 0, 0, 10, 0, 5.5, 0, 0, 0, 0, 0, 0, 10, 0, 6.5, 0, 0, 0, 0, 0, 0, 10, 0, 7.5, 0, 0, 0, 0, 0, 0, 9.5, 0, 9),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 20
+[sub_resource type="PlaneMesh" id="PlaneMesh_yles7"]
+size = Vector2(1000, 1000)
 
-[node name="City" type="Node3D" node_paths=PackedStringArray("_road_grid_map", "_path_3d", "_path_follow_3d")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibljb"]
+albedo_color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[sub_resource type="Environment" id="Environment_07bxp"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="City" type="Node3D" node_paths=PackedStringArray("_road_grid_map", "_vehicle_paths", "_intersections")]
 script = ExtResource("1_58ubr")
 _road_grid_map = NodePath("RoadGridMap")
-_path_3d = NodePath("Path3D")
-_path_follow_3d = NodePath("Path3D/PathFollow3D")
+_vehicle_paths = NodePath("VehiclePaths")
+_intersections = NodePath("Intersections")
 
 [node name="GroundLevelStaticBody3D" type="StaticBody3D" parent="."]
 
@@ -30,16 +39,78 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh_library = ExtResource("2_rqxma")
 cell_size = Vector3(1, 1, 1)
 data = {
-"cells": PackedInt32Array(1, 0, 655360, 0, 1, 1048576, 0, 0, 1048577, 2, 0, 1, 0, 2, 655361, 10, 9, 1441793, 1, 2, 1, 2, 1, 655361, 10, 1, 1, 1, 9, 655361, 1, 3, 1048576, 1, 4, 1048576, 1, 5, 1048576, 1, 6, 1048576, 1, 7, 1048576, 1, 8, 1048576, 2, 9, 655360, 3, 9, 655360, 4, 9, 655360, 5, 9, 655360, 6, 9, 655360, 7, 9, 655360, 8, 9, 655360, 9, 9, 655360, 10, 8, 1048576, 10, 7, 1048576, 10, 6, 1048576, 10, 5, 1048576, 10, 4, 1048576, 10, 3, 1048576, 10, 2, 1048576, 3, 1, 0, 5, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 6, 1, 0, 4, 1, 0)
+"cells": PackedInt32Array(10, 9, 1048576, 1, 2, 1048576, 2, 1, 655360, 10, 1, 2, 1, 3, 1048576, 1, 4, 1048576, 1, 5, 1048576, 1, 6, 1048576, 1, 7, 1048576, 1, 8, 1048576, 10, 8, 1048576, 10, 7, 1048576, 10, 6, 1048576, 10, 5, 1048576, 10, 4, 1048576, 10, 3, 1048576, 10, 2, 1048576, 3, 1, 0, 5, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 6, 1, 0, 4, 1, 0, -65535, 65535, 1048577, 1, 1, 1048577, 11, 1, 655360, 12, 1, 655360, 13, 1, 655360, 14, 1, 655360, 15, 1, 655360, 16, 1, 655360, 17, 1, 655360, 18, 1, 655360, 1, 10, 1048578, 1, 11, 1441792, 1, 12, 1441792, 1, 13, 1441792, 1, 14, 1441792, 1, 15, 1441792, 10, 10, 1441795, 10, 11, 1441792, 10, 12, 1441792, 10, 13, 1441792, 10, 14, 1441792, 10, 15, 1441792, 10, 16, 1441792, 1, 17, 1048576, 10, 17, 1441792, 1, 16, 1441792, 19, 2, 1441792, 19, 3, 1441792, 19, 4, 1441792, 19, 5, 1441792, 19, 6, 1441792, 19, 7, 1441792, 19, 8, 1441792, 19, 9, 1048576, 19, 10, 1441795, 19, 11, 1441792, 19, 12, 1441792, 19, 13, 1441792, 19, 14, 1441792, 19, 15, 1441792, 19, 16, 1441792, 19, 17, 1048576, 19, 1, 2, 1, 18, 1048578, 1, 19, 1441792, 1, 20, 1441792, 1, 21, 1441792, 1, 23, 1048576, 1, 22, 1048576, 1, 24, 1048576, 1, 25, 1048576, 10, 25, 1048576, 10, 26, 1441792, 19, 25, 1441792, 19, 26, 1441792, 19, 18, 1441795, 19, 19, 1048576, 19, 20, 1441792, 19, 21, 1441792, 19, 22, 1441792, 19, 23, 1441792, 19, 24, 1441792, 1, 26, 1441792, 1, 27, 1048578, 1, 29, 1441792, 1, 28, 1441792, 1, 30, 1441792, 1, 32, 1441792, 1, 31, 1441792, 1, 33, 1441792, 1, 34, 1441792, 10, 35, 1441792, 19, 34, 1048576, 19, 35, 1441792, 19, 27, 1441795, 19, 28, 1048576, 19, 30, 1048576, 19, 31, 1048576, 19, 32, 1048576, 19, 33, 1048576, 19, 29, 1048576, 10, 18, 1441795, 10, 19, 1441792, 10, 20, 1441792, 10, 21, 1441792, 10, 22, 1048576, 10, 23, 1048576, 10, 24, 1048576, 10, 27, 1441795, 10, 28, 1048576, 10, 29, 1048576, 10, 30, 1048576, 10, 31, 1048576, 10, 32, 1048576, 10, 34, 1048576, 10, 33, 1048576, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 27, 1, 0, 28, 1, 2, 28, 2, 1441792, 28, 3, 1441792, 28, 4, 1441792, 28, 5, 1441792, 28, 6, 1441792, 28, 7, 1441792, 28, 8, 1441792, 28, 9, 1048576, 28, 10, 1441795, 28, 11, 1441792, 28, 35, 1441792, 28, 12, 1048576, 28, 13, 1048576, 28, 14, 1048576, 28, 15, 1048576, 28, 16, 1048576, 28, 17, 1048576, 28, 18, 1441795, 28, 19, 1048576, 28, 20, 1048576, 28, 21, 1048576, 28, 22, 1048576, 28, 23, 1048576, 28, 30, 1048576, 28, 31, 1048576, 28, 32, 1048576, 28, 34, 1048576, 28, 33, 1048576, 28, 29, 1048576, 28, 28, 1048576, 28, 27, 1441795, 28, 26, 1441792, 28, 25, 1048576, 28, 24, 1048576, 29, 1, 0, 30, 1, 0, 31, 1, 0, 32, 1, 0, 33, 1, 0, 34, 1, 0, 35, 1, 0, 36, 1, 0, 37, 1, 1, 37, 2, 1441792, 37, 3, 1441792, 37, 4, 1441792, 37, 5, 1441792, 37, 6, 1441792, 37, 7, 1441792, 37, 8, 1441792, 37, 9, 1048576, 37, 10, 1441794, 37, 11, 1441792, 37, 12, 1441792, 37, 13, 1441792, 37, 14, 1441792, 37, 15, 1441792, 37, 16, 1441792, 37, 17, 1048576, 37, 18, 1441794, 37, 35, 1441792, 37, 19, 1048576, 37, 20, 1048576, 37, 21, 1048576, 37, 22, 1048576, 37, 23, 1048576, 37, 24, 1048576, 37, 25, 1048576, 37, 26, 1441792, 37, 27, 1441794, 37, 28, 1048576, 37, 34, 1048576, 37, 33, 1048576, 37, 32, 1048576, 37, 31, 1048576, 37, 30, 1048576, 37, 29, 1048576, 1, 35, 1441792, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 6, 10, 0, 7, 10, 0, 8, 10, 0, 9, 10, 0, 11, 10, 0, 12, 10, 0, 13, 10, 0, 15, 10, 0, 14, 10, 0, 16, 10, 0, 17, 10, 0, 18, 10, 0, 21, 10, 0, 22, 10, 0, 20, 10, 0, 23, 10, 0, 24, 10, 0, 25, 10, 0, 29, 10, 0, 27, 10, 0, 26, 10, 0, 36, 10, 0, 35, 10, 0, 34, 10, 0, 33, 10, 0, 32, 10, 0, 31, 10, 0, 30, 10, 0, 29, 18, 0, 30, 18, 0, 31, 18, 0, 32, 18, 0, 33, 18, 0, 34, 18, 0, 35, 18, 0, 36, 18, 0, 27, 18, 0, 26, 18, 0, 25, 18, 0, 24, 18, 0, 23, 18, 0, 22, 18, 0, 21, 18, 0, 20, 18, 0, 11, 18, 0, 12, 18, 0, 13, 18, 0, 14, 18, 0, 15, 18, 0, 16, 18, 0, 17, 18, 0, 18, 18, 0, 2, 27, 0, 3, 27, 0, 4, 27, 0, 5, 27, 0, 6, 27, 0, 7, 27, 0, 8, 27, 0, 9, 27, 0, 13, 27, 0, 12, 27, 0, 11, 27, 0, 14, 27, 0, 15, 27, 0, 16, 27, 0, 17, 27, 0, 18, 27, 0, 20, 27, 0, 21, 27, 0, 22, 27, 0, 23, 27, 0, 24, 27, 0, 25, 27, 0, 26, 27, 0, 27, 27, 0, 34, 27, 0, 35, 27, 0, 36, 27, 0, 9, 18, 655360, 8, 18, 655360, 7, 18, 655360, 6, 18, 655360, 5, 18, 655360, 4, 18, 655360, 2, 18, 655360, 3, 18, 655360, 1, 9, 1048576, 1, 36, 655361, 2, 36, 0, 3, 36, 0, 4, 36, 0, 5, 36, 0, 6, 36, 0, 7, 36, 0, 8, 36, 0, 9, 36, 0, 10, 36, 655362, 11, 36, 0, 12, 36, 0, 13, 36, 0, 16, 36, 0, 17, 36, 0, 18, 36, 0, 19, 36, 655362, 20, 36, 0, 21, 36, 0, 22, 36, 0, 27, 36, 0, 28, 36, 655362, 29, 36, 0, 30, 36, 0, 31, 36, 0, 32, 36, 0, 33, 36, 0, 34, 36, 0, 35, 36, 0, 36, 36, 0, 37, 36, 1441793, 26, 36, 0, 25, 36, 0, 24, 36, 0, 23, 36, 0, 29, 27, 0, 30, 27, 0, 31, 27, 0, 32, 27, 0, 33, 27, 0, 14, 36, 0, 15, 36, 0)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Path3D" type="Path3D" parent="."]
+[node name="building-a2" parent="." instance=ExtResource("5_q8eg3")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 9, 0, 11.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_yles7")
+surface_material_override/0 = SubResource("StandardMaterial3D_ibljb")
+
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="building-skyscraper-a2" parent="Buildings" instance=ExtResource("6_obbxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6, 0, 11.8)
+
+[node name="building-skyscraper-a3" parent="Buildings" instance=ExtResource("6_obbxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7, 0, 11.8)
+
+[node name="building-skyscraper-a4" parent="Buildings" instance=ExtResource("6_obbxu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 13.1, 0, 16.3)
+
+[node name="building-skyscraper-b2" parent="Buildings" instance=ExtResource("7_hlin5")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.6, 0, 0)
+
+[node name="building-skyscraper-b4" parent="Buildings" instance=ExtResource("7_hlin5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1, 0, 11.8)
+
+[node name="building-skyscraper-b3" parent="Buildings" instance=ExtResource("7_hlin5")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 3, 0, 15)
+
+[node name="building-skyscraper-c2" parent="Buildings" instance=ExtResource("8_hyhbb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9, 0, 0)
+
+[node name="building-skyscraper-c4" parent="Buildings" instance=ExtResource("8_hyhbb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.2, 0, 13.1)
+
+[node name="building-skyscraper-c3" parent="Buildings" instance=ExtResource("8_hyhbb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14, 0, 9.1)
+
+[node name="building-skyscraper-c5" parent="Buildings" instance=ExtResource("8_hyhbb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, 0, 9.1)
+
+[node name="building-skyscraper-d2" parent="Buildings" instance=ExtResource("9_f7b0s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 0, 3)
+
+[node name="building-skyscraper-d4" parent="Buildings" instance=ExtResource("9_f7b0s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4, 0, 16.3)
+
+[node name="building-skyscraper-d3" parent="Buildings" instance=ExtResource("9_f7b0s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 0, 4.5)
+
+[node name="building-skyscraper-e2" parent="Buildings" instance=ExtResource("10_dqb0a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 0, 6.2)
+
+[node name="building-skyscraper-e4" parent="Buildings" instance=ExtResource("10_dqb0a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, 13.4)
+
+[node name="building-skyscraper-e3" parent="Buildings" instance=ExtResource("10_dqb0a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.7, 0, 13.7)
+
+[node name="building-e2" parent="Buildings" instance=ExtResource("11_agolw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.7, 0, 12)
+
+[node name="VehiclePaths" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
-curve = SubResource("Curve3D_rqxma")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20, 30, 18)
+size = 38.262
 
-[node name="firetruck" parent="Path3D/PathFollow3D" instance=ExtResource("4_oacpt")]
-transform = Transform3D(0.166667, 0, 0, 0, 0.166667, 0, 0, 0, 0.166667, -0.3, 0, -0.7)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_07bxp")
+
+[node name="Intersections" type="Node" parent="."]
