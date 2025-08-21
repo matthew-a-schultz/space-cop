@@ -1,23 +1,35 @@
 @tool
 extends EditorScenePostImport
 
-const SCALE: float  = 1.0 / 6.0
+const SCALE: float  = 1.0 / 8.0
 const BUMPER: float = 2.0
+const VEHICLE_SCRIPT_PATH: String = "res://main/vehicle.gd"
 var aabb: AABB
 
 # Called by the editor when a scene has this script set as the import script in the import tab.
 func _post_import(scene: Node) -> Object:
 	# Modify the contents of the scene upon import.
 	if scene is Node3D:
+		var script: Script = ResourceLoader.load(VEHICLE_SCRIPT_PATH)
+		scene.set_script(script)
+		scene = scene as Vehicle
+		scene.rotation.y = deg_to_rad(180)
 		get_merged_aabb(scene)
 		aabb.size.z = aabb.size.z + BUMPER
+		var area_3d: Area3D = Area3D.new()
+		area_3d.name = "Area3D"
+		area_3d.collision_layer = 32
+		area_3d.collision_mask = 64
 		var collision_shape: CollisionShape3D = CollisionShape3D.new()
+		collision_shape.name = "CollisionShape3D"
 		var box_shape: BoxShape3D = BoxShape3D.new()
 		box_shape.size = aabb.size
 		collision_shape.shape = box_shape
 		collision_shape.position.y = collision_shape.shape.size.y / 2.0
 		collision_shape.position.z = BUMPER / 2.0
-		scene.add_child(collision_shape)
+		area_3d.add_child(collision_shape)
+		scene.add_child(area_3d)
+		area_3d.owner = scene
 		collision_shape.owner = scene
 		scene.scale = Vector3(SCALE, SCALE, SCALE)
 	return scene # Return the modified root node when you're done.
