@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Space Cop"
-run/main_scene="uid://bo6xxhqmvysj2"
+run/main_scene="uid://chgq81058m8ku"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -56,3 +56,13 @@ pitch_backward={
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_6="vehicle"
+3d_physics/layer_7="traffic_light"
+3d_physics/layer_8="intersection"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
