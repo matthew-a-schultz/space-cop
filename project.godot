@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Space Cop"
-run/main_scene="uid://chgq81058m8ku"
+run/main_scene="uid://bd5j53bfbva5i"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 gdscript/warnings/untyped_declaration=2
 gdscript/warnings/inferred_declaration=2
+
+[editor]
+
+movie_writer/movie_file="D:/video.avi"
 
 [editor_plugins]
 
