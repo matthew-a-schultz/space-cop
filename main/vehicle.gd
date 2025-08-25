@@ -1,7 +1,6 @@
 extends Node3D
 class_name Vehicle
 
-const SPEED: float = 0.9
 var path_follow_3d: PathFollow3D
 var spawn_area_3d: Area3D
 var front_bumper_area_3d: Area3D
@@ -44,7 +43,7 @@ func _restart() -> void:
 		spawn_area_3d.monitoring = false
 		visible = true
 		tween = create_tween()
-		tween.tween_property(path_follow_3d, "progress", _distance, _distance * SPEED)
+		tween.tween_property(path_follow_3d, "progress", _distance, _distance * Config.VEHICLE_SPEED)
 		tween.finished.connect(_restart)
 		return
 	await get_tree().create_timer(1).timeout
@@ -54,7 +53,7 @@ func _resume() -> void:
 		if tween != null:
 				tween.kill()
 		tween = create_tween()
-		tween.tween_property(path_follow_3d, "progress", _distance, _distance * SPEED)
+		tween.tween_property(path_follow_3d, "progress", _distance, _distance * Config.VEHICLE_SPEED)
 		tween.finished.connect(_restart)
 
 func _area_entered(area: Area3D) -> void:
