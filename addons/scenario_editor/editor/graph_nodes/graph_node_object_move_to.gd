@@ -25,10 +25,10 @@ func _ready() -> void:
 	
 	clear_all_slots()
 	update_slots([
-		[SlotType.OBJECTS, Side.NONE],
-		[SlotType.ACTIVE, Side.LEFT],
-		[SlotType.POSITION, Side.NONE],
-		[SlotType.FINISHED, Side.RIGHT],
+		[TYPE_NIL, Side.NONE],
+		[TYPE_BOOL, Side.LEFT],
+		[TYPE_NIL, Side.NONE],
+		[TYPE_BOOL, Side.RIGHT],
 	])
 	_ui_objects_option_button.pressed.connect(_object_show_options)
 	_ui_objects_option_button.item_selected.connect(_object_selected)
