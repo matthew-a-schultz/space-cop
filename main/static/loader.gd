@@ -4,7 +4,7 @@ class_name Loader
 @export var progress_bar: ProgressBar
 @export var label: Label
 
-enum Status {ThreadedLoading, Instantiating}
+enum Status {ThreadedLoading, Instantiating, Finished}
 
 static var status: Dictionary[Main.LoadResource, Status]
 
@@ -31,7 +31,9 @@ func _process(delta: float) -> void:
 				status[resource_lookup] = Status.Instantiating
 		if status[resource_lookup] == Status.Instantiating:
 			var resource: Resource = ResourceLoader.load_threaded_get(Main.resources_to_load[resource_lookup])
+			status[resource_lookup] = Status.Finished
 			resource_loaded.emit(resource_lookup, resource)
 	progress.emit(current_progress, "Loading...")
-	finished.emit()
-	queue_free()
+	if not status.values().has(Status.ThreadedLoading) and not status.values().has(Status.Instantiating):
+		finished.emit()
+		queue_free()
