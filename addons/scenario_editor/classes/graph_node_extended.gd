@@ -2,7 +2,7 @@
 extends GraphNode
 class_name GraphNodeExtended
 
-enum SlotType {START, OBJECTS, ACTIVE, POSITION, FINISHED}
+enum SlotType {START, OBJECTS, ACTIVE, POSITION, FINISHED, NIL}
 enum Side {NONE, LEFT, RIGHT, BOTH}
 var graph_node_resource: GraphNodeResource = GraphNodeResource.new()
 var slots: Array[Array]
@@ -10,13 +10,6 @@ var slot_types: Array[SlotType]
 var slot_sides: Array[Side]
 var slot_status: Dictionary [SlotType, ScenarioEditorConfig.SlotStatus]
 var _slot_output_lookup: Array[Array]
-var _slot_type_lookup: Dictionary[SlotType, Variant.Type] = {
-	SlotType.START: TYPE_BOOL,
-	SlotType.OBJECTS: TYPE_NIL,
-	SlotType.ACTIVE: TYPE_BOOL,
-	SlotType.POSITION: TYPE_NIL,
-	SlotType.FINISHED: TYPE_BOOL,
-}
 var _editor: Editor
 
 func _init() -> void:
@@ -31,18 +24,18 @@ func update_slots(new_slots: Array[Array]) -> void:
 	_slot_output_lookup.clear()
 	_slot_output_lookup.resize(slots.size())
 	for slot_index: int in slots.size():
-		var slot_type: SlotType = slots[slot_index][0]
+		var slot_type: Variant.Type = slots[slot_index][0]
 		var slot_side: Side = slots[slot_index][1]
 		slot_types.append(slot_type)
 		slot_sides.append(slot_side)
 		match slot_side:
 			Side.LEFT:
-				set_slot_left(slot_index, _slot_type_lookup[slot_type])
+				set_slot_left(slot_index, slot_type)
 			Side.RIGHT:
-				set_slot_right(slot_index, _slot_type_lookup[slot_type])
+				set_slot_right(slot_index, slot_type)
 			Side.BOTH:
-				set_slot_left(slot_index, _slot_type_lookup[slot_type])
-				set_slot_right(slot_index, _slot_type_lookup[slot_type])
+				set_slot_left(slot_index, slot_type)
+				set_slot_right(slot_index, slot_type)
 
 func set_slot_left(slot_index: int, type: Variant.Type) -> void:
 	if type != TYPE_NIL:
