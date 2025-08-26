@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4loam7vc48rm"]
 
-[ext_resource type="Script" uid="uid://cms2rcbtvyp8t" path="res://scenes/intersection.gd" id="1_14i3x"]
+[ext_resource type="Script" uid="uid://cms2rcbtvyp8t" path="res://main/scenes/intersection.gd" id="1_14i3x"]
 [ext_resource type="MeshLibrary" uid="uid://c75vtmqj65um1" path="res://roads.tres" id="1_p2d6a"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_hi5ft"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=4 uid="uid://bd5j53bfbva5i"]
 
-[ext_resource type="Script" uid="uid://px8023ex8k1q" path="res://scenes/city.gd" id="1_58ubr"]
+[ext_resource type="Script" uid="uid://px8023ex8k1q" path="res://main/scenes/city.gd" id="1_58ubr"]
 [ext_resource type="Script" uid="uid://b41rtibr47uys" path="res://player_controller.gd" id="2_07bxp"]
 [ext_resource type="MeshLibrary" uid="uid://c75vtmqj65um1" path="res://roads.tres" id="2_rqxma"]
 [ext_resource type="PackedScene" uid="uid://c5h43xqqneb31" path="res://assets/kenny/city-kit-commercial_2.1/building-a.glb" id="5_q8eg3"]
