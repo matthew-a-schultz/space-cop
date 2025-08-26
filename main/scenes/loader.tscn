@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn5hrsjwy57sk"]
+
+[ext_resource type="Script" uid="uid://e0acgwr2m6tx" path="res://main/static/loader.gd" id="1_ckrap"]
+
+[node name="Loader" type="Control" node_paths=PackedStringArray("progress_bar", "label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ckrap")
+progress_bar = NodePath("ProgressBar")
+label = NodePath("Label")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
