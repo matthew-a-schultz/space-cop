@@ -6,6 +6,7 @@ enum Slot {PLAY, FILE_PATH, CHOOSE, FINISHED}
 var _playing: bool = false
 @export var _file_dialog: FileDialog
 @export var _choose_file_button: Button
+var _audio_stream: AudioStream
 var _file_path: String
 
 func _ready() -> void:

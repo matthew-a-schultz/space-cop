@@ -12,6 +12,7 @@ var _world_object: WorldObject
 var _finished: bool
 
 func _ready() -> void:
+	print_debug("Adding Move to")
 	assert(_ui_objects_option_button != null, "Objects Option Button null")
 	assert(_ui_position_x != null, "Position X LineEdit null")
 	assert(_ui_position_y != null, "Position X LineEdit null")
@@ -46,12 +47,12 @@ func set_slot_value(value: Variant, to_slot_index: int) -> void:
 
 func _object_show_options() -> void:
 	_ui_objects_option_button.clear()
-	for object: WorldObject in _editor.objects:
+	for object: WorldObject in Game.objects:
 		_ui_objects_option_button.add_item(object.name)
 		
 func _object_selected(index: int) -> void:
 	graph_node_resource.save_data[Slot.OBJECT] = index
-	_world_object = _editor.objects[index]
+	_world_object = Game.objects[index]
 
 func _set_move_position(_string: String = "") -> void:
 	graph_node_resource.save_data[Slot.POSITION] = Vector3(_ui_position_x.text.to_float(), _ui_position_y.text.to_float(), _ui_position_z.text.to_float())

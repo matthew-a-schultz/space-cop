@@ -56,11 +56,13 @@ item_2/text = "Testerers"
 item_2/id = 2
 
 [node name="Node" type="PopupMenu" parent="VBoxContainer/MenuBar/Add"]
-item_count = 2
+item_count = 3
 item_0/text = "OBJECT_MOVE_TO"
 item_0/id = 0
 item_1/text = "START"
 item_1/id = 1
+item_2/text = "PLAY_AUDIO"
+item_2/id = 2
 
 [node name="Start" type="PopupMenu" parent="VBoxContainer/MenuBar"]
 

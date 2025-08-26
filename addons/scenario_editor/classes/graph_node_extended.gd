@@ -10,7 +10,6 @@ var slot_types: Array[SlotType]
 var slot_sides: Array[Side]
 var slot_status: Dictionary [SlotType, ScenarioEditorConfig.SlotStatus]
 var _slot_output_lookup: Array[Array]
-var _editor: Editor
 
 func _init() -> void:
 	position_offset_changed.connect(_position_offset_changed)
@@ -53,9 +52,6 @@ func connect_node(from_slot_index: int, to_slot_index: int, to_node: GraphNodeEx
 	var slot_output: Array = [to_slot_index, to_node]
 	_slot_output_lookup[from_slot_index].append(slot_output)
 	return Error.OK
-
-func set_editor(value: Editor) -> void:
-	_editor = value
 
 func update_slot_value(value: Variant, from_slot_index: int) -> void:
 	for slot_output: Array in _slot_output_lookup[from_slot_index]:
