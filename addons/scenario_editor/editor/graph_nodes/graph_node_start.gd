@@ -3,7 +3,6 @@ extends GraphNodeExtended
 class_name GraphNodeStart
 
 enum Slot {START}
-var slot_data: Dictionary[Slot, Variant]
 var _start: bool = false
 
 func _ready() -> void:

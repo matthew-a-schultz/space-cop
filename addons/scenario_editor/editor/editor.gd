@@ -18,6 +18,7 @@ static var event_resource: EventResource = EventResource.new()
 var node_scene_paths: Dictionary[ScenarioEditorConfig.GraphNodeType, String] = {
 	ScenarioEditorConfig.GraphNodeType.START: "uid://i8pf5bhlo634",
 	ScenarioEditorConfig.GraphNodeType.OBJECT_MOVE_TO: "uid://b5vj4xsjwgj5p",
+	ScenarioEditorConfig.GraphNodeType.PLAY_AUDIO: "uid://davu32ijomr6o",
 }
 var scenario_editor: ScenarioEditor
 var objects: Array[WorldObject]

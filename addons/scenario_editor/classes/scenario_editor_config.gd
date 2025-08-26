@@ -2,7 +2,7 @@
 extends Node
 class_name ScenarioEditorConfig
 
-enum GraphNodeType {OBJECT_MOVE_TO, START}
+enum GraphNodeType {OBJECT_MOVE_TO, START, PLAY_AUDIO}
 enum SlotStatus {NONE, ACTIVE}
 static var node_type_color: Dictionary = {
 	TYPE_NIL: Color.ALICE_BLUE,
