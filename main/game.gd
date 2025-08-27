@@ -41,7 +41,7 @@ static func load(file_path: String, graph_edit: GraphEdit = _graph_edit, object_
 				freeing_children.append(child)
 				child.free()
 		
-		var children_freed = false
+		var children_freed: bool = false
 		while not children_freed:
 			children_freed = true
 			for child: Node in freeing_children:
