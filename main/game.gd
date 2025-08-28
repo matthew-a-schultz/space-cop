@@ -9,21 +9,21 @@ class_name Game
 
 var _audio_scene: PackedScene = preload("uid://ckesdhtro2vb3")
 static var _self: Node
-static var audio_node: Node
+static var audio: Audio
 static var objects: Array[WorldObject]
 static var ui_objects: Node3D
-static var _graph_edit: GraphEdit
+static var _graph_edit: GraphEditExtended
 static var event_resource: EventResource = EventResource.new()
 static var world_objects_resource: WorldObjectsResource = ResourceLoader.load("res://addons/scenario_editor/data/world_event_editor.tres") as WorldObjectsResource
 
 func _ready() -> void:
 	assert(_ui_objects != null, "UI Objects is null")
 	ui_objects = _ui_objects
-	audio_node = _audio_scene.instantiate()
-	add_child(audio_node)
-	audio_node.owner = self
+	audio = _audio_scene.instantiate()
+	add_child(audio)
+	audio.owner = self
 	_self = self
-	_graph_edit = GraphEdit.new()
+	_graph_edit = GraphEditExtended.new()
 	add_child(_graph_edit)
 
 static func add_world_object(object: WorldObject) -> void:
@@ -36,6 +36,8 @@ static func load(file_path: String, graph_edit: GraphEdit = _graph_edit, object_
 	var load_event_resource: EventResource = ResourceLoader.load(file_path)
 	var freeing_children: Array[Node]
 	if load_event_resource != null:
+		event_resource = EventResource.new()
+		
 		for child: Node in graph_edit.get_children():
 			if child.name != "_connection_layer":
 				freeing_children.append(child)
@@ -67,6 +69,7 @@ static func load(file_path: String, graph_edit: GraphEdit = _graph_edit, object_
 			graph_edit.connection_request.emit(connection.from_node.validate_node_name(), connection.from_port, connection.to_node.validate_node_name(), connection.to_port)
 
 static func add_object(index: int, object_list: ItemList = null) -> void:
+	print_debug(object_list)
 	var world_object_resource: WorldObjectResource = world_objects_resource.world_objects[index]
 	var world_object: WorldObject = world_object_resource.scene.instantiate()
 	world_object.name = world_object_resource.name
@@ -85,8 +88,11 @@ static func add_node(type: ScenarioEditorConfig.GraphNodeType, graph_node_resour
 	
 	if graph_node_resource != null:
 		graph_node.name = graph_node_resource.name
+		graph_node.graph_node_resource.name = graph_node.name
 		graph_node.position_offset = graph_node_resource.position_offset
 		graph_node.load_save_data(graph_node_resource.save_data)
 	else:
 		event_resource.graph_nodes.append(graph_node.graph_node_resource)
 		graph_node.graph_node_resource.name = graph_node.name
+	
+	print_debug("Node: %s name %s" % [graph_node, graph_node.name])
