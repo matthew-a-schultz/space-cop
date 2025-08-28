@@ -2,7 +2,7 @@
 extends Node3D
 
 const WIDTH: int = 200
-const VEHICLES_TOTAL: int = 600
+const VEHICLES_TOTAL: int = 500
 const RANDOM_POINT_MIN_DISTANCE: int = 30
 
 enum RoadType {STRAIGHT, BEND, THREE_WAY, FOUR_WAY}
