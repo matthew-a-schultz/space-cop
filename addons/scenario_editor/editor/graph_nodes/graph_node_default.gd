@@ -10,7 +10,7 @@ func _ready() -> void:
 		[TYPE_NIL, Side.NONE],
 	])
 
-func set_slot_value(value: Variant, to_slot_index: int) -> void:
+func get_input(value: Variant, to_slot_index: int) -> void:
 	pass
 	
 func load_save_data(load_save_data: Dictionary) -> void:

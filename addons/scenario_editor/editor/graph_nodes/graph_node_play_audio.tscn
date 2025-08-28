@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://p36krqi7x060" path="res://addons/scenario_editor/editor/graph_nodes/graph_node_play_audio.gd" id="1_amt7x"]
 
-[node name="GraphNodePlayAudio" type="GraphNode" node_paths=PackedStringArray("_file_dialog", "_choose_file_button")]
+[node name="GraphNodePlayAudio" type="GraphNode" node_paths=PackedStringArray("_file_dialog", "_choose_file_button", "_file_path_label")]
 offset_right = 9.0
 offset_bottom = 55.0
 title = "Play Audio"
@@ -45,6 +45,7 @@ slot/3/draw_stylebox = true
 script = ExtResource("1_amt7x")
 _file_dialog = NodePath("FileDialog")
 _choose_file_button = NodePath("Button")
+_file_path_label = NodePath("FilePathLabel")
 
 [node name="PlayLabel" type="Label" parent="."]
 layout_mode = 2

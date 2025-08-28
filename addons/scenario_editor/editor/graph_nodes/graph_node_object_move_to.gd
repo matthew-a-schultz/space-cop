@@ -37,13 +37,13 @@ func _ready() -> void:
 	_ui_position_y.text_changed.connect(_set_move_position)
 	_ui_position_z.text_changed.connect(_set_move_position)
 
-func set_slot_value(value: Variant, to_slot_index: int) -> void:
+func get_input(value: Variant, to_slot_index: int) -> void:
 	match to_slot_index:
 		Slot.ACTIVE:
 			_world_object.goto(Vector3(_ui_position_x.text.to_float(), _ui_position_y.text.to_float(), _ui_position_z.text.to_float()))
 			await(_world_object.arrived)
 			_finished = true
-			update_slot_value(_finished, Slot.FINISHED)
+			set_output(_finished, Slot.FINISHED)
 
 func _object_show_options() -> void:
 	_ui_objects_option_button.clear()

@@ -13,4 +13,4 @@ func _ready() -> void:
 
 func start() -> void:
 	_start = true
-	update_slot_value(_start, Slot.START)
+	set_output(_start, Slot.START)

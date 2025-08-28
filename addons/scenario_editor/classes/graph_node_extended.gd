@@ -35,6 +35,7 @@ func update_slots(new_slots: Array[Array]) -> void:
 			Side.BOTH:
 				set_slot_left(slot_index, slot_type)
 				set_slot_right(slot_index, slot_type)
+	print_debug(_slot_output_lookup)
 
 func set_slot_left(slot_index: int, type: Variant.Type) -> void:
 	if type != TYPE_NIL:
@@ -53,13 +54,13 @@ func connect_node(from_slot_index: int, to_slot_index: int, to_node: GraphNodeEx
 	_slot_output_lookup[from_slot_index].append(slot_output)
 	return Error.OK
 
-func update_slot_value(value: Variant, from_slot_index: int) -> void:
+func set_output(value: Variant, from_slot_index: int) -> void:
 	for slot_output: Array in _slot_output_lookup[from_slot_index]:
 		var output_index: int = slot_output[0]
 		var output_node: GraphNodeExtended = slot_output[1]
-		output_node.set_slot_value(value, output_index)
+		output_node.get_input(value, output_index)
 
-func set_slot_value(value: Variant, to_slot_index: int) -> void:
+func get_input(value: Variant, to_slot_index: int) -> void:
 	return
 
 func load_save_data(save_data: Dictionary) -> void:
