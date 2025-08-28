@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckesdhtro2vb3"]
+[gd_scene load_steps=3 format=3 uid="uid://ckesdhtro2vb3"]
 
 [ext_resource type="Script" uid="uid://b5wbxk8xn6xl" path="res://main/scenes/audio.gd" id="1_ouw5m"]
+[ext_resource type="AudioStream" uid="uid://dplhkfibnt6ym" path="res://assets/audio/Jason3.wav" id="2_r1kr1"]
 
 [node name="Audio" type="Node" node_paths=PackedStringArray("audio_stream_player2d")]
 script = ExtResource("1_ouw5m")
 audio_stream_player2d = NodePath("AudioStreamPlayer2D")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_r1kr1")
