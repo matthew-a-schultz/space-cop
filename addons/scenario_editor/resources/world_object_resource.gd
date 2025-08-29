@@ -10,7 +10,7 @@ class_name WorldObjectResource
 	set(value):
 		if value != null:
 			var instance_scene: Variant = value.instantiate()
-			if instance_scene is not WorldObject:
+			if instance_scene is not Node:
 				value = null
 		scene = value
 		emit_changed()
