@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=8 format=3 uid="uid://cl5nqbd8efe83"]
+
+[ext_resource type="Script" uid="uid://piuqndsp0fdv" path="res://addons/scenario_editor/resources/graph_node_resource.gd" id="1_psdlv"]
+[ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/scenario_editor/resources/event_resource.gd" id="2_n3d8y"]
+
+[sub_resource type="Resource" id="Resource_psdlv"]
+script = ExtResource("1_psdlv")
+type = 1
+name = "GraphNodeStart"
+save_data = {}
+position_offset = Vector2(80, 160)
+
+[sub_resource type="Resource" id="Resource_n3d8y"]
+script = ExtResource("1_psdlv")
+type = 0
+name = "GraphNodeObjectMoveTo"
+save_data = {
+0: 0,
+2: Vector3(10, 0, 10)
+}
+position_offset = Vector2(360, 180)
+
+[sub_resource type="Resource" id="Resource_s8muc"]
+script = ExtResource("1_psdlv")
+type = 0
+name = "_GraphNode_24368"
+save_data = {
+0: 0,
+2: Vector3(0, 0, 0)
+}
+position_offset = Vector2(780, 300)
+
+[sub_resource type="Resource" id="Resource_ew57t"]
+script = ExtResource("1_psdlv")
+type = 2
+name = "GraphNodePlayAudio"
+save_data = {
+1: "res://assets/audio/Jason3.wav"
+}
+position_offset = Vector2(600, 540)
+
+[sub_resource type="Resource" id="Resource_e6gby"]
+script = ExtResource("1_psdlv")
+type = 2
+name = "@GraphNode@24856"
+save_data = {
+1: "res://assets/audio/JASON1.wav"
+}
+position_offset = Vector2(1140, 600)
+
+[resource]
+script = ExtResource("2_n3d8y")
+objects_resource_index = Array[int]([0])
+connections = Array[Dictionary]([{
+"from_node": &"GraphNodeStart",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodeObjectMoveTo",
+"to_port": 0
+}, {
+"from_node": &"GraphNodeObjectMoveTo",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"_GraphNode_24368",
+"to_port": 0
+}, {
+"from_node": &"_GraphNode_24368",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodeObjectMoveTo",
+"to_port": 0
+}, {
+"from_node": &"GraphNodeObjectMoveTo",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodePlayAudio",
+"to_port": 0
+}, {
+"from_node": &"_GraphNode_24368",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"@GraphNode@24856",
+"to_port": 0
+}])
+graph_nodes = Array[ExtResource("1_psdlv")]([SubResource("Resource_psdlv"), SubResource("Resource_n3d8y"), SubResource("Resource_s8muc"), SubResource("Resource_ew57t"), SubResource("Resource_ew57t"), SubResource("Resource_e6gby"), SubResource("Resource_e6gby")])

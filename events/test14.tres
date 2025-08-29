@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=7 format=3 uid="uid://4sc43lixjigj"]
+
+[ext_resource type="Script" uid="uid://piuqndsp0fdv" path="res://addons/scenario_editor/resources/graph_node_resource.gd" id="1_rvala"]
+[ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/scenario_editor/resources/event_resource.gd" id="2_phc31"]
+
+[sub_resource type="Resource" id="Resource_ceygv"]
+script = ExtResource("1_rvala")
+type = 1
+name = "GraphNodeStart"
+save_data = {}
+position_offset = Vector2(240, 220)
+
+[sub_resource type="Resource" id="Resource_jxfvk"]
+script = ExtResource("1_rvala")
+type = 2
+name = "GraphNodePlayAudio"
+save_data = {
+1: "res://assets/audio/JASON1.wav"
+}
+position_offset = Vector2(460, 220)
+
+[sub_resource type="Resource" id="Resource_fao12"]
+script = ExtResource("1_rvala")
+type = 2
+name = "@GraphNode@24093"
+save_data = {
+1: "res://assets/audio/Jason3.wav"
+}
+position_offset = Vector2(820, 340)
+
+[sub_resource type="Resource" id="Resource_pylup"]
+script = ExtResource("1_rvala")
+type = 0
+name = "GraphNodeObjectMoveTo"
+save_data = {
+0: 0,
+2: Vector3(1, 0, 1)
+}
+position_offset = Vector2(1180, 400)
+
+[resource]
+script = ExtResource("2_phc31")
+objects_resource_index = Array[int]([0])
+connections = Array[Dictionary]([{
+"from_node": &"GraphNodeStart",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodePlayAudio",
+"to_port": 0
+}, {
+"from_node": &"GraphNodePlayAudio",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"@GraphNode@24093",
+"to_port": 0
+}, {
+"from_node": &"@GraphNode@24093",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodeObjectMoveTo",
+"to_port": 0
+}])
+graph_nodes = Array[ExtResource("1_rvala")]([SubResource("Resource_ceygv"), SubResource("Resource_ceygv"), SubResource("Resource_jxfvk"), SubResource("Resource_jxfvk"), SubResource("Resource_fao12"), SubResource("Resource_fao12"), SubResource("Resource_pylup"), SubResource("Resource_pylup")])
