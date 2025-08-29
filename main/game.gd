@@ -10,7 +10,7 @@ class_name Game
 var _audio_scene: PackedScene = preload("uid://ckesdhtro2vb3")
 static var _self: Node
 static var audio: Audio
-static var objects: Array[WorldObject]
+static var objects: Array[Node]
 static var ui_objects: Node3D
 static var _graph_edit: GraphEditExtended
 static var event_resource: EventResource = EventResource.new()
@@ -26,7 +26,7 @@ func _ready() -> void:
 	_graph_edit = GraphEditExtended.new()
 	add_child(_graph_edit)
 
-static func add_world_object(object: WorldObject) -> void:
+static func add_world_object(object: Node) -> void:
 	var name: String = object.name
 	ui_objects.add_child(object)
 	object.owner = _self
@@ -69,9 +69,8 @@ static func load(file_path: String, graph_edit: GraphEdit = _graph_edit, object_
 			graph_edit.connection_request.emit(connection.from_node.validate_node_name(), connection.from_port, connection.to_node.validate_node_name(), connection.to_port)
 
 static func add_object(index: int, object_list: ItemList = null) -> void:
-	print_debug(object_list)
 	var world_object_resource: WorldObjectResource = world_objects_resource.world_objects[index]
-	var world_object: WorldObject = world_object_resource.scene.instantiate()
+	var world_object: Node = world_object_resource.scene.instantiate()
 	world_object.name = world_object_resource.name
 	Game.add_world_object(world_object)
 	if object_list != null:
@@ -94,5 +93,3 @@ static func add_node(type: ScenarioEditorConfig.GraphNodeType, graph_node_resour
 	else:
 		event_resource.graph_nodes.append(graph_node.graph_node_resource)
 		graph_node.graph_node_resource.name = graph_node.name
-	
-	print_debug("Node: %s name %s" % [graph_node, graph_node.name])
