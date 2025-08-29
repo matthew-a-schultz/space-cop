@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://main/game.gd" id="1_jvhc3"]
 [ext_resource type="Resource" uid="uid://buuwndfewy5ui" path="res://addons/scenario_editor/data/world_event_editor.tres" id="2_7wqcv"]
-[ext_resource type="PackedScene" uid="uid://b1i8s8fn5gmxq" path="res://police.tscn" id="3_3ajxn"]
+[ext_resource type="PackedScene" uid="uid://b1i8s8fn5gmxq" path="res://main/objects/police.tscn" id="3_3ajxn"]
 
 [node name="EventEditor" type="Node3D" node_paths=PackedStringArray("ui_objects")]
 script = ExtResource("1_jvhc3")

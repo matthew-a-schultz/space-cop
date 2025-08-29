@@ -8,11 +8,10 @@ enum Slot {OBJECT, ACTIVE, POSITION, FINISHED}
 @export var _ui_position_y: LineEdit
 @export var _ui_position_z: LineEdit
 
-var _world_object: WorldObject
+var _world_object: Node
 var _finished: bool
 
 func _ready() -> void:
-	print_debug("Adding Move to")
 	assert(_ui_objects_option_button != null, "Objects Option Button null")
 	assert(_ui_position_x != null, "Position X LineEdit null")
 	assert(_ui_position_y != null, "Position X LineEdit null")
@@ -47,7 +46,7 @@ func get_input(value: Variant, to_slot_index: int) -> void:
 
 func _object_show_options() -> void:
 	_ui_objects_option_button.clear()
-	for object: WorldObject in Game.objects:
+	for object: Node in Game.objects:
 		_ui_objects_option_button.add_item(object.name)
 		
 func _object_selected(index: int) -> void:
