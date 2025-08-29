@@ -1,5 +1,6 @@
 @tool
 extends GraphEdit
+class_name GraphEditExtended
 
 var _selected_node: Node
 
@@ -21,7 +22,6 @@ func _node_deselected(node: Node) -> void:
 		_selected_node = null
 
 func _node_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
-	print_debug(get_children())
 	var from_node_extended: GraphNodeExtended = get_node(String(from_node))
 	var to_node_extended: GraphNodeExtended = get_node(String(to_node))
 	var error: Error = from_node_extended.connect_node(from_node_extended.get_output_port_slot(from_port), to_node_extended.get_input_port_slot(to_port), to_node_extended)
