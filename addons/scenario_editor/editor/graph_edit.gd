@@ -12,7 +12,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if has_focus() and _selected_node != null and event is InputEventKey:
 		if event.keycode == KEY_DELETE or event.keycode == KEY_BACKSPACE:
-			_selected_node.queue_free()
+			Game.remove_node(_selected_node, self)
 
 func _node_selected(node: Node) -> void:
 	_selected_node = node

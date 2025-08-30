@@ -91,5 +91,13 @@ static func add_node(type: ScenarioEditorConfig.GraphNodeType, graph_node_resour
 		graph_node.position_offset = graph_node_resource.position_offset
 		graph_node.load_save_data(graph_node_resource.save_data)
 	else:
-		event_resource.graph_nodes.append(graph_node.graph_node_resource)
 		graph_node.graph_node_resource.name = graph_node.name
+
+static func remove_node(graph_node: GraphNodeExtended, graph_edit: GraphEdit = _graph_edit) -> void:
+	if event_resource.graph_nodes.has(graph_node.graph_node_resource):
+		var index: int = event_resource.graph_nodes.find(graph_node.graph_node_resource)
+		event_resource.graph_nodes.remove_at(index)
+	
+	if graph_edit.get_children().has(graph_node):
+		graph_edit.remove_child(graph_node)
+		graph_edit.queue_free()
