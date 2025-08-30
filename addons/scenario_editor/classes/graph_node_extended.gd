@@ -35,7 +35,6 @@ func update_slots(new_slots: Array[Array]) -> void:
 			Side.BOTH:
 				set_slot_left(slot_index, slot_type)
 				set_slot_right(slot_index, slot_type)
-	print_debug(_slot_output_lookup)
 
 func set_slot_left(slot_index: int, type: Variant.Type) -> void:
 	if type != TYPE_NIL:

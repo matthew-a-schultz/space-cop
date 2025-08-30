@@ -59,7 +59,6 @@ func _start_pressed() -> void:
 	start_node.start()
 
 func _world_object_changed() -> void:
-	print_debug("World object changed")
 	_ui_object.clear()
 	
 	for index: int in Game.world_objects_resource.world_objects.size():
