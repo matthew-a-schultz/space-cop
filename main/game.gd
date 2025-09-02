@@ -11,11 +11,12 @@ var _audio_scene: PackedScene = preload("uid://ckesdhtro2vb3")
 static var _self: Node
 static var audio: Audio
 static var objects: Array[Node]
+static var variables: Array[Variant]
 static var ui_objects: Node3D
 static var _graph_edit: GraphEditExtended
 static var event_resource: EventResource = EventResource.new()
 static var world_objects_resource: WorldObjectsResource = ResourceLoader.load("res://addons/scenario_editor/data/world_event_editor.tres") as WorldObjectsResource
-
+static var theme_graph_node_function: Theme = preload("uid://ccffj50ffja22")
 func _ready() -> void:
 	assert(_ui_objects != null, "UI Objects is null")
 	ui_objects = _ui_objects
@@ -81,6 +82,7 @@ static func add_object(index: int, object_list: ItemList = null) -> void:
 static func add_node(type: ScenarioEditorConfig.GraphNodeType, graph_node_resource: GraphNodeResource = null, graph_edit: GraphEdit = _graph_edit) -> void:
 	var node_packed_scene: PackedScene = ResourceLoader.load(Editor.node_scene_paths[type])
 	var graph_node: GraphNodeExtended = node_packed_scene.instantiate()
+	graph_node.theme = theme_graph_node_function
 	event_resource.graph_nodes.append(graph_node.graph_node_resource)
 	graph_edit.add_child(graph_node)
 	graph_node.owner = graph_edit
@@ -100,4 +102,4 @@ static func remove_node(graph_node: GraphNodeExtended, graph_edit: GraphEdit = _
 	
 	if graph_edit.get_children().has(graph_node):
 		graph_edit.remove_child(graph_node)
-		graph_edit.queue_free()
+		graph_node.queue_free()

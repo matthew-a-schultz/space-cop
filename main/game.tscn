@@ -16,6 +16,8 @@ _ui_objects = NodePath("Objects")
 transform = Transform3D(-0.125, 0, -1.09278e-08, 0, 0.125, 0, 1.09278e-08, 0, -0.125, 0, 0, 0)
 script = ExtResource("3_3qcir")
 
-[node name="Audio" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player2d") instance=ExtResource("4_jc0vi")]
+[node name="Audio" parent="." instance=ExtResource("4_jc0vi")]
+
+[node name="@Node@22098" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player2d") instance=ExtResource("4_jc0vi")]
 script = ExtResource("5_2c7eb")
 audio_stream_player2d = NodePath("AudioStreamPlayer2D")

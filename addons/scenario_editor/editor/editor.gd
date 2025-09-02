@@ -8,6 +8,7 @@ enum File {SAVE, LOAD}
 @export var _ui_add: PopupMenu
 @export var _ui_object: PopupMenu
 @export var _ui_object_list: ItemList
+@export var _ui_variable: PopupMenu
 @export var _ui_node: PopupMenu
 @export var _ui_start: PopupMenu
 @export var _ui_file_save_dialog: FileDialog
@@ -40,16 +41,21 @@ func _ready() -> void:
 	Game.world_objects_resource.changed.connect(_world_object_changed)
 	_ui_file.index_pressed.connect(_menu_file_pressed)
 	_ui_add.clear()
-	_ui_add.add_submenu_node_item("Node", _ui_node)
+	_ui_add.add_submenu_node_item("Action", _ui_node)
+	_ui_add.add_submenu_node_item("Variable", _ui_variable)
 	_ui_add.add_submenu_node_item("Object", _ui_object)
 	_ui_object_list.item_selected.connect(_object_list_item_selected)
 	_ui_object.index_pressed.connect(Game.add_object.bind(object_list))
 	
 	_ui_node.clear()
+
 	_ui_node.index_pressed.connect(Game.add_node.bind(null, graph_edit))
 	for key: ScenarioEditorConfig.GraphNodeType in ScenarioEditorConfig.GraphNodeType.values():
 		_ui_node.add_item(ScenarioEditorConfig.GraphNodeType.keys()[key], key)
 
+	for type: Variant in ScenarioEditorConfig.Types.values():
+		_ui_variable.add_item(ScenarioEditorConfig.Types.keys()[type], type)
+	
 	_ui_start.about_to_popup.connect(_start_pressed)
 	_ui_file_save_dialog.file_selected.connect(_menu_file_save_path_selected)
 	_ui_file_load_dialog.file_selected.connect(Game.load.bind(graph_edit, object_list))
