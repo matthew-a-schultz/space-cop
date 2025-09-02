@@ -18,7 +18,7 @@ save_data = {
 0: 0,
 2: Vector3(10, 0, 10)
 }
-position_offset = Vector2(360, 180)
+position_offset = Vector2(280, 160)
 
 [sub_resource type="Resource" id="Resource_s8muc"]
 script = ExtResource("1_psdlv")
@@ -28,7 +28,7 @@ save_data = {
 0: 0,
 2: Vector3(0, 0, 0)
 }
-position_offset = Vector2(780, 300)
+position_offset = Vector2(300, 420)
 
 [sub_resource type="Resource" id="Resource_ew57t"]
 script = ExtResource("1_psdlv")
@@ -37,16 +37,16 @@ name = "GraphNodePlayAudio"
 save_data = {
 1: "res://assets/audio/Jason3.wav"
 }
-position_offset = Vector2(600, 540)
+position_offset = Vector2(600, 180)
 
 [sub_resource type="Resource" id="Resource_e6gby"]
 script = ExtResource("1_psdlv")
 type = 2
-name = "@GraphNode@24856"
+name = "_GraphNode_24856"
 save_data = {
 1: "res://assets/audio/JASON1.wav"
 }
-position_offset = Vector2(1140, 600)
+position_offset = Vector2(620, 440)
 
 [resource]
 script = ExtResource("2_n3d8y")
@@ -79,7 +79,7 @@ connections = Array[Dictionary]([{
 "from_node": &"_GraphNode_24368",
 "from_port": 0,
 "keep_alive": false,
-"to_node": &"@GraphNode@24856",
+"to_node": &"_GraphNode_24856",
 "to_port": 0
 }])
-graph_nodes = Array[ExtResource("1_psdlv")]([SubResource("Resource_psdlv"), SubResource("Resource_n3d8y"), SubResource("Resource_s8muc"), SubResource("Resource_ew57t"), SubResource("Resource_ew57t"), SubResource("Resource_e6gby"), SubResource("Resource_e6gby")])
+graph_nodes = Array[ExtResource("1_psdlv")]([SubResource("Resource_psdlv"), SubResource("Resource_n3d8y"), SubResource("Resource_s8muc"), SubResource("Resource_ew57t"), SubResource("Resource_e6gby")])

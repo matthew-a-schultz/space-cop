@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EventResource" load_steps=8 format=3 uid="uid://bjg74wt4n3l1q"]
+[gd_resource type="Resource" script_class="EventResource" load_steps=7 format=3 uid="uid://bjg74wt4n3l1q"]
 
 [ext_resource type="Script" uid="uid://piuqndsp0fdv" path="res://addons/scenario_editor/resources/graph_node_resource.gd" id="1_rvala"]
 [ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/scenario_editor/resources/event_resource.gd" id="2_phc31"]
@@ -8,34 +8,27 @@ script = ExtResource("1_rvala")
 type = 1
 name = "GraphNodeStart"
 save_data = {}
-position_offset = Vector2(240, 220)
+position_offset = Vector2(200, 340)
 
 [sub_resource type="Resource" id="Resource_phc31"]
-script = ExtResource("1_rvala")
-type = 1
-name = "GraphNodeStart2"
-save_data = {}
-position_offset = Vector2(100, 180)
-
-[sub_resource type="Resource" id="Resource_ceygv"]
 script = ExtResource("1_rvala")
 type = 2
 name = "GraphNodePlayAudio"
 save_data = {
 1: "res://assets/audio/JASON1.wav"
 }
-position_offset = Vector2(460, 220)
+position_offset = Vector2(400, 340)
 
-[sub_resource type="Resource" id="Resource_jxfvk"]
+[sub_resource type="Resource" id="Resource_ceygv"]
 script = ExtResource("1_rvala")
 type = 2
 name = "_GraphNode_24093"
 save_data = {
 1: "res://assets/audio/Jason3.wav"
 }
-position_offset = Vector2(820, 340)
+position_offset = Vector2(740, 440)
 
-[sub_resource type="Resource" id="Resource_fao12"]
+[sub_resource type="Resource" id="Resource_jxfvk"]
 script = ExtResource("1_rvala")
 type = 0
 name = "GraphNodeObjectMoveTo"
@@ -43,7 +36,7 @@ save_data = {
 0: 0,
 2: Vector3(1, 0, 1)
 }
-position_offset = Vector2(1180, 400)
+position_offset = Vector2(1060, 500)
 
 [resource]
 script = ExtResource("2_phc31")
@@ -67,4 +60,4 @@ connections = Array[Dictionary]([{
 "to_node": &"GraphNodeObjectMoveTo",
 "to_port": 0
 }])
-graph_nodes = Array[ExtResource("1_rvala")]([SubResource("Resource_rvala"), SubResource("Resource_phc31"), SubResource("Resource_ceygv"), SubResource("Resource_jxfvk"), SubResource("Resource_fao12")])
+graph_nodes = Array[ExtResource("1_rvala")]([SubResource("Resource_rvala"), SubResource("Resource_phc31"), SubResource("Resource_ceygv"), SubResource("Resource_jxfvk")])
