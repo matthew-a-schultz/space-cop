@@ -11,7 +11,7 @@ var _audio_stream: AudioStream
 var path: String
 
 func _ready() -> void:
-	graph_node_resource.type = ScenarioEditorConfig.GraphNodeType.PLAY_AUDIO
+	graph_node_resource.type = {ScenarioEditorConfig.GraphNodeType.FUNCTION: ScenarioEditorConfig.GraphNodeFunction.PLAY_AUDIO}
 	graph_node_resource.save_data = {
 		Slot.FILE_PATH: path,
 	}

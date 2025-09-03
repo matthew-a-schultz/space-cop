@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0loctguthbgt"]
+
+[ext_resource type="Texture2D" uid="uid://dex7kqthhmaph" path="res://addons/scenario_editor/editor/graph_nodes/gears.svg" id="1_lbn2g"]
+
+[node name="TextureRect" type="TextureRect"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+texture = ExtResource("1_lbn2g")
+expand_mode = 2

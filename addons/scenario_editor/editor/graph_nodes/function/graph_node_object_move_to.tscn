@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5vj4xsjwgj5p"]
 
-[ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/scenario_editor/editor/graph_node_object_move_to.gd" id="1_p6261"]
+[ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/scenario_editor/editor/graph_nodes/function/graph_node_object_move_to.gd" id="1_p6261"]
 
-[node name="GraphNodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("_ui_objects_option_button", "_ui_position_x", "_ui_position_y", "_ui_position_z")]
+[node name="GraphNodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("_ui_objects_option_button")]
 title = "Move To"
 slot/0/left_enabled = false
 slot/0/left_type = 0
@@ -15,7 +15,7 @@ slot/0/right_icon = null
 slot/0/draw_stylebox = true
 slot/1/left_enabled = true
 slot/1/left_type = 1
-slot/1/left_color = Color(1, 0.411765, 0.705882, 1)
+slot/1/left_color = Color(0.501961, 0, 0, 1)
 slot/1/left_icon = null
 slot/1/right_enabled = false
 slot/1/right_type = 0
@@ -37,14 +37,11 @@ slot/3/left_color = Color(1, 1, 1, 1)
 slot/3/left_icon = null
 slot/3/right_enabled = true
 slot/3/right_type = 1
-slot/3/right_color = Color(1, 0.411765, 0.705882, 1)
+slot/3/right_color = Color(0.501961, 0, 0, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
 script = ExtResource("1_p6261")
 _ui_objects_option_button = NodePath("OptionButton")
-_ui_position_x = NodePath("GridContainer/XLineEdit")
-_ui_position_y = NodePath("GridContainer/YLineEdit")
-_ui_position_z = NodePath("GridContainer/ZLineEdit")
 
 [node name="OptionButton" type="OptionButton" parent="."]
 layout_mode = 2
@@ -54,31 +51,9 @@ allow_reselect = true
 layout_mode = 2
 text = "Active"
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="Vector3" type="Label" parent="."]
 layout_mode = 2
-size_flags_vertical = 3
-columns = 3
-
-[node name="Label" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "x"
-
-[node name="Label2" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "y"
-
-[node name="Label3" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "z"
-
-[node name="XLineEdit" type="LineEdit" parent="GridContainer"]
-layout_mode = 2
-
-[node name="YLineEdit" type="LineEdit" parent="GridContainer"]
-layout_mode = 2
-
-[node name="ZLineEdit" type="LineEdit" parent="GridContainer"]
-layout_mode = 2
+text = "Vector3"
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 2

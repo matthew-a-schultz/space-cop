@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://diifangm1yc4"]
+
+[ext_resource type="Texture2D" uid="uid://b3gv4jxb5mh6y" path="res://addons/scenario_editor/editor/graph_nodes/electric.svg" id="1_dvpdi"]
+
+[node name="TextureRect" type="TextureRect"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+offset_left = 4.0
+offset_right = 44.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_dvpdi")
+expand_mode = 2
