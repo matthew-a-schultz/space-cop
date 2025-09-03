@@ -1,42 +1,35 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://ccffj50ffja22"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c1diqclabdns6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ni63s"]
 bg_color = Color(0.103744, 0.103744, 0.103743, 1)
 border_width_left = 2
+border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.388235, 0.576471, 0.952941, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8v6a"]
 bg_color = Color(0.259294, 0.259294, 0.259294, 1)
 border_width_left = 2
+border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax20f"]
-content_margin_left = 20.0
-content_margin_top = 2.0
-content_margin_right = 1.0
-content_margin_bottom = 2.0
-bg_color = Color(0.388235, 0.576471, 0.952941, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tpdi4"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5whw"]
-bg_color = Color(0.388235, 0.576471, 0.952941, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1hb7g"]
 
 [resource]
 GraphNode/styles/panel = SubResource("StyleBoxFlat_ni63s")
 GraphNode/styles/panel_selected = SubResource("StyleBoxFlat_p8v6a")
-GraphNode/styles/titlebar = SubResource("StyleBoxFlat_ax20f")
-GraphNode/styles/titlebar_selected = SubResource("StyleBoxFlat_m5whw")
+GraphNode/styles/titlebar = SubResource("StyleBoxEmpty_tpdi4")
+GraphNode/styles/titlebar_selected = SubResource("StyleBoxEmpty_1hb7g")
 HBoxContainer/constants/separation = 4
