@@ -30,7 +30,7 @@ func _resource_loaded(resource: LoadResource, resource_reference: Resource) -> v
 func _loading_finished() -> void:
 	_game = resource_lookup[LoadResource.Game].instantiate()
 	get_tree().root.add_child(_game)
-	_game.load("res://events/test14.tres")
+	_game.load("res://events/test.tres")
 	var start_node: GraphNodeStart = _game._graph_edit.get_node("GraphNodeStart")
 	print_debug("Start node: %s name %s" % [start_node, start_node.name])
 	start_node.start()
