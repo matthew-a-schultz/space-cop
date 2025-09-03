@@ -10,6 +10,7 @@ var slot_types: Array[SlotType]
 var slot_sides: Array[Side]
 var slot_status: Dictionary [SlotType, ScenarioEditorConfig.SlotStatus]
 var _slot_output_lookup: Array[Array]
+var panel: Control
 
 func _init() -> void:
 	position_offset_changed.connect(_position_offset_changed)
@@ -64,3 +65,12 @@ func get_input(value: Variant, to_slot_index: int) -> void:
 
 func load_save_data(save_data: Dictionary) -> void:
 	return
+
+func set_panel(file_path: String) -> void:
+	var panel_scene: PackedScene = ResourceLoader.load(file_path)
+	panel = panel_scene.instantiate()
+	assert(panel is Control, "Panel Scene isn't a Control")
+
+func show_panel(_node_selected: Node) -> void:
+	print_debug("Show panel")
+	pass

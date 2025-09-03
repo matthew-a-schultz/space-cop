@@ -2,12 +2,35 @@
 extends Node
 class_name ScenarioEditorConfig
 
-enum GraphNodeType {OBJECT_MOVE_TO, START, PLAY_AUDIO}
 enum SlotStatus {NONE, ACTIVE}
-enum Types {TYPE_NIL, TYPE_BOOL, TYPE_INT, TYPE_FLOAT, TYPE_STRING, TYPE_VECTOR2, TYPE_VECTOR2I, TYPE_RECT2, TYPE_RECT2I, TYPE_VECTOR3, TYPE_VECTOR3I, TYPE_TRANSFORM2D, TYPE_VECTOR4, TYPE_VECTOR4I, TYPE_PLANE, TYPE_QUATERNION, TYPE_AABB, TYPE_BASIS, TYPE_TRANSFORM3D, TYPE_PROJECTION, TYPE_COLOR, TYPE_STRING_NAME, TYPE_NODE_PATH, TYPE_RID, TYPE_OBJECT, TYPE_CALLABLE, TYPE_SIGNAL, TYPE_DICTIONARY, TYPE_ARRAY, TYPE_PACKED_BYTE_ARRAY, TYPE_PACKED_INT32_ARRAY, TYPE_PACKED_INT64_ARRAY, TYPE_PACKED_FLOAT32_ARRAY, TYPE_PACKED_FLOAT64_ARRAY, TYPE_PACKED_STRING_ARRAY, TYPE_PACKED_VECTOR2_ARRAY, TYPE_PACKED_VECTOR3_ARRAY, TYPE_PACKED_COLOR_ARRAY, TYPE_PACKED_VECTOR4_ARRAY, TYPE_MAX, }
+enum GraphNodeType {ACTION, FUNCTION, VARIABLE}
+enum GraphNodeAction {START, AREA}
+static var action_node_scene_paths: Dictionary[GraphNodeAction, String] = {
+	GraphNodeAction.START: "uid://i8pf5bhlo634",
+	GraphNodeAction.AREA: "uid://bdrqmrxx4d4b3",
+}
+enum GraphNodeFunction {OBJECT_MOVE_TO, PLAY_AUDIO}
+static var function_node_scene_paths: Dictionary[GraphNodeFunction, String] = {
+	GraphNodeFunction.OBJECT_MOVE_TO: "uid://b5vj4xsjwgj5p",
+	GraphNodeFunction.PLAY_AUDIO: "uid://davu32ijomr6o",
+}
+enum GraphNodeVariable { TYPE_VECTOR3,
+#TYPE_NIL, TYPE_BOOL, TYPE_INT, TYPE_FLOAT, TYPE_STRING, TYPE_VECTOR2, TYPE_VECTOR2I, TYPE_RECT2, TYPE_RECT2I, TYPE_VECTOR3I, TYPE_TRANSFORM2D, TYPE_VECTOR4, TYPE_VECTOR4I, TYPE_PLANE, TYPE_QUATERNION, TYPE_AABB, TYPE_BASIS, TYPE_TRANSFORM3D, TYPE_PROJECTION, TYPE_COLOR, TYPE_STRING_NAME, TYPE_NODE_PATH, TYPE_RID, TYPE_OBJECT, TYPE_CALLABLE, TYPE_SIGNAL, TYPE_DICTIONARY, TYPE_ARRAY, TYPE_PACKED_BYTE_ARRAY, TYPE_PACKED_INT32_ARRAY, TYPE_PACKED_INT64_ARRAY, TYPE_PACKED_FLOAT32_ARRAY, TYPE_PACKED_FLOAT64_ARRAY, TYPE_PACKED_STRING_ARRAY, TYPE_PACKED_VECTOR2_ARRAY, TYPE_PACKED_VECTOR3_ARRAY, TYPE_PACKED_COLOR_ARRAY, TYPE_PACKED_VECTOR4_ARRAY, TYPE_MAX
+}
+static var variable_node_scene_paths: Dictionary[GraphNodeVariable, String] = {
+	GraphNodeVariable.TYPE_VECTOR3: "uid://boh67iwemumgw"
+}
+
+static var theme_graph_node_action: Theme = preload("uid://b67qs2l2djpjg")
+static var theme_graph_node_function: Theme = preload("uid://ccffj50ffja22")
+static var theme_graph_node_variable: Theme = preload("uid://c1diqclabdns6")
+static var theme_graph_node_title: Theme = preload("uid://ckkwf0qglqnnh")
+static var gear_texture_scene: PackedScene = preload("uid://b0loctguthbgt")
+static var electric_texture_scene: PackedScene = preload("uid://diifangm1yc4")
+
 static var node_type_color: Dictionary = {
 	TYPE_NIL: Color.ALICE_BLUE,
-	TYPE_BOOL: Color.HOT_PINK,
+	TYPE_BOOL: Color.WEB_MAROON,
 	TYPE_INT: Color.AQUA,
 	TYPE_FLOAT: Color.AQUAMARINE,
 	TYPE_STRING: Color.AZURE,
@@ -30,7 +53,7 @@ static var node_type_color: Dictionary = {
 	TYPE_STRING_NAME: Color.DARK_BLUE,
 	TYPE_NODE_PATH: Color.DARK_CYAN,
 	TYPE_RID: Color.DARK_GOLDENROD,
-	TYPE_OBJECT: Color.DARK_GRAY,
+	TYPE_OBJECT: Color.DEEP_SKY_BLUE,
 	TYPE_CALLABLE: Color.DARK_GREEN,
 	TYPE_SIGNAL: Color.DARK_KHAKI,
 	TYPE_DICTIONARY: Color.DARK_MAGENTA,
