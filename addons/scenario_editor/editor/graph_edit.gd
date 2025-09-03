@@ -2,7 +2,7 @@
 extends GraphEdit
 class_name GraphEditExtended
 
-var _selected_node: Node
+var _selected_node: GraphNodeExtended
 
 func _ready() -> void:
 	connection_request.connect(_node_connection_request)
@@ -14,10 +14,11 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_DELETE or event.keycode == KEY_BACKSPACE:
 			Game.remove_node(_selected_node, self)
 
-func _node_selected(node: Node) -> void:
+func _node_selected(node: GraphNodeExtended) -> void:
 	_selected_node = node
+	Editor.show_info_panel(node.panel)
 
-func _node_deselected(node: Node) -> void:
+func _node_deselected(node: GraphNodeExtended) -> void:
 	if _selected_node == node:
 		_selected_node = null
 

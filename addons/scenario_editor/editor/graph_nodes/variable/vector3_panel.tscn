@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7rawol7wxg8a"]
+
+[ext_resource type="Script" uid="uid://dubve3loyolkf" path="res://addons/scenario_editor/editor/graph_nodes/variable/vector_3_panel.gd" id="1_7k6u6"]
+
+[node name="GridContainer" type="GridContainer" node_paths=PackedStringArray("_ui_x_line_edit", "_ui_y_line_edit", "_ui_z_line_edit")]
+size_flags_vertical = 3
+columns = 3
+script = ExtResource("1_7k6u6")
+_ui_x_line_edit = NodePath("XLineEdit")
+_ui_y_line_edit = NodePath("YLineEdit")
+_ui_z_line_edit = NodePath("ZLineEdit")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "x"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "y"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+text = "z"
+
+[node name="XLineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+
+[node name="YLineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+
+[node name="ZLineEdit" type="LineEdit" parent="."]
+layout_mode = 2

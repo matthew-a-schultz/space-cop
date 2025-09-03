@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://boh67iwemumgw"]
+
+[ext_resource type="Script" uid="uid://cbfaytrxoqgxv" path="res://addons/scenario_editor/editor/graph_nodes/variable/graph_node_variable_vector_3.gd" id="1_4qmv1"]
+
+[node name="GraphNodeVariableVector3" type="GraphNode"]
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 9
+slot/0/right_color = Color(0, 0, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_4qmv1")
+
+[node name="Vector3" type="Label" parent="."]
+layout_mode = 2
+text = "Vector3"

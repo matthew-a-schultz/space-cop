@@ -2,8 +2,8 @@
 extends GraphNodeExtended
 
 func _ready() -> void:
-	graph_node_resource.type = ScenarioEditorConfig.GraphNodeType.OBJECT_MOVE_TO
-	graph_node_resource.save_data = {	}
+	graph_node_resource.type = {ScenarioEditorConfig.GraphNodeType.ACTION: ScenarioEditorConfig.GraphNodeAction.START}
+	graph_node_resource.save_data = {}
 	
 	clear_all_slots()
 	update_slots([
