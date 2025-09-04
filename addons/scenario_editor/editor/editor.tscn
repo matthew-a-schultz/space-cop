@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://b052cpwux6cfd"]
 
 [ext_resource type="Script" uid="uid://b1fulnidsp8rq" path="res://addons/scenario_editor/editor/editor.gd" id="1_3xtcg"]
-[ext_resource type="PackedScene" uid="uid://cjbwsg3rkr3g4" path="res://addons/scenario_editor/editor/graph_edit.tscn" id="2_1koqs"]
+[ext_resource type="Script" uid="uid://rmc0jmgrao5l" path="res://addons/scenario_editor/editor/graph_edit.gd" id="2_gdvj1"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("_ui_graph_edit", "_ui_file", "_ui_node", "_ui_object", "_ui_action", "_ui_variable", "_ui_function", "_ui_start", "_ui_file_save_dialog", "_ui_file_load_dialog", "_ui_scroll_container")]
+[node name="Control" type="Control" node_paths=PackedStringArray("_ui_graph_edit", "_ui_file", "_ui_node", "_ui_action", "_ui_variable", "_ui_function", "_ui_start", "_ui_file_save_dialog", "_ui_file_load_dialog", "_ui_scroll_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,6 @@ script = ExtResource("1_3xtcg")
 _ui_graph_edit = NodePath("VBoxContainer/HBoxContainer/GraphEdit")
 _ui_file = NodePath("VBoxContainer/MenuBar/File")
 _ui_node = NodePath("VBoxContainer/MenuBar/Node")
-_ui_object = NodePath("VBoxContainer/MenuBar/Object")
 _ui_action = NodePath("VBoxContainer/MenuBar/Node/Action")
 _ui_variable = NodePath("VBoxContainer/MenuBar/Node/Variable")
 _ui_function = NodePath("VBoxContainer/MenuBar/Node/Function")
@@ -90,8 +89,11 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="GraphEdit" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_1koqs")]
+[node name="GraphEdit" type="GraphEdit" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_gdvj1")
 
 [node name="SaveFileDialog" type="FileDialog" parent="."]
 root_subfolder = "res://events"
