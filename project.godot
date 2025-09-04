@@ -15,6 +15,10 @@ run/main_scene="uid://r8axfwc8v644"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ScenerioEditor="*res://addons/scenario_editor/editor/graph_edit_autoload.tscn"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=2
@@ -23,6 +27,7 @@ gdscript/warnings/inferred_declaration=2
 [editor]
 
 movie_writer/movie_file="D:/video.avi"
+run/main_run_args="-e"
 
 [editor_plugins]
 

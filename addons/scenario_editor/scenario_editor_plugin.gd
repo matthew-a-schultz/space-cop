@@ -5,10 +5,16 @@ var scenario_editor_scene: Editor
 static var game: Game
 
 const save_path = "res://addons/scenario_editor/temp/scene_editor_default.tscn"
+const AUTOLOAD_NAME = "ScenerioEditor"
+
+func _enable_plugin():
+	add_autoload_singleton(AUTOLOAD_NAME, "res://addons/scenario_editor/editor/autoload.tscn")
+
+func _disable_plugin():
+	remove_autoload_singleton(AUTOLOAD_NAME)
 
 func _enter_tree() -> void:
 	scenario_editor_scene = preload("editor/editor.tscn").instantiate()
-	scenario_editor_scene.scenario_editor = self
 	var bottom_panel_button: Button = add_control_to_bottom_panel(scenario_editor_scene, "Scenario Editor")
 	bottom_panel_button.pressed.connect(_mission_editor_pressed)
 	scene_changed.connect(_scene_changed)
