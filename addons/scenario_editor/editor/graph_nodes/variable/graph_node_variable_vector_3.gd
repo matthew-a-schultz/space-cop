@@ -16,5 +16,5 @@ func _ready() -> void:
 	
 	clear_all_slots()
 	update_slots([
-		[TYPE_VECTOR3, Side.RIGHT],
+		[TYPE_VECTOR3, Port.OUTPUT],
 	])

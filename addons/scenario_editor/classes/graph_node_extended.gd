@@ -3,7 +3,7 @@ extends GraphNode
 class_name GraphNodeExtended
 
 enum SlotType {START, OBJECTS, ACTIVE, POSITION, FINISHED, NIL}
-enum Side {NONE, LEFT, RIGHT, BOTH}
+enum Port {NONE, INPUT, OUTPUT, BOTH}
 var graph_node_resource: GraphNodeResource = GraphNodeResource.new()
 var slots: Array[Array]
 var slot_types: Array[SlotType]
@@ -29,11 +29,11 @@ func update_slots(new_slots: Array[Array]) -> void:
 		slot_types.append(slot_type)
 		slot_sides.append(slot_side)
 		match slot_side:
-			Side.LEFT:
+			Port.INPUT:
 				set_slot_left(slot_index, slot_type)
-			Side.RIGHT:
+			Port.OUTPUT:
 				set_slot_right(slot_index, slot_type)
-			Side.BOTH:
+			Port.BOTH:
 				set_slot_left(slot_index, slot_type)
 				set_slot_right(slot_index, slot_type)
 

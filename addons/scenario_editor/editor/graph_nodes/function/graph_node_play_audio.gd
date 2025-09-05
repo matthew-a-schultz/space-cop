@@ -16,10 +16,10 @@ func _ready() -> void:
 		Slot.FILE_PATH: path,
 	}
 	update_slots([
-		[TYPE_BOOL, Side.LEFT],
-		[TYPE_NIL, Side.LEFT],
-		[TYPE_NIL, Side.LEFT],
-		[TYPE_BOOL, Side.RIGHT],
+		[TYPE_BOOL, Port.INPUT],
+		[TYPE_NIL, Port.INPUT],
+		[TYPE_NIL, Port.INPUT],
+		[TYPE_BOOL, Port.OUTPUT],
 	])
 	_choose_file_button.pressed.connect(_choose_file_show_dialog)
 	_file_dialog.file_selected.connect(_file_selected)

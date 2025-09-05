@@ -14,9 +14,9 @@ func _ready() -> void:
 	
 	clear_all_slots()
 	update_slots([
-		[TYPE_OBJECT, Side.LEFT],
-		[TYPE_OBJECT, Side.RIGHT],
-		[TYPE_OBJECT, Side.RIGHT],
+		[TYPE_OBJECT, Port.INPUT],
+		[TYPE_OBJECT, Port.OUTPUT],
+		[TYPE_OBJECT, Port.OUTPUT],
 	])
 
 func get_input(value: Variant, to_slot_index: int) -> void:
