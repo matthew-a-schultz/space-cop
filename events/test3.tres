@@ -1,0 +1,129 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=10 format=3 uid="uid://y1y3unnj71lw"]
+
+[ext_resource type="Script" uid="uid://piuqndsp0fdv" path="res://addons/scenario_editor/resources/graph_node_resource.gd" id="1_dmlx5"]
+[ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/scenario_editor/resources/event_resource.gd" id="2_i3603"]
+
+[sub_resource type="Resource" id="Resource_3p7c4"]
+script = ExtResource("1_dmlx5")
+type = Dictionary[int, int]({
+1: 0
+})
+name = "GraphNodeObjectMoveTo"
+save_data = {
+0: -1,
+2: Vector3(0, 0, 0)
+}
+position_offset = Vector2(-20, 60)
+
+[sub_resource type="Resource" id="Resource_dmlx5"]
+script = ExtResource("1_dmlx5")
+type = Dictionary[int, int]({
+1: 0
+})
+name = "@GraphNode@24494"
+save_data = {
+0: -1,
+2: Vector3(0, 0, 0)
+}
+position_offset = Vector2(-20, 280)
+
+[sub_resource type="Resource" id="Resource_i3603"]
+script = ExtResource("1_dmlx5")
+type = Dictionary[int, int]({
+1: 1
+})
+name = "GraphNodePlayAudio"
+save_data = {
+1: ""
+}
+position_offset = Vector2(220, 140)
+
+[sub_resource type="Resource" id="Resource_ir1vp"]
+script = ExtResource("1_dmlx5")
+type = Dictionary[int, int]({
+1: 1
+})
+name = "@GraphNode@24710"
+save_data = {
+1: ""
+}
+position_offset = Vector2(220, 380)
+
+[sub_resource type="Resource" id="Resource_2rhi2"]
+script = ExtResource("1_dmlx5")
+type = Dictionary[int, int]({
+0: 0
+})
+name = "GraphNodeStart"
+save_data = {}
+position_offset = Vector2(-240, 80)
+
+[sub_resource type="Resource" id="Resource_at4v8"]
+script = ExtResource("1_dmlx5")
+type = Dictionary[int, int]({
+2: 0
+})
+name = "GraphNodeVariableVector3"
+save_data = {
+0: -1
+}
+position_offset = Vector2(-200, 180)
+
+[sub_resource type="Resource" id="Resource_vhr5w"]
+script = ExtResource("1_dmlx5")
+type = Dictionary[int, int]({
+2: 0
+})
+name = "@GraphNode@24725"
+save_data = {
+0: -1
+}
+position_offset = Vector2(-220, 400)
+
+[resource]
+script = ExtResource("2_i3603")
+objects_resource_index = Array[int]([])
+connections = Array[Dictionary]([{
+"from_node": &"GraphNodeObjectMoveTo",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodePlayAudio",
+"to_port": 0
+}, {
+"from_node": &"@GraphNode@24494",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"@GraphNode@24710",
+"to_port": 0
+}, {
+"from_node": &"GraphNodeStart",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodeObjectMoveTo",
+"to_port": 1
+}, {
+"from_node": &"@GraphNode@24494",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodeObjectMoveTo",
+"to_port": 1
+}, {
+"from_node": &"GraphNodeObjectMoveTo",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"@GraphNode@24494",
+"to_port": 1
+}, {
+"from_node": &"GraphNodeVariableVector3",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodeObjectMoveTo",
+"to_port": 2
+}, {
+"from_node": &"@GraphNode@24725",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"@GraphNode@24494",
+"to_port": 2
+}])
+graph_nodes = Array[ExtResource("1_dmlx5")]([SubResource("Resource_3p7c4"), SubResource("Resource_dmlx5"), SubResource("Resource_i3603"), SubResource("Resource_ir1vp"), SubResource("Resource_2rhi2"), SubResource("Resource_at4v8"), SubResource("Resource_vhr5w")])
