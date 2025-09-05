@@ -20,6 +20,7 @@ func _input(event: InputEvent) -> void:
 			_remove_node(_selected_node)
 
 func _node_selected(node: GraphNodeExtended) -> void:
+	print_debug("Node selected: %s" % node)
 	_selected_node = node
 	Editor.show_info_panel(node.panel)
 
@@ -144,4 +145,4 @@ func _remove_node(graph_node: GraphNodeExtended) -> void:
 	
 	if get_children().has(graph_node):
 		remove_child(graph_node)
-		queue_free()
+		graph_node.queue_free()
