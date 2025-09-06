@@ -1,5 +1,5 @@
 @tool
-extends GraphNodeExtended
+extends GraphNodeEvent
 class_name GraphNodeArea
 
 enum Slot {AREA_OBJECT, ENTERED, EXITED}
@@ -7,7 +7,7 @@ enum Slot {AREA_OBJECT, ENTERED, EXITED}
 var _area_object: Area3D
 
 func _ready() -> void:
-	graph_node_resource.type = {ScenarioEditorConfig.GraphNodeType.FUNCTION: ScenarioEditorConfig.GraphNodeFunction.OBJECT_MOVE_TO}
+	#graph_node_resource.type = {ScenarioEditorConfig.GraphNodeType.EVENT: ScenarioEditorConfig.GraphNodeEvent.OBJECT_MOVE_TO}
 	graph_node_resource.save_data = {
 		Slot.AREA_OBJECT: -1,
 	}
@@ -19,7 +19,7 @@ func _ready() -> void:
 		[TYPE_OBJECT, Port.OUTPUT],
 	])
 
-func get_input(value: Variant, to_slot_index: int) -> void:
+func _get_input(value: Variant, to_slot_index: int) -> void:
 	match to_slot_index:
 		Slot.ENTERED:
 			pass

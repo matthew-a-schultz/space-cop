@@ -20,7 +20,6 @@ func _input(event: InputEvent) -> void:
 			_remove_node(_selected_node)
 
 func _node_selected(node: GraphNodeExtended) -> void:
-	print_debug("Node selected: %s" % node)
 	_selected_node = node
 	Editor.show_info_panel(node.panel)
 
@@ -63,30 +62,24 @@ func load(file_path: String)-> void:
 		
 		clear_connections()
 		
-		#if object_list != null:
-		#	object_list.clear()
-		#objects.clear()
-		
-		#for child: Node in ui_objects.get_children():
-		#	child.free()
-		
-		#for object_index: int in load_event_resource.objects_resource_index:
-		#	add_object(object_index, object_list)
-		
 		for graph_node_resource: GraphNodeResource in load_event_resource.graph_nodes:
-			var graph_node_type: ScenarioEditorConfig.GraphNodeType = graph_node_resource.type.keys().front()
-			match graph_node_type:
-				ScenarioEditorConfig.GraphNodeType.ACTION:
-					add_action_node(graph_node_resource.type[graph_node_type], graph_node_resource)
-				ScenarioEditorConfig.GraphNodeType.FUNCTION:
-					add_function_node(graph_node_resource.type[graph_node_type], graph_node_resource)
-				ScenarioEditorConfig.GraphNodeType.VARIABLE:
-					var variable_type: ScenarioEditorConfig.GraphNodeAction = graph_node_resource.type[graph_node_type]
-					var node_packed_scene: PackedScene = ResourceLoader.load(ScenarioEditorConfig.variable_node_scene_paths[variable_type])
-					var graph_node: GraphNodeExtended = node_packed_scene.instantiate()
-					graph_node.theme = ScenarioEditorConfig.theme_graph_node_variable
-					_add_node(graph_node, graph_node_resource)
-
+			var graph_node: GraphNode
+			if graph_node_resource is GraphNodeEventResource:
+				var graph_node_event_scene: PackedScene = ResourceLoader.load(ScenarioEditorConfig.event_scene_paths[graph_node_resource.type])
+				graph_node = graph_node_event_scene.instantiate()
+			elif graph_node_resource is GraphNodeFunctionResource:
+				var graph_node_function_scene: PackedScene = ResourceLoader.load(ScenarioEditorConfig.function_scene_paths[graph_node_resource.type])
+				graph_node = graph_node_function_scene.instantiate()
+			elif graph_node_resource is GraphNodeVariableResource:
+				var graph_node_variable_scene: PackedScene = ResourceLoader.load(ScenarioEditorConfig.variable_scene_paths[graph_node_resource.type])
+				graph_node = graph_node_variable_scene.instantiate()
+			graph_node.name = graph_node_resource.name
+			graph_node.graph_node_resource.name = graph_node.name
+			graph_node.position_offset = graph_node_resource.position_offset
+			graph_node.load_save_data(graph_node_resource.save_data)
+			add_child(graph_node)
+			event_resource.graph_nodes.append(graph_node.graph_node_resource)
+			
 		for connection: Dictionary in load_event_resource.connections:
 			connection_request.emit(connection.from_node.validate_node_name(), connection.from_port, connection.to_node.validate_node_name(), connection.to_port)
 
@@ -100,43 +93,15 @@ func add_object(index: int, object_list: ItemList = null) -> void:
 	objects.append(world_object)
 	event_resource.objects_resource_index.append(index)
 
-func _add_node(graph_node: GraphNode, graph_node_resource: GraphNodeResource = null) -> void:
-	event_resource.graph_nodes.append(graph_node.graph_node_resource)
-	add_child(graph_node)
-	#graph_node.owner = self
-	for child: Control in graph_node.get_titlebar_hbox().get_children():
-		child.theme = ScenarioEditorConfig.theme_graph_node_title
+func add_event(type: ScenarioEditorConfig.Event) -> void:
+	pass
 
-	if graph_node_resource != null:
-		graph_node.name = graph_node_resource.name
-		graph_node.graph_node_resource.name = graph_node.name
-		graph_node.position_offset = graph_node_resource.position_offset
-		graph_node.load_save_data(graph_node_resource.save_data)
-	else:
-		graph_node.graph_node_resource.name = graph_node.name
+func add_function(type: ScenarioEditorConfig.Function) -> void:
+	pass
+	#event_resource.graph_nodes.append(graph_node.graph_node_resource)
 
-func add_action_node(type: ScenarioEditorConfig.GraphNodeAction, graph_node_resource: GraphNodeResource = null) -> void:
-	var node_packed_scene: PackedScene = ResourceLoader.load(ScenarioEditorConfig.action_node_scene_paths[type])
-	var graph_node: GraphNode = node_packed_scene.instantiate()
-	graph_node.theme = ScenarioEditorConfig.theme_graph_node_action
-	var title_bar: HBoxContainer = graph_node.get_titlebar_hbox()
-	var electric_texture: TextureRect = ScenarioEditorConfig.electric_texture_scene.instantiate() 
-	graph_node.get_titlebar_hbox().add_child(electric_texture)
-	_add_node(graph_node, graph_node_resource)
-
-func add_function_node(type: ScenarioEditorConfig.GraphNodeFunction, graph_node_resource: GraphNodeResource = null) -> void:
-	var node_packed_scene: PackedScene = ResourceLoader.load(ScenarioEditorConfig.function_node_scene_paths[type])
-	var graph_node: GraphNode = node_packed_scene.instantiate()
-	graph_node.theme = ScenarioEditorConfig.theme_graph_node_function
-	var gear_texture: TextureRect = ScenarioEditorConfig.gear_texture_scene.instantiate() 
-	graph_node.get_titlebar_hbox().add_child(gear_texture)
-	_add_node(graph_node, graph_node_resource)
-
-func add_variable_node(type: ScenarioEditorConfig.GraphNodeVariable, graph_node_resource: GraphNodeResource = null) -> void:
-	var node_packed_scene: PackedScene = ResourceLoader.load(ScenarioEditorConfig.variable_node_scene_paths[type])
-	var graph_node: GraphNode = node_packed_scene.instantiate()
-	graph_node.theme = ScenarioEditorConfig.theme_graph_node_variable
-	_add_node(graph_node, graph_node_resource)
+func add_variable(type: ScenarioEditorConfig.Variable) -> void:
+	pass
 
 func _remove_node(graph_node: GraphNodeExtended) -> void:
 	if event_resource.graph_nodes.has(graph_node.graph_node_resource):

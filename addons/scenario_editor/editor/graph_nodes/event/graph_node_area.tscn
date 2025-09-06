@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdrqmrxx4d4b3"]
 
-[ext_resource type="Script" uid="uid://c8ktwha5urbfr" path="res://addons/scenario_editor/editor/graph_nodes/action/graph_node_area.gd" id="1_e3ns1"]
+[ext_resource type="Script" uid="uid://c8ktwha5urbfr" path="res://addons/scenario_editor/editor/graph_nodes/event/graph_node_area.gd" id="1_e3ns1"]
 
 [node name="GraphNodeArea" type="GraphNode"]
 offset_right = 44.0

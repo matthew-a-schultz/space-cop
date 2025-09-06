@@ -2,12 +2,12 @@
 extends GraphNodeExtended
 
 func _ready() -> void:
-	graph_node_resource.type = {ScenarioEditorConfig.GraphNodeType.ACTION: ScenarioEditorConfig.GraphNodeAction.START}
+	graph_node_resource.type = ScenarioEditorConfig.Event.START
 	graph_node_resource.save_data = {}
 	
 	clear_all_slots()
 	update_slots([
-		[TYPE_NIL, Side.NONE],
+		[TYPE_NIL, Port.NONE],
 	])
 
 func get_input(value: Variant, to_slot_index: int) -> void:

@@ -58,9 +58,9 @@ func set_output(value: Variant, from_slot_index: int) -> void:
 	for slot_output: Array in _slot_output_lookup[from_slot_index]:
 		var output_index: int = slot_output[0]
 		var output_node: GraphNodeExtended = slot_output[1]
-		output_node.get_input(value, output_index)
+		output_node._get_input(value, output_index)
 
-func get_input(value: Variant, to_slot_index: int) -> void:
+func _get_input(value: Variant, to_slot_index: int) -> void:
 	return
 
 func load_save_data(save_data: Dictionary) -> void:

@@ -1,5 +1,5 @@
 @tool
-extends GraphNodeExtended
+extends GraphNodeFunction
 class_name GraphNodePlayAudio
 
 enum Slot {PLAY, FILE_PATH, CHOOSE, FINISHED}
@@ -11,7 +11,7 @@ var _audio_stream: AudioStream
 var path: String
 
 func _ready() -> void:
-	graph_node_resource.type = {ScenarioEditorConfig.GraphNodeType.FUNCTION: ScenarioEditorConfig.GraphNodeFunction.PLAY_AUDIO}
+	graph_node_resource.type =  ScenarioEditorConfig.Function.PLAY_AUDIO
 	graph_node_resource.save_data = {
 		Slot.FILE_PATH: path,
 	}
@@ -31,7 +31,7 @@ func finished_playing() -> void:
 func _choose_file_show_dialog() -> void:
 	_file_dialog.popup_centered()
 
-func get_input(value: Variant, to_slot_index: int) -> void:
+func _get_input(value: Variant, to_slot_index: int) -> void:
 	match to_slot_index:
 		Slot.PLAY:
 			_playing = true

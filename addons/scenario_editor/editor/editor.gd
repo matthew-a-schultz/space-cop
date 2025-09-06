@@ -44,20 +44,20 @@ func _ready() -> void:
 	_ui_node.add_submenu_node_item("Variable", _ui_variable)
 	_ui_node.add_submenu_node_item("Function", _ui_function)
 	
-	_ui_action.index_pressed.connect(graph_edit.add_action_node.bind(null))
+	_ui_action.index_pressed.connect(graph_edit.add_action.bind(null))
 	_ui_action.clear()
-	for key: ScenarioEditorConfig.GraphNodeAction in ScenarioEditorConfig.GraphNodeAction.values():
-		_ui_action.add_item(ScenarioEditorConfig.GraphNodeAction.keys()[key], key)
+	for key: ScenarioEditorConfig.Event in ScenarioEditorConfig.Event.values():
+		_ui_action.add_item(ScenarioEditorConfig.Event.keys()[key], key)
 	
-	_ui_function.index_pressed.connect(graph_edit.add_function_node.bind(null))
+	_ui_function.index_pressed.connect(graph_edit.add_function.bind(null))
 	_ui_function.clear()
-	for key: ScenarioEditorConfig.GraphNodeFunction in ScenarioEditorConfig.GraphNodeFunction.values():
-		_ui_function.add_item(ScenarioEditorConfig.GraphNodeFunction.keys()[key], key)
+	for key: ScenarioEditorConfig.Function in ScenarioEditorConfig.Function.values():
+		_ui_function.add_item(ScenarioEditorConfig.Function.keys()[key], key)
 	
-	_ui_variable.index_pressed.connect(graph_edit.add_variable_node.bind(null))
+	_ui_variable.index_pressed.connect(graph_edit.add_variable.bind(null))
 	_ui_variable.clear()
-	for type: Variant in ScenarioEditorConfig.GraphNodeVariable.values():
-		_ui_variable.add_item(ScenarioEditorConfig.GraphNodeVariable.keys()[type], type)
+	for type: Variant in ScenarioEditorConfig.Variable.values():
+		_ui_variable.add_item(ScenarioEditorConfig.Variable.keys()[type], type)
 	
 	_ui_start.about_to_popup.connect(_start_pressed)
 	_ui_file_save_dialog.file_selected.connect(_menu_file_save_path_selected)
@@ -66,15 +66,6 @@ func _ready() -> void:
 func _start_pressed() -> void:
 	var start_node: GraphNodeStart = _ui_graph_edit.get_node("GraphNodeStart")
 	start_node.start()
-
-#func _world_object_changed() -> void:
-	#_ui_object.clear()
-	#
-	#for index: int in Game.world_objects_resource.world_objects.size():
-		#if not Game.world_objects_resource.world_objects[index].changed.is_connected(_world_object_changed):
-			#var _error: Error = Game.world_objects_resource.world_objects[index].changed.connect(_world_object_changed)
-		#var world_object: WorldObjectResource = Game.world_objects_resource.world_objects[index]
-		#_ui_object.add_item(world_object.name, index)
 
 func _menu_file_pressed(file: File) -> void:
 	match file:

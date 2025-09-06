@@ -1,5 +1,5 @@
 @tool
-extends GraphNodeExtended
+extends GraphNodeFunction
 class_name GraphNodeObjectMoveTo
 
 enum Slot {OBJECT, ACTIVE, POSITION, FINISHED}
@@ -9,8 +9,7 @@ var _finished: bool
 var _position: GraphNodeVariableVector3
 
 func _ready() -> void:
-	
-	graph_node_resource.type = {ScenarioEditorConfig.GraphNodeType.FUNCTION: ScenarioEditorConfig.GraphNodeFunction.OBJECT_MOVE_TO}
+	graph_node_resource.type = ScenarioEditorConfig.Function.OBJECT_MOVE_TO
 	graph_node_resource.save_data = {
 		Slot.OBJECT: -1,
 		Slot.POSITION: Vector3.ZERO,
@@ -23,10 +22,8 @@ func _ready() -> void:
 		[TYPE_VECTOR3, Port.INPUT],
 		[TYPE_BOOL, Port.OUTPUT],
 	])
-	#_ui_objects_option_button.pressed.connect(_object_show_options)
-	#_ui_objects_option_button.item_selected.connect(_object_selected)
 
-func get_input(value: Variant, to_slot_index: int) -> void:
+func _get_input(value: Variant, to_slot_index: int) -> void:
 	match to_slot_index:
 		Slot.ACTIVE:
 			_world_object.goto(_position.value)
@@ -36,16 +33,5 @@ func get_input(value: Variant, to_slot_index: int) -> void:
 		Slot.POSITION:
 			_position = value
 
-#func _object_show_options() -> void:
-	#_ui_objects_option_button.clear()
-	#for object: Node in Game.objects:
-		#_ui_objects_option_button.add_item(object.name)
-		#
-#func _object_selected(index: int) -> void:
-	#graph_node_resource.save_data[Slot.OBJECT] = index
-	#_world_object = Game.objects[index]
-
 func load_save_data(load_save_data: Dictionary) -> void:
-	#_object_show_options()
-	#_object_selected(load_save_data[Slot.OBJECT])
 	_position = load_save_data[Slot.POSITION]

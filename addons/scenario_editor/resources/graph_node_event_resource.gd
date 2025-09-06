@@ -1,0 +1,3 @@
+@tool
+extends GraphNodeResource
+class_name GraphNodeEventResource

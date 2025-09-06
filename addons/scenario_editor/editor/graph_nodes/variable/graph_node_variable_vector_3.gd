@@ -1,5 +1,5 @@
 @tool
-extends GraphNodeExtended
+extends GraphNodeVariable
 class_name GraphNodeVariableVector3 
 
 enum Slot {VARIABLE}
@@ -9,7 +9,7 @@ func _ready() -> void:
 	set_panel("res://addons/scenario_editor/editor/graph_nodes/variable/vector3_panel.tscn")
 	panel.graph_node = self
 	
-	graph_node_resource.type = {ScenarioEditorConfig.GraphNodeType.VARIABLE: ScenarioEditorConfig.GraphNodeVariable.TYPE_VECTOR3}
+	graph_node_resource.type = ScenarioEditorConfig.Variable.TYPE_VECTOR3
 	graph_node_resource.save_data = {
 		Slot.VARIABLE: -1,
 	}
