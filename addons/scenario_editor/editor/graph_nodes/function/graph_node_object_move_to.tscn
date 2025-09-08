@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/scenario_editor/editor/graph_nodes/function/graph_node_object_move_to.gd" id="1_p6261"]
 
-[node name="GraphNodeObjectMoveTo" type="GraphNode" node_paths=PackedStringArray("_ui_objects_option_button")]
+[node name="GraphNodeObjectMoveTo" type="GraphNode"]
 title = "Move To"
 slot/0/left_enabled = true
 slot/0/left_type = 24
@@ -41,7 +41,6 @@ slot/3/right_color = Color(0.501961, 0, 0, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
 script = ExtResource("1_p6261")
-_ui_objects_option_button = NodePath("")
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 2

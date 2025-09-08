@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=4 format=3 uid="uid://tncsc2e8dxj5"]
+
+[ext_resource type="Script" uid="uid://7ufj67l57phx" path="res://addons/scenario_editor/resources/graph_node_resource.gd" id="1_ysy2m"]
+[ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/scenario_editor/resources/event_resource.gd" id="2_wipmu"]
+
+[sub_resource type="Resource" id="Resource_g6rs8"]
+script = ExtResource("1_ysy2m")
+type = 0
+name = "GraphNodeStart"
+position_offset = Vector2(0, 0)
+save_data = {}
+
+[resource]
+script = ExtResource("2_wipmu")
+objects_resource_index = Array[int]([])
+connections = Array[Dictionary]([])
+graph_nodes = Array[ExtResource("1_ysy2m")]([SubResource("Resource_g6rs8")])

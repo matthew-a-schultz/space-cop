@@ -44,17 +44,17 @@ func _ready() -> void:
 	_ui_node.add_submenu_node_item("Variable", _ui_variable)
 	_ui_node.add_submenu_node_item("Function", _ui_function)
 	
-	_ui_action.index_pressed.connect(graph_edit.add_action.bind(null))
+	_ui_action.index_pressed.connect(graph_edit.add_node.bind(ScenarioEditorConfig.GraphNodeType.EVENT))
 	_ui_action.clear()
 	for key: ScenarioEditorConfig.Event in ScenarioEditorConfig.Event.values():
 		_ui_action.add_item(ScenarioEditorConfig.Event.keys()[key], key)
 	
-	_ui_function.index_pressed.connect(graph_edit.add_function.bind(null))
+	_ui_function.index_pressed.connect(graph_edit.add_node.bind(ScenarioEditorConfig.GraphNodeType.FUNCTION))
 	_ui_function.clear()
 	for key: ScenarioEditorConfig.Function in ScenarioEditorConfig.Function.values():
 		_ui_function.add_item(ScenarioEditorConfig.Function.keys()[key], key)
 	
-	_ui_variable.index_pressed.connect(graph_edit.add_variable.bind(null))
+	_ui_variable.index_pressed.connect(graph_edit.add_node.bind(ScenarioEditorConfig.GraphNodeType.VARIABLE))
 	_ui_variable.clear()
 	for type: Variant in ScenarioEditorConfig.Variable.values():
 		_ui_variable.add_item(ScenarioEditorConfig.Variable.keys()[type], type)
