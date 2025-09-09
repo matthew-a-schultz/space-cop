@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5vj4xsjwgj5p"]
 
-[ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://addons/scenario_editor/editor/graph_nodes/function/graph_node_object_move_to.gd" id="1_p6261"]
+[ext_resource type="Script" uid="uid://dtu72eeue4520" path="res://main/graph_nodes/function/graph_node_object_move_to.gd" id="1_p6261"]
 
 [node name="GraphNodeObjectMoveTo" type="GraphNode"]
 title = "Move To"

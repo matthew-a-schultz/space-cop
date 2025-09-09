@@ -7,7 +7,6 @@ enum Slot {AREA_OBJECT, ENTERED, EXITED}
 var _area_object: Area3D
 
 func _ready() -> void:
-	#graph_node_resource.type = {ScenarioEditorConfig.GraphNodeType.EVENT: ScenarioEditorConfig.GraphNodeEvent.OBJECT_MOVE_TO}
 	graph_node_resource.save_data = {
 		Slot.AREA_OBJECT: -1,
 	}

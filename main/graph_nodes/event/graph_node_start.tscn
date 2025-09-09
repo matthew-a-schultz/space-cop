@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://i8pf5bhlo634"]
+[gd_scene load_steps=3 format=3 uid="uid://i8pf5bhlo634"]
 
-[ext_resource type="Script" uid="uid://eq8ond0jv2fh" path="res://addons/scenario_editor/editor/graph_nodes/event/graph_node_start.gd" id="1_6fjee"]
+[ext_resource type="Script" uid="uid://eq8ond0jv2fh" path="res://main/graph_nodes/event/graph_node_start.gd" id="1_6fjee"]
+[ext_resource type="Theme" uid="uid://b67qs2l2djpjg" path="res://addons/scenario_editor/editor/graph_nodes/theme_graph_node_action.tres" id="1_vipc1"]
 
 [node name="GraphNodeStart" type="GraphNode"]
+theme = ExtResource("1_vipc1")
 title = "Start"
 slot/0/left_enabled = false
 slot/0/left_type = 0

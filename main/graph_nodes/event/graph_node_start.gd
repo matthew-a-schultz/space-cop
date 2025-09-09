@@ -6,7 +6,6 @@ enum Slot {START}
 var _start: bool = false
 
 func _ready() -> void:
-	graph_node_resource.type = ScenarioEditorConfig.Event.START
 	update_slots([
 		[TYPE_BOOL, Port.OUTPUT]
 	])

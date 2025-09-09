@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdrqmrxx4d4b3"]
+[gd_scene load_steps=3 format=3 uid="uid://bdrqmrxx4d4b3"]
 
-[ext_resource type="Script" uid="uid://c8ktwha5urbfr" path="res://addons/scenario_editor/editor/graph_nodes/event/graph_node_area.gd" id="1_e3ns1"]
+[ext_resource type="Script" uid="uid://c8ktwha5urbfr" path="res://main/graph_nodes/event/graph_node_area.gd" id="1_e3ns1"]
+[ext_resource type="Theme" uid="uid://b67qs2l2djpjg" path="res://addons/scenario_editor/editor/graph_nodes/theme_graph_node_action.tres" id="1_njmlb"]
 
 [node name="GraphNodeArea" type="GraphNode"]
 offset_right = 44.0
 offset_bottom = 55.0
+theme = ExtResource("1_njmlb")
 title = "Area"
 slot/0/left_enabled = true
 slot/0/left_type = 24

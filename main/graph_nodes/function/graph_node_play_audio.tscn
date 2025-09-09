@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://davu32ijomr6o"]
 
-[ext_resource type="Script" uid="uid://p36krqi7x060" path="res://addons/scenario_editor/editor/graph_nodes/function/graph_node_play_audio.gd" id="1_amt7x"]
+[ext_resource type="Script" uid="uid://p36krqi7x060" path="res://main/graph_nodes/function/graph_node_play_audio.gd" id="1_amt7x"]
 
 [node name="GraphNodePlayAudio" type="GraphNode" node_paths=PackedStringArray("_file_dialog", "_choose_file_button", "_file_path_label")]
 offset_right = 9.0

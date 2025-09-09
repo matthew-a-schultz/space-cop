@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7rawol7wxg8a"]
 
-[ext_resource type="Script" uid="uid://dubve3loyolkf" path="res://addons/scenario_editor/editor/graph_nodes/variable/vector_3_panel.gd" id="1_7k6u6"]
+[ext_resource type="Script" uid="uid://dubve3loyolkf" path="res://main/graph_nodes/variable/vector_3_panel.gd" id="1_7k6u6"]
 
 [node name="GridContainer" type="GridContainer" node_paths=PackedStringArray("_ui_x_line_edit", "_ui_y_line_edit", "_ui_z_line_edit")]
 size_flags_vertical = 3

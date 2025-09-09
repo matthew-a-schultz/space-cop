@@ -9,7 +9,6 @@ var _finished: bool
 var _position: GraphNodeVariableVector3
 
 func _ready() -> void:
-	graph_node_resource.type = ScenarioEditorConfig.Function.OBJECT_MOVE_TO
 	graph_node_resource.save_data = {
 		Slot.OBJECT: -1,
 		Slot.POSITION: Vector3.ZERO,
@@ -34,4 +33,4 @@ func _get_input(value: Variant, to_slot_index: int) -> void:
 			_position = value
 
 func load_save_data(load_save_data: Dictionary) -> void:
-	_position = load_save_data[Slot.POSITION]
+	_position.value = load_save_data[Slot.POSITION]
