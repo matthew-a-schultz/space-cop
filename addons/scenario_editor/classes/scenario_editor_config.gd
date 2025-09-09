@@ -4,22 +4,6 @@ class_name ScenarioEditorConfig
 
 enum SlotStatus {NONE, ACTIVE}
 enum GraphNodeType {EVENT, FUNCTION, VARIABLE}
-enum Event {START, AREA}
-static var event_scene_paths: Dictionary[Event, String] = {
-	Event.START: "uid://i8pf5bhlo634",
-	Event.AREA: "uid://bdrqmrxx4d4b3",
-}
-enum Function {OBJECT_MOVE_TO, PLAY_AUDIO}
-static var function_scene_paths: Dictionary[Function, String] = {
-	Function.OBJECT_MOVE_TO: "uid://b5vj4xsjwgj5p",
-	Function.PLAY_AUDIO: "uid://davu32ijomr6o",
-}
-enum Variable { TYPE_VECTOR3,
-#TYPE_NIL, TYPE_BOOL, TYPE_INT, TYPE_FLOAT, TYPE_STRING, TYPE_VECTOR2, TYPE_VECTOR2I, TYPE_RECT2, TYPE_RECT2I, TYPE_VECTOR3I, TYPE_TRANSFORM2D, TYPE_VECTOR4, TYPE_VECTOR4I, TYPE_PLANE, TYPE_QUATERNION, TYPE_AABB, TYPE_BASIS, TYPE_TRANSFORM3D, TYPE_PROJECTION, TYPE_COLOR, TYPE_STRING_NAME, TYPE_NODE_PATH, TYPE_RID, TYPE_OBJECT, TYPE_CALLABLE, TYPE_SIGNAL, TYPE_DICTIONARY, TYPE_ARRAY, TYPE_PACKED_BYTE_ARRAY, TYPE_PACKED_INT32_ARRAY, TYPE_PACKED_INT64_ARRAY, TYPE_PACKED_FLOAT32_ARRAY, TYPE_PACKED_FLOAT64_ARRAY, TYPE_PACKED_STRING_ARRAY, TYPE_PACKED_VECTOR2_ARRAY, TYPE_PACKED_VECTOR3_ARRAY, TYPE_PACKED_COLOR_ARRAY, TYPE_PACKED_VECTOR4_ARRAY, TYPE_MAX
-}
-static var variable_scene_paths: Dictionary[Variable, String] = {
-	Variable.TYPE_VECTOR3: "uid://boh67iwemumgw"
-}
 
 static var theme_graph_node_action: Theme = preload("uid://b67qs2l2djpjg")
 static var theme_graph_node_function: Theme = preload("uid://ccffj50ffja22")
