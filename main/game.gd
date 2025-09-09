@@ -2,8 +2,6 @@
 extends Node3D
 class_name Game
 
-@export var world_objects: WorldObjectsResource
-
 @export_category("UI")
 @export var _ui_objects: Node3D
 
