@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b1fulnidsp8rq" path="res://addons/scenario_editor/editor/editor.gd" id="1_3xtcg"]
 [ext_resource type="Script" uid="uid://rmc0jmgrao5l" path="res://addons/scenario_editor/editor/graph_edit.gd" id="2_gdvj1"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("_ui_graph_edit", "_ui_file", "_ui_node", "_ui_action", "_ui_variable", "_ui_function", "_ui_start", "_ui_file_save_dialog", "_ui_file_load_dialog", "_ui_scroll_container")]
+[node name="Control" type="Control" node_paths=PackedStringArray("_ui_graph_edit", "_ui_file", "_ui_add_node", "_ui_node", "_ui_event", "_ui_variable", "_ui_function", "_ui_start", "_ui_file_save_dialog", "_ui_file_load_dialog", "_ui_add_node_file_dialog", "_ui_scroll_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,13 +13,15 @@ grow_vertical = 2
 script = ExtResource("1_3xtcg")
 _ui_graph_edit = NodePath("VBoxContainer/HBoxContainer/GraphEdit")
 _ui_file = NodePath("VBoxContainer/MenuBar/File")
-_ui_node = NodePath("VBoxContainer/MenuBar/Node")
-_ui_action = NodePath("VBoxContainer/MenuBar/Node/Action")
-_ui_variable = NodePath("VBoxContainer/MenuBar/Node/Variable")
-_ui_function = NodePath("VBoxContainer/MenuBar/Node/Function")
+_ui_add_node = NodePath("VBoxContainer/MenuBar/Add Node")
+_ui_node = NodePath("VBoxContainer/MenuBar/Nodes")
+_ui_event = NodePath("VBoxContainer/MenuBar/Nodes/Event")
+_ui_variable = NodePath("VBoxContainer/MenuBar/Nodes/Variable")
+_ui_function = NodePath("VBoxContainer/MenuBar/Nodes/Function")
 _ui_start = NodePath("VBoxContainer/MenuBar/Start")
 _ui_file_save_dialog = NodePath("SaveFileDialog")
 _ui_file_load_dialog = NodePath("LoadFileDialog")
+_ui_add_node_file_dialog = NodePath("AddNodeFileDialog")
 _ui_scroll_container = NodePath("VBoxContainer/HBoxContainer/ScrollContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -40,7 +42,16 @@ item_0/id = 0
 item_1/text = "Load"
 item_1/id = 1
 
-[node name="Node" type="PopupMenu" parent="VBoxContainer/MenuBar"]
+[node name="Add Node" type="PopupMenu" parent="VBoxContainer/MenuBar"]
+item_count = 3
+item_0/text = "Event"
+item_0/id = 0
+item_1/text = "Function"
+item_1/id = 1
+item_2/text = "Variable"
+item_2/id = 2
+
+[node name="Nodes" type="PopupMenu" parent="VBoxContainer/MenuBar"]
 item_count = 3
 item_0/text = "Action"
 item_0/id = 0
@@ -49,24 +60,13 @@ item_1/id = 1
 item_2/text = "Function"
 item_2/id = 2
 
-[node name="Action" type="PopupMenu" parent="VBoxContainer/MenuBar/Node"]
-item_count = 2
-item_0/text = "START"
-item_0/id = 0
-item_1/text = "AREA"
-item_1/id = 1
+[node name="Event" type="PopupMenu" parent="VBoxContainer/MenuBar/Nodes"]
 
-[node name="Function" type="PopupMenu" parent="VBoxContainer/MenuBar/Node"]
-item_count = 2
-item_0/text = "OBJECT_MOVE_TO"
-item_0/id = 0
-item_1/text = "PLAY_AUDIO"
-item_1/id = 1
+[node name="Function" type="PopupMenu" parent="VBoxContainer/MenuBar/Nodes"]
+auto_translate_mode = 1
 
-[node name="Variable" type="PopupMenu" parent="VBoxContainer/MenuBar/Node"]
-item_count = 1
-item_0/text = "TYPE_VECTOR3"
-item_0/id = 0
+[node name="Variable" type="PopupMenu" parent="VBoxContainer/MenuBar/Nodes"]
+auto_translate_mode = 1
 
 [node name="Object" type="PopupMenu" parent="VBoxContainer/MenuBar"]
 item_count = 4
@@ -106,4 +106,12 @@ ok_button_text = "Open"
 file_mode = 0
 root_subfolder = "res://events"
 filters = PackedStringArray("*.tres")
+use_native_dialog = true
+
+[node name="AddNodeFileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+root_subfolder = "res://"
+filters = PackedStringArray("*.tscn")
 use_native_dialog = true

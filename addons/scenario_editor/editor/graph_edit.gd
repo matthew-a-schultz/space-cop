@@ -7,7 +7,6 @@ static var _self: Node
 static var objects: Array[Node]
 static var ui_objects: Node3D
 static var event_resource: EventResource = EventResource.new()
-static var world_objects_resource: WorldObjectsResource = ResourceLoader.load("res://addons/scenario_editor/data/world_event_editor.tres") as WorldObjectsResource
 
 func _ready() -> void:
 	connection_request.connect(_node_connection_request)
@@ -35,12 +34,6 @@ func _node_connection_request(from_node: StringName, from_port: int, to_node: St
 		connect_node(from_node, from_port, to_node, to_port)
 		event_resource.connections = connections
 
-func _add_world_object(object: Node) -> void:
-	var name: String = object.name
-	ui_objects.add_child(object)
-	object.owner = _self
-	object.name = name
-
 func load(file_path: String)-> void:
 	var load_event_resource: EventResource = ResourceLoader.load(file_path)
 	var freeing_children: Array[Node]
@@ -63,17 +56,9 @@ func load(file_path: String)-> void:
 		clear_connections()
 		
 		for graph_node_resource: GraphNodeResource in load_event_resource.graph_nodes:
-			var graph_node: GraphNode
-			if graph_node_resource is GraphNodeEventResource:
-				print_debug("Event resource")
-				var graph_node_event_scene: PackedScene = ResourceLoader.load(ScenarioEditorConfig.event_scene_paths[graph_node_resource.type])
-				graph_node = graph_node_event_scene.instantiate()
-			elif graph_node_resource is GraphNodeFunctionResource:
-				var graph_node_function_scene: PackedScene = ResourceLoader.load(ScenarioEditorConfig.function_scene_paths[graph_node_resource.type])
-				graph_node = graph_node_function_scene.instantiate()
-			elif graph_node_resource is GraphNodeVariableResource:
-				var graph_node_variable_scene: PackedScene = ResourceLoader.load(ScenarioEditorConfig.variable_scene_paths[graph_node_resource.type])
-				graph_node = graph_node_variable_scene.instantiate()
+			var path: String = ResourceUID.get_id_path(graph_node_resource.uid)
+			var graph_node_event_scene: PackedScene = ResourceLoader.load(path)
+			var graph_node: GraphNodeExtended = graph_node_event_scene.instantiate()
 			graph_node.name = graph_node_resource.name
 			graph_node.graph_node_resource.name = graph_node.name
 			graph_node.position_offset = graph_node_resource.position_offset
@@ -84,31 +69,26 @@ func load(file_path: String)-> void:
 		for connection: Dictionary in load_event_resource.connections:
 			connection_request.emit(connection.from_node.validate_node_name(), connection.from_port, connection.to_node.validate_node_name(), connection.to_port)
 
-func add_object(index: int, object_list: ItemList = null) -> void:
-	var world_object_resource: WorldObjectResource = world_objects_resource.world_objects[index]
-	var world_object: Node = world_object_resource.scene.instantiate()
-	world_object.name = world_object_resource.name
-	_add_world_object(world_object)
-	if object_list != null:
-		object_list.add_item(world_object.name)
-	objects.append(world_object)
-	event_resource.objects_resource_index.append(index)
-
-func add_node(sub_type: ScenarioEditorConfig.Event, node_type: ScenarioEditorConfig.GraphNodeType) -> void:
+func add_node(index: int, node_type: ScenarioEditorConfig.GraphNodeType) -> void:
 	var graph_node_event_scene: PackedScene
+	var uid: int
 	match node_type:
 		ScenarioEditorConfig.GraphNodeType.EVENT:
-			print_debug("Add event")
-			graph_node_event_scene = ResourceLoader.load(ScenarioEditorConfig.event_scene_paths[sub_type])
+			uid = Editor.scenerio_editor_resource.events.keys()[index]
+			var path: String = ResourceUID.get_id_path(uid)
+			graph_node_event_scene = ResourceLoader.load(path)
 		ScenarioEditorConfig.GraphNodeType.FUNCTION:
-			print_debug("Add function")
-			graph_node_event_scene = ResourceLoader.load(ScenarioEditorConfig.function_scene_paths[sub_type])
+			uid = Editor.scenerio_editor_resource.functions.keys()[index]
+			var path: String = ResourceUID.get_id_path(uid)
+			graph_node_event_scene = ResourceLoader.load(path)
 		ScenarioEditorConfig.GraphNodeType.VARIABLE:
-			print_debug("Add variable")
-			graph_node_event_scene = ResourceLoader.load(ScenarioEditorConfig.variable_scene_paths[sub_type])
-	var graph_node: GraphNode = graph_node_event_scene.instantiate()
+			uid = Editor.scenerio_editor_resource.variables.keys()[index]
+			var path: String = ResourceUID.get_id_path(uid)
+			graph_node_event_scene = ResourceLoader.load(path)
+	var graph_node: GraphNodeExtended = graph_node_event_scene.instantiate()
 	add_child(graph_node)
 	event_resource.graph_nodes.append(graph_node.graph_node_resource)
+	graph_node.graph_node_resource.uid = uid
 	graph_node.graph_node_resource.name = graph_node.name
 
 func _remove_node(graph_node: GraphNodeExtended) -> void:

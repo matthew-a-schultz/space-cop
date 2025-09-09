@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ScenerioEditorResource" load_steps=2 format=3 uid="uid://ccyc4x6u34gnc"]
+
+[ext_resource type="Script" uid="uid://cu6apt8w44v6d" path="res://addons/scenario_editor/resources/scenerio_editor_resource.gd" id="1_kgh0k"]
+
+[resource]
+script = ExtResource("1_kgh0k")
+events = Dictionary[int, String]({
+630556476427896593: "GraphNodeStart"
+})
+functions = Dictionary[int, String]({
+4536037402909566303: "GraphNodeObjectMoveTo",
+7203879756916233936: "GraphNodePlayAudio"
+})
+variables = Dictionary[int, String]({
+3385454965455766130: "GraphNodeVariableVector3"
+})
