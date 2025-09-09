@@ -7,7 +7,7 @@ var _start: bool = false
 
 func _ready() -> void:
 	update_slots([
-		[TYPE_BOOL, Port.OUTPUT]
+		[TYPE_EVENT, Port.OUTPUT]
 	])
 
 func start() -> void:

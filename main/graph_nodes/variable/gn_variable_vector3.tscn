@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://boh67iwemumgw"]
 
-[ext_resource type="Script" uid="uid://cbfaytrxoqgxv" path="res://main/graph_nodes/variable/graph_node_variable_vector_3.gd" id="1_4qmv1"]
+[ext_resource type="Script" uid="uid://cbfaytrxoqgxv" path="res://main/graph_nodes/variable/gn_variable_vector_3.gd" id="1_4qmv1"]
 [ext_resource type="Theme" uid="uid://c1diqclabdns6" path="res://addons/scenario_editor/editor/graph_nodes/theme_graph_node_variable.tres" id="1_7uqrv"]
 
-[node name="GraphNodeVariableVector3" type="GraphNode"]
+[node name="Vector3" type="GraphNode"]
 theme = ExtResource("1_7uqrv")
 slot/0/left_enabled = false
 slot/0/left_type = 0

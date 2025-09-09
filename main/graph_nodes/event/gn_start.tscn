@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://i8pf5bhlo634"]
 
-[ext_resource type="Script" uid="uid://eq8ond0jv2fh" path="res://main/graph_nodes/event/graph_node_start.gd" id="1_6fjee"]
-[ext_resource type="Theme" uid="uid://b67qs2l2djpjg" path="res://addons/scenario_editor/editor/graph_nodes/theme_graph_node_action.tres" id="1_vipc1"]
+[ext_resource type="Theme" uid="uid://b67qs2l2djpjg" path="res://addons/scenario_editor/editor/graph_nodes/theme_graph_node_action.tres" id="1_x8qrl"]
+[ext_resource type="Script" uid="uid://eq8ond0jv2fh" path="res://main/graph_nodes/event/gn_start.gd" id="2_32bv2"]
 
-[node name="GraphNodeStart" type="GraphNode"]
-theme = ExtResource("1_vipc1")
+[node name="Start" type="GraphNode"]
+theme = ExtResource("1_x8qrl")
 title = "Start"
 slot/0/left_enabled = false
 slot/0/left_type = 0
@@ -15,7 +15,7 @@ slot/0/right_type = 1
 slot/0/right_color = Color(0.501961, 0, 0, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
-script = ExtResource("1_6fjee")
+script = ExtResource("2_32bv2")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2

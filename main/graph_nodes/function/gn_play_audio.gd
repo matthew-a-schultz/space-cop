@@ -15,10 +15,10 @@ func _ready() -> void:
 		Slot.FILE_PATH: path,
 	}
 	update_slots([
-		[TYPE_BOOL, Port.INPUT],
+		[TYPE_EVENT, Port.INPUT],
 		[TYPE_NIL, Port.INPUT],
 		[TYPE_NIL, Port.INPUT],
-		[TYPE_BOOL, Port.OUTPUT],
+		[TYPE_EVENT, Port.OUTPUT],
 	])
 	_choose_file_button.pressed.connect(_choose_file_show_dialog)
 	_file_dialog.file_selected.connect(_file_selected)
@@ -30,7 +30,7 @@ func finished_playing() -> void:
 func _choose_file_show_dialog() -> void:
 	_file_dialog.popup_centered()
 
-func _get_input(value: Variant, to_slot_index: int) -> void:
+func _get_input_event(value: Variant, to_slot_index: int) -> void:
 	match to_slot_index:
 		Slot.PLAY:
 			_playing = true

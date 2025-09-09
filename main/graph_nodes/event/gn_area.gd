@@ -18,7 +18,7 @@ func _ready() -> void:
 		[TYPE_OBJECT, Port.OUTPUT],
 	])
 
-func _get_input(value: Variant, to_slot_index: int) -> void:
+func _get_input_event(value: Variant, to_slot_index: int) -> void:
 	match to_slot_index:
 		Slot.ENTERED:
 			pass

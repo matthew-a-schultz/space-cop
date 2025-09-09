@@ -3,14 +3,12 @@ extends GraphNodeVariable
 class_name GraphNodeVariableVector3 
 
 enum Slot {VARIABLE}
-var value: Vector3
 
 func _ready() -> void:
-	set_panel("res://addons/scenario_editor/editor/graph_nodes/variable/vector3_panel.tscn")
-	panel.graph_node = self
+	set_uid_panel("uid://b7rawol7wxg8a")
 	
 	graph_node_resource.save_data = {
-		Slot.VARIABLE: -1,
+		Slot.VARIABLE: value,
 	}
 	
 	clear_all_slots()
