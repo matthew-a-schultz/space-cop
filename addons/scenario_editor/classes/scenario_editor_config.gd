@@ -11,6 +11,8 @@ static var theme_graph_node_variable: Theme = preload("uid://c1diqclabdns6")
 static var theme_graph_node_title: Theme = preload("uid://ckkwf0qglqnnh")
 static var gear_texture_scene: PackedScene = preload("uid://b0loctguthbgt")
 static var electric_texture_scene: PackedScene = preload("uid://diifangm1yc4")
+static var electric_texture: Texture2D = preload("uid://b3gv4jxb5mh6y")
+
 
 static var node_type_color: Dictionary = {
 	TYPE_NIL: Color.ALICE_BLUE,
@@ -53,6 +55,7 @@ static var node_type_color: Dictionary = {
 	TYPE_PACKED_COLOR_ARRAY: Color.DARK_VIOLET,
 	TYPE_PACKED_VECTOR4_ARRAY: Color.DEEP_PINK,
 	TYPE_MAX: Color.DEEP_SKY_BLUE,
+	GraphNodeExtended.TYPE_EVENT: Color.WHITE,
 }
 
 #ALICE_BLUE = Color(0.941176, 0.972549, 1, 1)

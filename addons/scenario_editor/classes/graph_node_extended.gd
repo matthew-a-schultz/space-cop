@@ -2,6 +2,7 @@
 extends GraphNode
 class_name GraphNodeExtended
 
+const TYPE_EVENT: int = TYPE_MAX + 1
 enum SlotType {START, OBJECTS, ACTIVE, POSITION, FINISHED, NIL}
 enum Port {NONE, INPUT, OUTPUT, BOTH}
 var graph_node_resource: GraphNodeResource
@@ -62,12 +63,16 @@ func set_slot_left(slot_index: int, type: Variant.Type) -> void:
 		set_slot_enabled_left(slot_index, true)
 		set_slot_type_left(slot_index, type)
 		set_slot_color_left(slot_index, ScenarioEditorConfig.node_type_color[type])
+	if type == TYPE_EVENT:
+		set_slot_custom_icon_left(slot_index, ScenarioEditorConfig.electric_texture)
 	
 func set_slot_right(slot_index: int, type: Variant.Type) -> void:
 	if type != TYPE_NIL:
 		set_slot_enabled_right(slot_index, true)
 		set_slot_type_right(slot_index, type)
 		set_slot_color_right(slot_index, ScenarioEditorConfig.node_type_color[type])
+	if type == TYPE_EVENT:
+		set_slot_custom_icon_right(slot_index, ScenarioEditorConfig.electric_texture)
 
 func connect_node(from_slot_index: int, to_slot_index: int, to_node: GraphNodeExtended) -> Error:
 	var slot_output: Array = [to_slot_index, to_node]
@@ -78,9 +83,9 @@ func set_output(value: Variant, from_slot_index: int) -> void:
 	for slot_output: Array in _slot_output_lookup[from_slot_index]:
 		var output_index: int = slot_output[0]
 		var output_node: GraphNodeExtended = slot_output[1]
-		output_node._get_input(value, output_index)
+		output_node._get_input_event(value, output_index)
 
-func _get_input(value: Variant, to_slot_index: int) -> void:
+func _get_input_event(value: Variant, to_slot_index: int) -> void:
 	return
 
 func load_save_data(save_data: Dictionary) -> void:
@@ -91,6 +96,9 @@ func set_panel(file_path: String) -> void:
 	panel = panel_scene.instantiate()
 	assert(panel is Control, "Panel Scene isn't a Control")
 
-func show_panel(_node_selected: Node) -> void:
-	print_debug("Show panel")
-	pass
+func set_uid_panel(uid_path: String) -> void:
+	var id: int = ResourceUID.text_to_id(uid_path)
+	var file_path: String = ResourceUID.get_id_path(id)
+	var panel_scene: PackedScene = ResourceLoader.load(file_path)
+	panel = panel_scene.instantiate()
+	assert(panel is Control, "Panel Scene isn't a Control")

@@ -35,7 +35,6 @@ func _ready() -> void:
 	if not FileAccess.file_exists(SCENERIO_EDITOR_RESOURCE_PATH):
 		scenerio_editor_resource = ScenerioEditorResource.new()
 	else:
-		print("load")
 		scenerio_editor_resource = ResourceLoader.load(SCENERIO_EDITOR_RESOURCE_PATH)
 	assert(_ui_graph_edit != null, "Graph edit is null")
 	graph_edit = _ui_graph_edit

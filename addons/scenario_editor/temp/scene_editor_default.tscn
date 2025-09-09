@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0aejrd87dm70"]
+[gd_scene load_steps=5 format=3 uid="uid://d0aejrd87dm70"]
 
-[ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://main/game.gd" id="1_okbfq"]
-[ext_resource type="Resource" uid="uid://buuwndfewy5ui" path="res://addons/scenario_editor/data/world_event_editor.tres" id="2_6c86n"]
-[ext_resource type="PackedScene" uid="uid://bd5j53bfbva5i" path="res://main/scenes/city.tscn" id="3_0ww5v"]
+[ext_resource type="Script" uid="uid://b7lr57bmf7lpu" path="res://main/game.gd" id="1_6c86n"]
+[ext_resource type="PackedScene" uid="uid://bd5j53bfbva5i" path="res://main/scenes/city.tscn" id="2_0ww5v"]
+[ext_resource type="PackedScene" uid="uid://ckesdhtro2vb3" path="res://main/scenes/audio.tscn" id="3_rgq7l"]
+[ext_resource type="Script" uid="uid://b5wbxk8xn6xl" path="res://main/scenes/audio.gd" id="4_y3af0"]
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("_ui_objects")]
-script = ExtResource("1_okbfq")
-world_objects = ExtResource("2_6c86n")
+[node name="Game2" type="Node3D" node_paths=PackedStringArray("_ui_objects")]
+script = ExtResource("1_6c86n")
 _ui_objects = NodePath("Objects")
 
-[node name="City" parent="." instance=ExtResource("3_0ww5v")]
+[node name="City" parent="." instance=ExtResource("2_0ww5v")]
 
 [node name="Objects" type="Node3D" parent="."]
+
+[node name="Audio" parent="." instance=ExtResource("3_rgq7l")]
+
+[node name="@Node@22180" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player2d") instance=ExtResource("3_rgq7l")]
+script = ExtResource("4_y3af0")
+audio_stream_player2d = NodePath("AudioStreamPlayer2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

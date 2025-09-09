@@ -43,13 +43,6 @@ item_1/text = "Load"
 item_1/id = 1
 
 [node name="Add Node" type="PopupMenu" parent="VBoxContainer/MenuBar"]
-item_count = 3
-item_0/text = "Event"
-item_0/id = 0
-item_1/text = "Function"
-item_1/id = 1
-item_2/text = "Variable"
-item_2/id = 2
 
 [node name="Nodes" type="PopupMenu" parent="VBoxContainer/MenuBar"]
 item_count = 3
@@ -61,12 +54,23 @@ item_2/text = "Function"
 item_2/id = 2
 
 [node name="Event" type="PopupMenu" parent="VBoxContainer/MenuBar/Nodes"]
+item_count = 1
+item_0/text = "GraphNodeStart"
+item_0/id = 0
 
 [node name="Function" type="PopupMenu" parent="VBoxContainer/MenuBar/Nodes"]
 auto_translate_mode = 1
+item_count = 2
+item_0/text = "GraphNodeObjectMoveTo"
+item_0/id = 0
+item_1/text = "GraphNodePlayAudio"
+item_1/id = 1
 
 [node name="Variable" type="PopupMenu" parent="VBoxContainer/MenuBar/Nodes"]
 auto_translate_mode = 1
+item_count = 1
+item_0/text = "GraphNodeVariableVector3"
+item_0/id = 0
 
 [node name="Object" type="PopupMenu" parent="VBoxContainer/MenuBar"]
 item_count = 4
