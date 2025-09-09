@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=9 format=3 uid="uid://bnx2r0f1nprn"]
+
+[ext_resource type="Script" uid="uid://7ufj67l57phx" path="res://addons/scenario_editor/resources/graph_node_resource.gd" id="1_kei0x"]
+[ext_resource type="Script" uid="uid://ctyh47iryaci2" path="res://addons/scenario_editor/resources/graph_node_event_resource.gd" id="2_bes7e"]
+[ext_resource type="Script" uid="uid://cm66v12wv6ihr" path="res://addons/scenario_editor/resources/graph_node_variable_resource.gd" id="3_ld5pm"]
+[ext_resource type="Script" uid="uid://qbki4ee237wk" path="res://addons/scenario_editor/resources/graph_node_function_resource.gd" id="4_3vsmj"]
+[ext_resource type="Script" uid="uid://qlpo6jpghoim" path="res://addons/scenario_editor/resources/event_resource.gd" id="5_of82x"]
+
+[sub_resource type="Resource" id="Resource_blpbu"]
+script = ExtResource("2_bes7e")
+uid = 630556476427896593
+name = "GraphNodeStart"
+position_offset = Vector2(100, 180)
+save_data = {}
+
+[sub_resource type="Resource" id="Resource_lf7rm"]
+script = ExtResource("3_ld5pm")
+uid = 3385454965455766130
+name = "GraphNodeVariableVector3"
+position_offset = Vector2(100, 280)
+save_data = {}
+
+[sub_resource type="Resource" id="Resource_g0f7y"]
+script = ExtResource("4_3vsmj")
+uid = 4536037402909566303
+name = "GraphNodeObjectMoveTo"
+position_offset = Vector2(340, 240)
+save_data = {
+0: -1,
+2: Vector3(0, 0, 0)
+}
+
+[resource]
+script = ExtResource("5_of82x")
+objects_resource_index = Array[int]([])
+connections = Array[Dictionary]([{
+"from_node": &"GraphNodeVariableVector3",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodeObjectMoveTo",
+"to_port": 2
+}, {
+"from_node": &"GraphNodeStart",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"GraphNodeObjectMoveTo",
+"to_port": 1
+}])
+graph_nodes = Array[ExtResource("1_kei0x")]([SubResource("Resource_blpbu"), SubResource("Resource_lf7rm"), SubResource("Resource_g0f7y")])
